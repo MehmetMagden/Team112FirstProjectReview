@@ -3,14 +3,14 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DestinationsPage;
-import pages.HomeBase;
+import pages.BasePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
 public class US_013 extends TestBaseRapor {
 
-    HomeBase homeBase = new HomeBase();
+    BasePage homeBase = new BasePage();
     DestinationsPage destinationsPage = new DestinationsPage();
 
     @Test
