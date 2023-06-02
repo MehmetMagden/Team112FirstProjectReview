@@ -1,4 +1,4 @@
-package tests;
+package tests.Seda;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ public class US15 {
     public void aboutUsPageTest (){
 
      //1- User opens browser and go to the webpage
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayURL"));
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
 
     // 2- User go to the About Us Page
         aboutUsPage.aboutUsHeaderLink.click();
