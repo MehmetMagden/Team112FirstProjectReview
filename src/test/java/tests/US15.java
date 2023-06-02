@@ -41,7 +41,9 @@ public class US15 {
     String expectedWordAboutUs = "About Us";
     String actualWordAboutUs = aboutUsPage.aboutUsBanner.getText();
 
-    Assert.assertTrue(!actualWordAboutUs.contains(expectedWordAboutUs));
+    Assert.assertFalse(actualWordAboutUs.contains(expectedWordAboutUs));
+
+
 
     }
 
