@@ -17,6 +17,8 @@ public class BasePage {
     @FindBy (xpath = "(//a[text()='Destinations'])[2]")
     public WebElement homePageDestinationsButton;
 
+    @FindBy(xpath = "(//a[text()='Contact'])[2]")
+    public WebElement homePageContactButton;
 
 
 
