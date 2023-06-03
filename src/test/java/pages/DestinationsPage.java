@@ -12,6 +12,9 @@ public class DestinationsPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy (xpath = "//h1[text()='Destinations']")
+    @FindBy (xpath = "//div[@class='banner-text']")
     public WebElement destinationsImageWebElement;
+
+    @FindBy (xpath = "//div[@class='col-md-4 col-xs-6 clear-three wow fadeIn']")
+    public WebElement destinationsFirstPackageWebElement;
 }
