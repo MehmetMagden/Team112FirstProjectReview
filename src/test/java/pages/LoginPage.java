@@ -8,8 +8,20 @@ import utilities.Driver;
 public class LoginPage {
 
 
-    public LoginPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public LoginPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
+    @FindBy(xpath = "//a[normalize-space()='Login']")
+    public WebElement loginButtonHomePage;
+
+    @FindBy(xpath = "//input[@name='traveller_email']")
+    public WebElement loginPageEmailAddressTextBox;
+
+    @FindBy(xpath = "//input[@name='traveller_password']")
+    public WebElement loginPagePasswordBox;
+
+    @FindBy(xpath = "//button[@name='form1']")
+    public WebElement loginPageLoginButton;
 
 
 
@@ -17,4 +29,4 @@ public class LoginPage {
 
 
     }
-}
+
