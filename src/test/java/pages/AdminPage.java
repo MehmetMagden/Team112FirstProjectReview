@@ -25,5 +25,12 @@ public class AdminPage {
     @FindBy (xpath = "//span[normalize-space()='General Settings']")
     public WebElement adminDashboardGeneralSettingsButton;
 
+    @FindBy (xpath = "//button[@id='sidebarToggle']")
+    public WebElement dropdownArrowSymbolButtonInAdminPage;
+
+    @FindBy (xpath = "//a[normalize-space()='Visit Website']")
+    public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
+
+
     }
 
