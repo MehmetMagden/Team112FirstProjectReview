@@ -25,6 +25,24 @@ public class AdminPage {
     @FindBy (xpath = "//span[normalize-space()='General Settings']")
     public WebElement adminDashboardGeneralSettingsButton;
 
+    @FindBy (xpath = "//span[text()='Page Settings']")
+    public  WebElement adminDashboardPageSettingsButton;
+
+    @FindBy(xpath = "//span[text()='Payment Settings']")
+    public WebElement adminDashboardPaymentSettingsButton;
+
+    @FindBy(xpath = "//span[text()='Dynamic Pages']")
+    public WebElement adminDashboardDynamicPagesButton;
+
+    @FindBy(xpath = "//span[text()='Language']")
+    public WebElement adminDashboardLanguageButton;
+
+    @FindBy(xpath = "//span[text()='Website Section']")
+    public WebElement adminDashboardWebsiteSectionButton;
+
+    @FindBy(xpath = "//span[text()='Email Template']")
+    public  WebElement adminDashBoardEmailTemplateButton;
+
     @FindBy (xpath = "//button[@id='sidebarToggle']")
     public WebElement dropdownArrowSymbolButtonInAdminPage;
 
