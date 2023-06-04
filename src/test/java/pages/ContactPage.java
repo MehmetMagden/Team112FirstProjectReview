@@ -37,6 +37,9 @@ public class ContactPage {
     @FindBy(xpath = "(//div[@class='contact-text'])[1]")
     public  WebElement contactInformationAddressDetails;
 
+    @FindBy(xpath = "//p[text()='3153 Foley Street']")
+    public WebElement contactInfoActualAddress;
+
     @FindBy(xpath = "(//div[@class='contact-text'])[2]")
     public WebElement contactInformationEmailAddress;
 
@@ -44,9 +47,14 @@ public class ContactPage {
    // public WebElement contactInformationPhoneNumber;
 
     @FindBy(xpath = "//p[text()='Office 1: 202-456-3789']")
-    public  WebElement contactInformationPhoneNumber;
+    public  WebElement contactInformationActualPhoneNumber;
 
-    @FindBy(xpath = "//div[@class='map-area']")
+    @FindBy(xpath = "(//p[text()='info@tripandway.com'])[2]")
+    public WebElement contactInfoActualEmailAddress;
+
+
+
+    @FindBy(xpath = "//h4[text()='Address in Map']")
     public WebElement contactInformationAddressMap;
 
 
