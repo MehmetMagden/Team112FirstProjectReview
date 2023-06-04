@@ -14,7 +14,7 @@ public class AdminPage {
 
 
     @FindBy(xpath = "//input[@id='email']")
-    public WatchEvent adminLoginEmailAdressTextBox;
+    public WebElement adminLoginEmailAdressTextBox;
 
     @FindBy(xpath = "//input[@id='password']")
     public WebElement adminLogInPasswordTextBox;
