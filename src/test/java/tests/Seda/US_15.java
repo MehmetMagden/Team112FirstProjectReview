@@ -14,30 +14,22 @@ public class US_15 {
     public void aboutUsPageTest (){
 
     Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-
     aboutUsPage.aboutUsHeaderLink.click();
-
     aboutUsPage.acceptCookies.click();
 
     String expectedWordMission= "OUR MISSION";
     String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
-
     Assert.assertTrue(aboutUsPage.aboutUsPageOurMission.isDisplayed());
 
     String expectedWordVision = "OUR VISION";
     String actualWordVision = aboutUsPage.AboutUsPageOurVision.getText();
-
     Assert.assertTrue(aboutUsPage.AboutUsPageOurVision.isDisplayed());
-
-   // Test failed  as NO "About Us" written in the banner
 
     String expectedWordAboutUs = "About Us";
     String actualWordAboutUs = aboutUsPage.aboutUsBanner.getText();
+    Assert.assertTrue(actualWordAboutUs.contains(expectedWordAboutUs)); //Test failed  as NO "About Us" written in the banner
 
-    Assert.assertTrue(actualWordAboutUs.contains(expectedWordAboutUs));
-
-    Driver.closeDriver();
+    //Driver.closeDriver();
 
     }
-
 }
