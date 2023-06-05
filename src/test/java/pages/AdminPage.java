@@ -49,6 +49,9 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
+    @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
+    public WebElement adminDashboardVisibility;
+
 
     }
 
