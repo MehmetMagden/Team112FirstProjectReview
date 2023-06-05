@@ -29,7 +29,6 @@ public class US_013 extends TestBaseRapor {
     String expectedPageUrl = "";
 
 
-
     @Test()
     public void TC1301userNavigatesToDestinationPage() {
         extentTest = extentReports.createTest("TC1301", "User Navigates To Destination Page");
@@ -48,7 +47,7 @@ public class US_013 extends TestBaseRapor {
         actualPageUrl = Driver.getDriver().getCurrentUrl();
         expectedPageUrl = ConfigReader.getProperty("destinationsUrl");
         Assert.assertEquals(actualPageUrl, expectedPageUrl);
-        extentTest.pass("Verify, if user can access Destination page");
+        extentTest.pass("Verify, if user can access to Destination page");
     }
 
     @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
