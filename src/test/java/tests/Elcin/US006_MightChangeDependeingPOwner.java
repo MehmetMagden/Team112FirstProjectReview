@@ -23,6 +23,11 @@ public class US006_MightChangeDependeingPOwner {
         js.executeScript("window.scrollBy(0,10000)");
         ReusableMethods.waitFor(3);
         Assert.assertTrue(basePage.footerRecentPosts.isDisplayed());
+        Assert.assertTrue(basePage.recentPostsFirstLink.isDisplayed());
+        Assert.assertTrue(basePage.recentPostsSecondLink.isDisplayed());
+        Assert.assertTrue(basePage.recentPostsThirdLink.isDisplayed());
+        Assert.assertTrue(basePage.recentPostsFourthLink.isDisplayed());
+        Assert.assertTrue(basePage.recentPostsFifthLink.isDisplayed());
 
         Driver.quitDriver();
     }
