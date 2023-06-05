@@ -49,6 +49,11 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
+    @FindBy(id ="userDropdown")
+    public WebElement adminDropDownButton;
+    @FindBy(className= "dropdown-item")
+    public WebElement changeAdminPassword;
+
 
     }
 
