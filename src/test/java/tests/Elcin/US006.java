@@ -12,7 +12,7 @@ import utilities.ReusableMethods;
 public class US006 {
 
     @Test
-    public void TC006_01recentPostSAtFooterVisible(){
+    public void TC006_01recentPostsAtFooterSectionIsVisible(){
         BasePage basePage=new BasePage();
         JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
         Actions actions=new Actions(Driver.getDriver());
