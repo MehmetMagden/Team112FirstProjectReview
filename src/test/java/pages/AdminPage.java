@@ -40,6 +40,9 @@ public class AdminPage {
     @FindBy(xpath = "//span[text()='Website Section']")
     public WebElement adminDashboardWebsiteSectionButton;
 
+    @FindBy(xpath = "//span[text()='Order']")
+    public WebElement adminDashboardOrderButton;
+
     @FindBy(xpath = "//span[text()='Email Template']")
     public  WebElement adminDashBoardEmailTemplateButton;
 
@@ -48,6 +51,15 @@ public class AdminPage {
 
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
+
+    @FindBy (tagName = "h6")
+    public WebElement viewOrdersWebElement;
+
+    @FindBy (id = "dataTable_info")
+    public WebElement allOrdersWebElement;
+
+    @FindBy (xpath = "(//div[@class='h5 mb-0 font-weight-bold text-gray-800'])[7]")
+    public WebElement adminMainPageCompletedOrdersWebElement;
 
 
     }

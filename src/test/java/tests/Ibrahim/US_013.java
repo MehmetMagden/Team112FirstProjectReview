@@ -1,10 +1,6 @@
 package tests.Ibrahim;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.DestinationsPage;
 import pages.BasePage;
@@ -13,9 +9,6 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-import java.util.Collections;
-import java.util.List;
-
 public class US_013 extends TestBaseRapor {
 
     /*
@@ -23,7 +16,7 @@ public class US_013 extends TestBaseRapor {
     I should then verify that the destinations are visible and active on the page.
      */
 
-    BasePage homeBase = new BasePage();
+    BasePage basePage = new BasePage();
     DestinationsPage destinationsPage = new DestinationsPage();
     String actualPageUrl = "";
     String expectedPageUrl = "";
@@ -34,15 +27,15 @@ public class US_013 extends TestBaseRapor {
         extentTest = extentReports.createTest("TC1301", "User Navigates To Destination Page");
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         extentTest.info("User navigates to main page");
-        ReusableMethods.waitForClickablility(homeBase.acceptCookiesButton,5);
-        homeBase.acceptCookiesButton.click();
+        ReusableMethods.waitForClickablility(basePage.acceptCookiesButton,5);
+        basePage.acceptCookiesButton.click();
         actualPageUrl = Driver.getDriver().getCurrentUrl();
         expectedPageUrl = ConfigReader.getProperty("tripAndWayUrl");
         Assert.assertEquals(actualPageUrl, expectedPageUrl);
         extentTest.pass("Verify, if user can access to main page");
-        Assert.assertTrue(homeBase.homePageDestinationsButton.isEnabled());
-        ReusableMethods.waitForClickablility(homeBase.homePageDestinationsButton,5);
-        homeBase.homePageDestinationsButton.click();
+        Assert.assertTrue(basePage.homePageDestinationsButton.isEnabled());
+        ReusableMethods.waitForClickablility(basePage.homePageDestinationsButton,5);
+        basePage.homePageDestinationsButton.click();
         extentTest.info("User navigates to Destination page");
         actualPageUrl = Driver.getDriver().getCurrentUrl();
         expectedPageUrl = ConfigReader.getProperty("destinationsUrl");
@@ -50,11 +43,18 @@ public class US_013 extends TestBaseRapor {
         extentTest.pass("Verify, if user can access to Destination page");
     }
 
-    @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
+    @Test()
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
+        basePage = new BasePage();
         destinationsPage =new DestinationsPage();
         extentTest = extentReports.createTest("TC1302","User Verifies Destination Page Visible And Active");
-        Driver.getDriver().get(ConfigReader.getProperty("destinationsUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        extentTest.info("User navigates to main page");
+        ReusableMethods.waitForClickablility(basePage.acceptCookiesButton,10);
+        basePage.acceptCookiesButton.click();
+        ReusableMethods.waitFor(2);
+        basePage.homePageDestinationsButton.click();
+        extentTest.info("User navigates to Destination page");
         ReusableMethods.waitForVisibility(destinationsPage.destinationsImageWebElement,5);
         Assert.assertTrue(destinationsPage.destinationsImageWebElement.isDisplayed());
         extentTest.pass("Verify, if Destination page is visible");
