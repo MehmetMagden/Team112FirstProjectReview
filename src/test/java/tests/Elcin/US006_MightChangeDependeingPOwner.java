@@ -33,8 +33,8 @@ public class US006_MightChangeDependeingPOwner {
     }
 
 
-    //TC006_02 is failing at the minute due to added pages keep changing. Waiting to her from Product owner for adding
-    // tags to hidden elements. If developer does not do it class US006 (back up test) will be used istead of this test
+    //TC006_02 might fail depending on admin actionsg.Waiting to hear from product owner and developer in regards to adding
+    //tags for hidden elements. If developer does add i can also use US006 (back up test)
     //05.06.2023
     @Test
     public void TC006_02recentPostSectionasAtFooterAreActive(){
