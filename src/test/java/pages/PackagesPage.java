@@ -20,6 +20,13 @@ public class PackagesPage {
     @FindBy (xpath = "(//div[@class='row'])[4]")
     public WebElement featuredPackagesAllTogether;
 
+    //=============AYŞEEEE SİİİİLLL=======
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/package/3-days-in-bangkok'])[1]")
+    public WebElement bangkok;
+
+    @FindBy(xpath = "//button[text()='ACCEPT']")
+    public WebElement cookiesAcceptButton;
+
 
 
 

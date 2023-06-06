@@ -27,6 +27,17 @@ public class LoginPage {
     @FindBy(xpath = "//button[@name='form1']")
     public WebElement loginPageLoginButton;
 
+    //PAYMENT HİSTORY
+    //paymentHistoryButton=(//a[normalize-space()='Payment History'])[1]
+    //viewAllPaymentElement=(//div[@class='detail-dashboard table-responsive mt_30'])[1]
+
+    @FindBy(xpath = "(//a[normalize-space()='Payment History'])[1]")
+    public WebElement paymentHistoryButtonInUserLoginPage;
+
+    @FindBy(xpath = "(//div[@class='detail-dashboard table-responsive mt_30'])[1]")
+    public WebElement viewAllPaymentElementInPaymentElementOnLoginPage;
+
+
 
 
 
