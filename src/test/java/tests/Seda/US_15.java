@@ -13,27 +13,26 @@ public class US_15 {
     BasePage basePage = new BasePage();
 
 
-
     @Test
-    public void aboutUsPageTest (){
+    public void aboutUsPageTest() {
 
-    Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-    aboutUsPage.aboutUsHeaderLink.click();
-    basePage.acceptCookiesButton.click();
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        aboutUsPage.aboutUsHeaderLink.click();
+        basePage.acceptCookiesButton.click();
 
-    String expectedWordMission= "OUR MISSION";
-    String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
-    Assert.assertTrue(aboutUsPage.aboutUsPageOurMission.isDisplayed());
+        String expectedWordMission = "OUR MISSION";
+        String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
+        Assert.assertTrue(aboutUsPage.aboutUsPageOurMission.isDisplayed());
 
-    String expectedWordVision = "OUR VISION";
-    String actualWordVision = aboutUsPage.AboutUsPageOurVision.getText();
-    Assert.assertTrue(aboutUsPage.AboutUsPageOurVision.isDisplayed());
+        String expectedWordVision = "OUR VISION";
+        String actualWordVision = aboutUsPage.AboutUsPageOurVision.getText();
+        Assert.assertTrue(aboutUsPage.AboutUsPageOurVision.isDisplayed());
 
-    String expectedWordAboutUs = "ABOUT US";
-    String actualWordAboutUs = aboutUsPage.aboutUsBanner.getText();
-    Assert.assertTrue(actualWordAboutUs.contains(expectedWordAboutUs)); //Test failed as NO "About Us" written in the banner
+        String expectedWordAboutUs = "ABOUT US";
+        String actualWordAboutUs = aboutUsPage.aboutUsBanner.getText();
+        Assert.assertTrue(actualWordAboutUs.contains(expectedWordAboutUs)); //Test failed as NO "About Us" written in the banner
 
-    Driver.closeDriver();
+        Driver.closeDriver();
 
     }
 }

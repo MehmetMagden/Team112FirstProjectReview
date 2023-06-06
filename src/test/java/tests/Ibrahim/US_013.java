@@ -18,7 +18,7 @@ public class US_013 extends TestBaseRapor {
     }
 
 
-    @Test()
+   // @Test()
 
         @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
 

@@ -16,8 +16,9 @@ public class US_26 {
      */
 
     AdminPage adminPage = new AdminPage();
+
     @Test
-    public void viewTheAdminDashboard(){
+    public void viewTheAdminDashboard() {
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
@@ -26,7 +27,7 @@ public class US_26 {
 
         String expectedTitle = "Admin Panel";
         String actualTitle = Driver.getDriver().getTitle();
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
 
         Assert.assertTrue(adminPage.adminDashboardVisibility.isDisplayed());
 

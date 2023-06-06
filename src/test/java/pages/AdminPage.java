@@ -80,17 +80,11 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
-
-<<<<<<< HEAD
-    //====== Packages Tab ==========
-
     @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
     public WebElement adminPagePackagesTab;
 
     @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
     public WebElement addPackages;
-=======
->>>>>>> main
 
     }
 
