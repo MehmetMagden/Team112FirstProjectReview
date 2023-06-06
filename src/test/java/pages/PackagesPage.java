@@ -14,11 +14,28 @@ public class PackagesPage {
     @FindBy (xpath = "(//a[normalize-space()='Packages'])[2]")
     public WebElement packagesHeaderLink;
 
+
+    @FindBy(xpath = "(//*[text()='Packages'])[2]")
+    public WebElement packagesHeaderLink2;  // alternative to the one above
+
+    @FindBy (xpath = "(//h1[normalize-space()='Packages'])[1]")
+    public WebElement packagesBanner;
+
     @FindBy (xpath = "(//div[@class='banner-text'])[1]")
     public WebElement packagesBannerText;
 
+
     @FindBy (xpath = "(//div[@class='row'])[4]")
     public WebElement featuredPackagesAllTogether;
+
+
+
+    @FindBy(xpath = "(//div[@class='photo-title'])[4]")
+    public WebElement buenosAiresPackageInPackagesPage;
+
+    @FindBy(xpath = "//div[@class='photo-title']//a[contains(text(),'3 days in Bangkok')]")
+    public WebElement buenosAiresPackageInPackagesPage2;
+
 
 
 
