@@ -1,9 +1,14 @@
 package tests.Mustafa;
 
-public class US_24 {
-    public static void main(String[] args) {
+import org.testng.annotations.Test;
+import pages.LoginPage;
+import utilities.ConfigReader;
+import utilities.Driver;
 
-        /*
+public class US_24 {
+
+
+/*
 TC_24_01	I can log in as a customer/user.
             1) User open browser
 			2) User navigates to the main page
@@ -27,11 +32,34 @@ TC_24_03	I can pay for my selected package
 			6) User enters the CCV number of the card in the corresponding field: 111
 			7) User approves payment by clicking the Pay button
 			8) User should see "Payment is successful" message. (URL changed.)
+*/
+    LoginPage loginPage = new LoginPage();
 
-         */
+    @Test
+    public void TC_24_01_customerLogin(){
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // navigate to homepage
+        loginPage.loginPageLoginButton.click();
+        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
+        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
+        loginPage.loginPageLoginButton.click();
+
+
+        Driver.closeDriver();
+    }
+    @Test
+    public void TC_24_02_selectPackage(){
+        Driver.getDriver().get(ConfigReader.getProperty("packagesUrl"));
 
 
     }
+
+    @Test
+    public void TC_24_03_payForPackage(){
+        Driver.getDriver().get(ConfigReader.getProperty("bangkokPackageUrl"));
+
+
+    }
+
 
 
 }
