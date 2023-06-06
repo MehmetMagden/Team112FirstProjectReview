@@ -11,6 +11,10 @@ public class LoginPage {
     public LoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
+   @FindBy(xpath = "//button[text()='ACCEPT']")
+   public WebElement cookiesAcceptButton;
+
     @FindBy(xpath = "//a[normalize-space()='Login']")
     public WebElement loginButtonHomePage;
 
