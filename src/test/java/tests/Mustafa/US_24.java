@@ -1,12 +1,18 @@
 package tests.Mustafa;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.LoginPage;
+import pages.PackagesPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class US_24 {
-
 
 /*
 TC_24_01	I can log in as a customer/user.
@@ -34,32 +40,45 @@ TC_24_03	I can pay for my selected package
 			8) User should see "Payment is successful" message. (URL changed.)
 */
     LoginPage loginPage = new LoginPage();
+    BasePage basePage = new BasePage();
+    PackagesPage packagesPage = new PackagesPage();
 
+    @BeforeMethod
+    public void setUp() {
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // navigate to homepage
+        basePage.acceptCookies();
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
+    }
     @Test
     public void TC_24_01_customerLogin(){
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // navigate to homepage
-        loginPage.loginPageLoginButton.click();
+
+        loginPage.loginPageLoginButton2.click();
         loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
         loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
         loginPage.loginPageLoginButton.click();
 
+        String expectedText = "Dashboard";
+        String actualText = loginPage.userDashboard.getText();
+        Assert.assertTrue(actualText.contains(expectedText));
 
-        Driver.closeDriver();
     }
     @Test
     public void TC_24_02_selectPackage(){
         Driver.getDriver().get(ConfigReader.getProperty("packagesUrl"));
 
+        basePage.acceptCookies();
+        packagesPage.buenosAiresPackageInPackagesPage2.click();
 
     }
 
     @Test
     public void TC_24_03_payForPackage(){
         Driver.getDriver().get(ConfigReader.getProperty("bangkokPackageUrl"));
-
+        basePage.acceptCookies();
 
     }
-
-
-
 }

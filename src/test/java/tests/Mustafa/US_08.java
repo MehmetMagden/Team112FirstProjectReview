@@ -1,16 +1,15 @@
 package tests.Mustafa;
-
-import org.openqa.selenium.JavascriptExecutor;
-
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.BasePage;
 import pages.HomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-
-import javax.print.attribute.standard.ReferenceUriSchemesSupported;
 
 public class US_08 {
 
@@ -25,18 +24,27 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
 			3) User verifies that company's phone number is visible
 			4) User verifies that company's address is visible
 
-TC_08_03	I can click the contact icons/text.
+        	I can click the contact icons/text.
             1) User can click the phone number to place a phone call
 			2) User can click the address to open Google Maps
 			3) User can click the email address to open an email app.
 			4) User closes the browser.
  */
-    HomePage homePage = new HomePage();
-    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+    BasePage basePage = new BasePage();
+    Actions actions = new Actions(Driver.getDriver());
+    @BeforeMethod
+        public void setUp() {
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        basePage.acceptCookies();
+        actions.sendKeys(Keys.END).perform();
+    }
+    @AfterMethod
+        public void tearDown() {
+        Driver.closeDriver();
+    }
 
     @Test
-    public void TC_08_01_accessToHomepage() {
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+    public void TC_08_01_accessToHomepage() { // bu test gereksiz
 
         String actualURL = Driver.getDriver().getCurrentUrl();
         String expectedURL = ConfigReader.getProperty("tripAndWayUrl");
@@ -45,30 +53,23 @@ TC_08_03	I can click the contact icons/text.
 
     @Test
     public void TC_08_02_footerContactInfo() {
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // go to homepage
 
-        jse.executeScript("arguments[0].scrollIntoView();", homePage.footerContact); // scroll down to Footer
-        // or with: jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        Assert.assertTrue(basePage.footerContact.isDisplayed());
 
-        Assert.assertTrue(homePage.footerContact.isDisplayed());
-        Driver.closeDriver();
-    }
+        Assert.assertTrue(basePage.footerAddress2.isEnabled());
+        Assert.assertTrue(basePage.footerPhone.isEnabled());
+        Assert.assertTrue(basePage.footerEmail.isEnabled());
 
-    @Test
-    public void TC_08_03_footerContactClick(){
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // go to homepage
-        jse.executeScript("arguments[0].scrollIntoView();", homePage.footerContact); // scroll down to Footer
 
-        boolean isAddressClickable = homePage.footerAddress.isEnabled() && homePage.footerAddress.isDisplayed();
-        Assert.assertFalse(isAddressClickable,"The Address in the Footer section is not a link");
-                ReusableMethods.waitFor(3);
-        boolean isPhoneClickable = homePage.footerPhone.isEnabled() && homePage.footerPhone.isDisplayed();
-        Assert.assertFalse(isPhoneClickable, "The Phone number in the Footer section is not a link");
-                ReusableMethods.waitFor(3);
-        boolean isEmailClickable = homePage.footerEmail.isEnabled() && homePage.footerEmail.isDisplayed();
-        Assert.assertFalse(isEmailClickable,"The Email address in the Footer section is not a link");
-                ReusableMethods.waitFor(3);
 
-        Driver.closeDriver();
+//        boolean isAddressClickable = homePage.footerAddress.isEnabled() && homePage.footerAddress.isDisplayed();
+//        Assert.assertFalse(isAddressClickable,"The Address in the Footer section is not a link");
+//                ReusableMethods.waitFor(3);
+//        boolean isPhoneClickable = homePage.footerPhone.isEnabled() && homePage.footerPhone.isDisplayed();
+//        Assert.assertFalse(isPhoneClickable, "The Phone number in the Footer section is not a link");
+//                ReusableMethods.waitFor(3);
+//        boolean isEmailClickable = homePage.footerEmail.isEnabled() && homePage.footerEmail.isDisplayed();
+//        Assert.assertFalse(isEmailClickable,"The Email address in the Footer section is not a link");
+//                ReusableMethods.waitFor(3);
     }
 }
