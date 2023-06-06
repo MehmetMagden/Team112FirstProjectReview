@@ -5,22 +5,21 @@ import utilities.TestBaseRapor;
 
 public class US_013 extends TestBaseRapor {
 
-  /*
-  As a user, I should be able to navigate to the "Destination" page.
-  I should then verify that the destinations are visible and active on the page.
-   */
+    /*
+    As a user, I should be able to navigate to the "Destination" page.
+    I should then verify that the destinations are visible and active on the page.
+     */
 
-  TestMethods testMethods = new TestMethods();
+    TestMethods testMethods = new TestMethods();
 
-  @Test()
-  public void TC1301userNavigatesAndVerifiesToDestinationPage() {
-    testMethods.TC1301userNavigatesAndVerifiesToDestinationPage();
-  }
-/*
-  @Test()
+    @Test()
+    public void TC1301userNavigatesAndVerifiesToDestinationPage() {
+        testMethods.TC1301userNavigatesAndVerifiesToDestinationPage();
+    }
 
-  @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
-  public void TC1302userVerifiesDestinationPageVisibleAndActive() {
-    testMethods.TC1302userVerifiesDestinationPageVisibleAndActive();
-  }*/
+
+    @Test()
+    public void TC1302userVerifiesDestinationPageVisibleAndActive() {
+        testMethods.TC1302userVerifiesDestinationPageVisibleAndActive();
+    }
 }
