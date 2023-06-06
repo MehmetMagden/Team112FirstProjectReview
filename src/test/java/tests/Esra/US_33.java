@@ -37,6 +37,7 @@ public class US_33 {
         Driver.getDriver().switchTo().window(secondWinddowHandleValue);
 
         Assert.assertTrue(adminPage.adminOrderPageOrderInformationElement.isDisplayed());
+        Driver.quitDriver();
 
     }
 }

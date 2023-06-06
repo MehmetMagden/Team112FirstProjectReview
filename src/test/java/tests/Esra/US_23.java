@@ -24,5 +24,6 @@ public class US_23 {
     ReusableMethods.waitFor(2);
     loginPage.logOutButton.click();
     Assert.assertTrue(loginPage.loginPageLoginButton.isDisplayed());
+    Driver.quitDriver();
   }
 }
