@@ -8,7 +8,7 @@ public class US_01 {
 
     public void userSeeHomepage(){
 
-        Actions actions=new Actions(Driver.getDriver());
+
 
 
 
