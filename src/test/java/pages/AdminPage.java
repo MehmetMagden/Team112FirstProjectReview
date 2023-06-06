@@ -54,6 +54,12 @@ public class AdminPage {
     @FindBy(className= "dropdown-item")
     public WebElement changeAdminPassword;
 
+    @FindBy(xpath = "m-0 mt-2 font-weight-bold text-primary")
+    public WebElement editAdminProfile;
+
+    @FindBy (xpath = "//span[text()='Packages']")
+    public WebElement adminDashboardPackagesButton;
+
 
     }
 
