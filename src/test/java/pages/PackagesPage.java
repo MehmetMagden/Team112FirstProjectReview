@@ -14,13 +14,22 @@ public class PackagesPage {
     @FindBy (xpath = "(//a[normalize-space()='Packages'])[2]")
     public WebElement packagesHeaderLink;
 
-    @FindBy (xpath = "(//h1[normalize-space()='Packages'])[1]")
-    public WebElement packagesBanner;
+    @FindBy (xpath = "(//div[@class='banner-text'])[1]")
+    public WebElement packagesBannerText;
 
     @FindBy (xpath = "(//div[@class='row'])[4]")
     public WebElement featuredPackagesAllTogether;
 
+   @FindBy (xpath = "/html/body/div[7]/div/div[2]/div[1]/div[2]")
+   public WebElement theFirstPackagesWebElement;
 
 
+//   @FindBy (xpath = "(//div[@class='photo-title'])[2]")
+//    public WebElement theFirstPackagesWebElement;
 
+   @FindBy (xpath = "(//h1[contains(text(),'3 days in Buenos Aires')])[1]")
+    public WebElement theFirstPackageBannerText;
+
+   @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
+   public WebElement moreInformationVisibility;
 }
