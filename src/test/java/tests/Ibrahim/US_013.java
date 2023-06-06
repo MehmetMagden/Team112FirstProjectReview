@@ -17,7 +17,11 @@ public class US_013 extends TestBaseRapor {
         testMethods.TC1301userNavigatesAndVerifiesToDestinationPage();
     }
 
+
     @Test()
+
+        @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
+
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
         testMethods.TC1302userVerifiesDestinationPageVisibleAndActive();
     }

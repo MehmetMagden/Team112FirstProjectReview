@@ -76,6 +76,10 @@ public class AdminPage {
     @FindBy (partialLinkText = " Send Email to Subscribers")
     public WebElement sendEmailToSubcribersButton;
 
+    @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
+    public WebElement adminDashboardVisibility;
+
+
 
     }
 
