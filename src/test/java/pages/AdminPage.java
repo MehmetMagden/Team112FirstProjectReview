@@ -61,6 +61,21 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='h5 mb-0 font-weight-bold text-gray-800'])[7]")
     public WebElement adminMainPageCompletedOrdersWebElement;
 
+    @FindBy (xpath = "//span[text()='Subscriber']")
+    public WebElement subscriberButton;
+
+    @FindBy (xpath = "//a[text()='All Subscribers']")
+    public WebElement allSubscribersButton;
+
+    @FindBy (xpath = "//h6[text()='View Subscribers']")
+    public WebElement viewSubscribersWebElement;
+
+    @FindBy (id = "dataTable_info")
+    public WebElement allSubscribersWebElement;
+
+    @FindBy (partialLinkText = " Send Email to Subscribers")
+    public WebElement sendEmailToSubcribersButton;
+
 
     }
 
