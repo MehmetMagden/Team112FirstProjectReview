@@ -49,6 +49,7 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
+
     @FindBy(xpath = "(//span[normalize-space()='Order'])[1]")
     public WebElement orderButtonInAdminPanelOnAdminPage;
 
@@ -57,6 +58,11 @@ public class AdminPage {
 
     @FindBy(xpath = "(//tr[@role='row'])[2]")
     public WebElement firstInvoiceInViewOrders;
+
+    @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
+    public WebElement adminDashboardVisibility;
+
+
 
     }
 
