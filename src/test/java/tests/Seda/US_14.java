@@ -19,7 +19,7 @@ public class US_14 {
     */
 
 
-    @BeforeMethod
+    @BeforeTest
      public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         packagesPage.packagesHeaderLink.click();
@@ -31,6 +31,8 @@ public class US_14 {
 
     PackagesPage packagesPage = new PackagesPage();
     BasePage basePage = new BasePage();
+    Actions actions = new Actions(Driver.getDriver());
+
 
     @Test
     public void TC14_packagesPageIsActiveVisiable() {
@@ -47,23 +49,24 @@ public class US_14 {
     @Test
     public void TC14_01_theFirstPackagesFeaturesTest () {
 
-        packagesPage.theFirstPackagesWebElement.click();
+
+       packagesPage.theFirstPackagesWebElement.click();
+
+        ReusableMethods.waitFor(5);
 
         String expectedBannerText = "3 DAYS IN BUENOS AIRES";
         String actualBannerText = packagesPage.theFirstPackageBannerText.getText();
         Assert.assertTrue(actualBannerText.contains(expectedBannerText));
 
-        Actions actions = new Actions(Driver.getDriver());
         actions.sendKeys(Keys.END).perform();
         ReusableMethods.waitFor(2);
 
         Assert.assertTrue(packagesPage.moreInformationVisibility.isDisplayed());
 
        }
-
-    @AfterMethod
+    @AfterTest
     public void tearDown() {
 
-        Driver.closeDriver();
+        Driver.quitDriver();
     }
 }

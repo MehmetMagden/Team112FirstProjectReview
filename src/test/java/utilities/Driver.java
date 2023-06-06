@@ -38,11 +38,6 @@ public class Driver {
 
             switch (browser) {
 
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-
                 case "edge":
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
@@ -66,10 +61,6 @@ public class Driver {
             }
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
-
-
-
         }
         return driver;
     }

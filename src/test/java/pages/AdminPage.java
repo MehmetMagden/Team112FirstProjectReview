@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 import utilities.Driver;
 
 import java.nio.file.WatchEvent;
@@ -52,6 +53,14 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+
+    //====== Packages Tab ==========
+
+    @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
+    public WebElement adminPagePackagesTab;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addPackages;
 
     }
 
