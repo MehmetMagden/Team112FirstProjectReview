@@ -108,8 +108,26 @@ public class HomePage {
 
 
 
+
     //===================================================================================================
 
 
+    // FOOTER AREA ====-----======-------========------======
+    @FindBy(xpath = "//div[@class='footer-area pt_50 pb_80']")
+    public WebElement footerContact;
+
+
+    @FindBy(xpath = "(//div[@class='footer-address-item'])[1]")
+    public WebElement footerAddress;
+
+
+    @FindBy(xpath = "(//div[@class='text'])[2]")
+    public WebElement footerPhone;
+
+    @FindBy(xpath = "(//div[@class='footer-address-item'])[3]")
+    public WebElement footerEmail;
+
+
+    // ====-----======-------======-----======-------========
 
 }

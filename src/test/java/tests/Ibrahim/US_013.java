@@ -51,7 +51,7 @@ public class US_013 extends TestBaseRapor {
         extentTest.pass("Verify, if user can access Destination page");
     }
 
-    @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
+        @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
         destinationsPage =new DestinationsPage();
         extentTest = extentReports.createTest("TC1302","User Verifies Destination Page Visible And Active");
