@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.BasePage;
-import pages.HomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -52,24 +52,16 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
     }
 
     @Test
-    public void TC_08_02_footerContactInfo() {
+    public void TC_08_02_footerContactDisplayAndClick() {
 
-        Assert.assertTrue(basePage.footerContact.isDisplayed());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(basePage.footerContact.isDisplayed());
 
-        Assert.assertTrue(basePage.footerAddress2.isEnabled());
-        Assert.assertTrue(basePage.footerPhone.isEnabled());
-        Assert.assertTrue(basePage.footerEmail.isEnabled());
+        softAssert.assertTrue(basePage.footerAddress.isEnabled(), "Address is linked");
+        softAssert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
+        softAssert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
 
+        softAssert.assertAll();
 
-
-//        boolean isAddressClickable = homePage.footerAddress.isEnabled() && homePage.footerAddress.isDisplayed();
-//        Assert.assertFalse(isAddressClickable,"The Address in the Footer section is not a link");
-//                ReusableMethods.waitFor(3);
-//        boolean isPhoneClickable = homePage.footerPhone.isEnabled() && homePage.footerPhone.isDisplayed();
-//        Assert.assertFalse(isPhoneClickable, "The Phone number in the Footer section is not a link");
-//                ReusableMethods.waitFor(3);
-//        boolean isEmailClickable = homePage.footerEmail.isEnabled() && homePage.footerEmail.isDisplayed();
-//        Assert.assertFalse(isEmailClickable,"The Email address in the Footer section is not a link");
-//                ReusableMethods.waitFor(3);
     }
 }
