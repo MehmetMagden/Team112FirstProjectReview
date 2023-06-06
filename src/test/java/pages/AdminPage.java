@@ -79,6 +79,11 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+    @FindBy(xpath = "//a[text()='Detail']")
+    public WebElement adminOrderDetailButton;
+
+    @FindBy(xpath = "//h6[text()='Order Information']")
+    public WebElement adminOrderPageOrderInformationElement;
 
 
     }
