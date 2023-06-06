@@ -106,4 +106,27 @@ public class BasePage {
     public WebElement getRecentPostsFourthAndFifthLinkExpectedWord;
 
 
-}
+    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[13]")
+    public WebElement footerFacobookIcon;
+
+    @FindBy(xpath = "(//i[@class='fab fa-twitter'])[13]")
+    public WebElement footerTwitterIcon;
+
+    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[13]")
+    public WebElement footerLinkedinIcon;
+
+    @FindBy(xpath = "//i[@class='fab fa-pinterest-p']")
+    public WebElement footerPinterestIcon;
+
+    @FindBy(xpath = "//i[@class='fab fa-instagram']")
+    public WebElement footerInstagramIcon;
+
+    @FindBy(xpath = "//i[@class='fas fa-user-plus']")
+    public WebElement registrationButton;
+
+    public void acceptCookies(){
+        if(acceptCookiesButton.isDisplayed()){
+            acceptCookiesButton.click();
+        }
+
+}}
