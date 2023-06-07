@@ -32,7 +32,7 @@ public abstract class TestBaseRapor {
         // We can add all info we want to add
         extentReports.setSystemInfo("Enviroment","QA");
         extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
-        extentReports.setSystemInfo("Automation Engineer", "Akif");
+        extentReports.setSystemInfo("Automation Engineer", "Ibrahim Unal");
         extentHtmlReporter.config().setDocumentTitle("First Test");
         extentHtmlReporter.config().setReportName("TestNG Reports");
 
