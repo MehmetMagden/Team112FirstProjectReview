@@ -29,11 +29,13 @@ public class PackagesPage {
     public WebElement featuredPackagesAllTogether;
 
 
+
     @FindBy(xpath = "(//div[@class='photo-title'])[4]")
     public WebElement buenosAiresPackageInPackagesPage;
 
     @FindBy(xpath = "//div[@class='photo-title']//a[contains(text(),'3 days in Bangkok')]")
     public WebElement buenosAiresPackageInPackagesPage2;
+
 
 
 

@@ -12,8 +12,6 @@ public class AdminPage {
     public  AdminPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
@@ -53,6 +51,17 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
+
+
+    @FindBy(xpath = "(//span[normalize-space()='Order'])[1]")
+    public WebElement orderButtonInAdminPanelOnAdminPage;
+
+    @FindBy(xpath = "(//span[normalize-space()='Subscriber'])[1]")
+    public WebElement subscriberButtonInAdminPanelOnAdminPage;
+
+    @FindBy(xpath = "(//tr[@role='row'])[2]")
+    public WebElement firstInvoiceInViewOrders;
+
     @FindBy (tagName = "h6")
     public WebElement viewOrdersWebElement;
 
@@ -74,12 +83,26 @@ public class AdminPage {
     @FindBy (id = "dataTable_info")
     public WebElement allSubscribersWebElement;
 
-    @FindBy (partialLinkText = " Send Email to Subscribers")
+    @FindBy (xpath = "//a[text()='Send Email to Subscribers']")
     public WebElement sendEmailToSubcribersButton;
 
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+    @FindBy(xpath = "(//div[@role='textbox'])[1]")
+    public WebElement messageBoxInSendEmailSection;
+
+    @FindBy(xpath = "(//input[@type='text'])[1]")
+    public WebElement subjectBoxInSendEmailSection;
+
+    @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
+    public WebElement allSubscribersButtonInSendEmailSection;
+
+    @FindBy(xpath = "//button[text()='Send Email']")
+    public WebElement sendEmailButton;
+
+    @FindBy(className = "toast-message")
+    public WebElement warningMessage;
 
     @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
     public WebElement adminPagePackagesTab;
