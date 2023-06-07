@@ -27,4 +27,8 @@ public class RegistrationPage {
 
     @FindBy(xpath = "//button[text()='Login']")
     public WebElement loginButton;
+
+    @FindBy(className = "toast-message")
+    public WebElement registrationWarningMessage;
+
 }
