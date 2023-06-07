@@ -95,14 +95,24 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@role='textbox'])[1]")
     public WebElement addPackagesDescription;
 
-    @FindBy (xpath = "(//input[@id='datepicker'])[1]" )
+    @FindBy (xpath = "//input[@id='datepicker']" )
     public  WebElement addPackagesStartDate;
+
+    @FindBy (xpath = "//input[@name='p_end_date']" )
+    public  WebElement addPackagesEndDate;
+
+    @FindBy (xpath = "//input[@id='datepicker2']" )
+    public  WebElement addPackagesLastBooking;
 
     @FindBy (xpath = "(//select[@name='p_is_featured'])[1]")
     public WebElement addPackagesIsFeatured;
 
-    @FindBy (xpath = "(//input[@aria-label='Search'])[1]")
+    @FindBy (xpath = "//select[@name='destination_id']")
     public WebElement addPackagesDestination;
+
+    @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
+    public WebElement addPackagesMap;
+
 
     }
 

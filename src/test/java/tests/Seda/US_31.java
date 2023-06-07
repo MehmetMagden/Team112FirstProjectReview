@@ -52,35 +52,43 @@ public class US_31   {
         adminPage.addPackages.click();
 
 
-//        adminPage.addPackagesFirstTab.sendKeys("Name"+ Keys.TAB);
-//        actions.sendKeys("Slug"+ Keys.TAB).perform();
-//        actions.sendKeys("Image" + Keys.TAB).perform();
-//
-////        WebElement fileUpload = adminPage.addPackagesUploadImage;
-////        fileUpload.click();
-////        String filePath =  System.getProperty("user.home") + "/C:/Users/User/Desktop/Wise Quarter/project_sample_file.jpeg";
-////        fileUpload.sendKeys(filePath);
-//
-//        adminPage.addPackagesDescription.sendKeys("Description");
-//        actions.sendKeys("Short Description"+ Keys.TAB).perform();
-//        actions.sendKeys("Location" + Keys.TAB).perform();
+        adminPage.addPackagesFirstTab.sendKeys("Name"+ Keys.TAB);
+        actions.sendKeys("Slug"+ Keys.TAB).perform();
 
-        // jse.executeScript("window.scrollBy(0,1300)");
+        WebElement fileUpload = adminPage.addPackagesUploadImage;
+        String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
+        fileUpload.sendKeys(filePath);
 
-        actions.sendKeys(Keys.END);
+
+        adminPage.addPackagesDescription.sendKeys("Description");
+        actions.sendKeys("Short Description"+ Keys.TAB).perform();
+        actions.sendKeys("Location" + Keys.TAB).perform();
+        actions.sendKeys("Location22" + Keys.TAB).perform();
+
+        ReusableMethods.waitFor(2);
+
+        actions.sendKeys("2023/06/28" + Keys.TAB).perform();
+        ReusableMethods.waitFor(2);
+        actions.sendKeys("2023/07/28" + Keys.TAB).perform();
+        ReusableMethods.waitFor(2);
+        actions.sendKeys("2023/05/28" + Keys.TAB).perform();
+        actions.sendKeys("Map" + Keys.TAB).perform();
+        actions.sendKeys("Itenary" + Keys.TAB).perform();
+        actions.sendKeys("Price" + Keys.TAB).perform();
+        actions.sendKeys("Policy" + Keys.TAB).perform();
+        actions.sendKeys("Terms" + Keys.TAB).perform();
+
         WebElement isFeatured = adminPage.addPackagesIsFeatured;
         Select selectFeatured = new Select(isFeatured);
         ReusableMethods.waitFor(2);
-        selectFeatured.selectByValue("No");
+        selectFeatured.selectByValue("Yes");
 
         WebElement destination = adminPage.addPackagesDestination;
         Select selectDestination = new Select(destination);
         ReusableMethods.waitFor(2);
-        selectFeatured.selectByValue("Istanbul, Turkey");
+        selectDestination.selectByVisibleText("Istanbul, Turkey");
 
-
-
-
+        Driver.quitDriver();
 
 
     }
