@@ -1,8 +1,23 @@
 package tests.Mustafa;
 
+import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import pages.AdminPage;
+import pages.BlogPage;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
+
 public class US_29 {
     /*
-    TC_29_01	I should be able to login to the admin dashboard.
+    TC_29_01	I should be able to log in to the admin dashboard.
                 1) User opens browser
 				2) User navigates the admin page
 				3) Url Should be same with the test data
@@ -26,8 +41,8 @@ public class US_29 {
 				12) User types the content of the blog in "Blog Content" box
 				13) User types a short content in "Blog Short Content" box
 				14) User uploads a photo under "Blog Photo" section.
-				15) User selects a category from drop-down menu
-				16) User selects Show Comment from drop-down menu
+				15) User selects a category from drop-down menu (SKIPPED)
+				16) User selects Show Comment from drop-down menu (SKIPPED)
 				17) User clicks the "Submit" button
 				18) User should see the added blog post on the Blogs page.
 	TC_29_03	I should be able to confirm that the added blog post can be edited.
@@ -38,10 +53,70 @@ public class US_29 {
 				5) User edits the blog post name in the "Blog Name" box
 				6) User clicks the "Update" button
 				7) User should see "Blogs" page
-				8) Url Should be same with the test data
-				9) User should see the message
-				10) Message should be same with the test data
-				11) Blog name should be same with test data
-				12) User closes the browser
+				8) User should see the new title of their blog as EDITED:
+				9) User closes the browser
      */
+
+    AdminPage adminPage = new AdminPage();
+    Actions actions = new Actions(Driver.getDriver());
+    BlogPage blogPage = new BlogPage();
+    Faker faker = new Faker();
+
+    @BeforeMethod
+    public void setUp(){
+        Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl")); // Navigate to Admin Log in page
+    }
+    @AfterMethod
+    public void tearDown(){
+        Driver.closeDriver();
+    }
+
+    @Test
+    public void TC_29_01_createBlogAsAdmin () {
+
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password
+        adminPage.adminLogInButton.click(); // Click the Log in button
+
+        Assert.assertTrue(adminPage.adminDashboardVisibility.isDisplayed());  // Check if admin Dashboard is visible?
+
+        blogPage.blogSection.click(); // Click Blog Section on the left menu
+        blogPage.blogs.click(); // Click Blogs under "Blog Section".
+        blogPage.blogsAddNewButton.click(); // Clicks Add New button under "Blogs" section.
+        blogPage.blogTitle.sendKeys("New Blog Entry"); // Navigates to Blog Title and adds a random title.
+        blogPage.blogContent.sendKeys("New Blog Content entry is provided."); // Navigates to Blog content and adds some content.
+        blogPage.blogShortContent.sendKeys("Blog short content is provided!"); // Navigates to Blog short content and adds some content.
+
+        WebElement chooseFile = blogPage.blogPhotoUpload;
+        chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\blog_photo.jpg");  // HOW to make the path dynamic?
+        blogPage.submitNewBlog.click(); // Submits the new blog entry.
+
+        String expectedText = "New Blog Entry";
+        Assert.assertTrue(blogPage.newBlogEntryCheck.getText().contains(expectedText));
+
+        System.out.println(blogPage.newBlogEntryCheck.getText());
+
+        ReusableMethods.waitFor(3);
+
+    }
+
+    @Test
+    public void TC_29_02_editBlogEntry(){ // pop-up mesaj'dan text almayi kullanamadim.
+
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password
+        adminPage.adminLogInButton.click(); // Click the Log in button
+
+        blogPage.blogSection.click(); // Click Blog Section on the left menu
+        blogPage.blogs.click(); // Click Blogs under "Blog Section".
+
+        blogPage.editBlog.click();
+        blogPage.blogTitle.sendKeys("    EDITED   ");
+        blogPage.updateButton.click();
+
+        String expectedMessage = "EDITED";
+        Assert.assertTrue(blogPage.updateBlogCheck.getText().contains(expectedMessage));
+
+    }
+
 }

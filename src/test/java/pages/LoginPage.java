@@ -46,6 +46,9 @@ public class LoginPage {
     @FindBy(xpath = "//li/a[text()='Dashboard']")
     public WebElement userDashboard;
 
+    @FindBy(linkText = "Logout")
+    public WebElement logOutButton;
+
 
 
 

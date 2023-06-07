@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 import utilities.Driver;
 
 import java.nio.file.WatchEvent;
@@ -102,6 +103,46 @@ public class AdminPage {
 
     @FindBy(className = "toast-message")
     public WebElement warningMessage;
+
+    @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
+    public WebElement adminPagePackagesTab;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addPackages;
+
+    @FindBy (xpath = "(//input[@name='p_name'])[1]")
+    public WebElement addPackagesFirstTab;
+
+    @FindBy (xpath = "(//input[@type='file'])[1]")
+    public WebElement addPackagesUploadImage;
+
+    @FindBy (xpath = "(//div[@role='textbox'])[1]")
+    public WebElement addPackagesDescription;
+
+    @FindBy (xpath = "//input[@id='datepicker']" )
+    public  WebElement addPackagesStartDate;
+
+    @FindBy (xpath = "//input[@name='p_end_date']" )
+    public  WebElement addPackagesEndDate;
+
+    @FindBy (xpath = "//input[@id='datepicker2']" )
+    public  WebElement addPackagesLastBooking;
+
+    @FindBy (xpath = "(//select[@name='p_is_featured'])[1]")
+    public WebElement addPackagesIsFeatured;
+
+    @FindBy (xpath = "//select[@name='destination_id']")
+    public WebElement addPackagesDestination;
+
+    @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
+    public WebElement addPackagesMap;
+
+    @FindBy(xpath = "//a[text()='Detail']")
+    public WebElement adminOrderDetailButton;
+
+    @FindBy(xpath = "//h6[text()='Order Information']")
+    public WebElement adminOrderPageOrderInformationElement;
+
 
 
     }
