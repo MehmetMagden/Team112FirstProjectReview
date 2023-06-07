@@ -1,4 +1,4 @@
 package tests.Ayse;
 
-public class Delete {
+public class ayse {
 }
