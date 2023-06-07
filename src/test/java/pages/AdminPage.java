@@ -164,6 +164,8 @@ public class AdminPage {
     @FindBy (xpath = "//input[@name='d_photo']")
     public WebElement addDestinationsUploadImage;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement destinationsSubmitButton;
 
 
     }

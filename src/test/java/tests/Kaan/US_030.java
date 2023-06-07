@@ -46,6 +46,8 @@ public class US_030 {
         String filePath = System.getProperty("user.home")+"\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
         uploadPhoto.sendKeys(filePath);
 
+        adminPage.destinationsSubmitButton.click();
+
 
 
     }
