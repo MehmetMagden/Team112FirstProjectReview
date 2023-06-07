@@ -1,4 +1,4 @@
 package tests.Bahadir;
 
-public class Delete {
+public class C03 {
 }
