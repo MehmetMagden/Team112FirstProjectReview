@@ -41,7 +41,6 @@ public class PackagesPage {
    public WebElement theFirstPackagesWebElement;
 
 
-
 //   @FindBy (xpath = "(//div[@class='photo-title'])[2]")
 //    public WebElement theFirstPackagesWebElement;
 
@@ -50,4 +49,6 @@ public class PackagesPage {
 
    @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
    public WebElement moreInformationVisibility;
+
+
 }
