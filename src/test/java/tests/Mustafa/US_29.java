@@ -89,6 +89,12 @@ public class US_29 {
 
         WebElement chooseFile = blogPage.blogPhotoUpload;
         chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\blog_photo.jpg");  // HOW to make the path dynamic?
+
+    //    String filePath =  System.getProperty("user.home") + "\\utilities\\blog_photo.jpg";
+     //   chooseFile.sendKeys(filePath);
+
+
+
         blogPage.submitNewBlog.click(); // Submits the new blog entry.
 
         String expectedText = "New Blog Entry";
@@ -101,7 +107,7 @@ public class US_29 {
     }
 
     @Test
-    public void TC_29_02_editBlogEntry(){ // pop-up mesaj'dan text almayi kullanamadim.
+    public void TC_29_02_editBlogEntry(){ // Pop-up mesaj'dan text almayi kullanamadim. (Blog is updated successfully!)
 
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password

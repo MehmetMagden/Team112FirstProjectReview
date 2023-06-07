@@ -13,6 +13,7 @@ import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.LoginPage;
 import pages.PackagesPage;
+import pages.UserDashboardPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -44,6 +45,7 @@ TC_24_02	I can navigate to Packages page and select a package.
 			8) User should see "Payment is successful" message.
 */
     LoginPage loginPage = new LoginPage();
+    UserDashboardPage userDashboardPage = new UserDashboardPage();
     BasePage basePage = new BasePage();
     PackagesPage packagesPage = new PackagesPage();
     Actions actions = new Actions(Driver.getDriver());
@@ -108,10 +110,9 @@ TC_24_02	I can navigate to Packages page and select a package.
         payButton.click();
         ReusableMethods.waitFor(3);
 
+    //    userDashboardPage.creditCard.sendKeys("4242424242424242");
 
-        WebElement cardNumberBox = Driver.getDriver().findElement(By.xpath("/html[1]/body[1]/div[3]/form[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"));
-        actions.click(cardNumberBox)
-                .sendKeys("4242424242424242")
+        actions.sendKeys(userDashboardPage.creditCard, "4242424242424242")
                 .sendKeys(Keys.TAB)
                 .sendKeys("1224")
                 .sendKeys(Keys.TAB)
@@ -119,7 +120,6 @@ TC_24_02	I can navigate to Packages page and select a package.
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ENTER)
                 .perform();
-
 
         String actualMessage = Driver.getDriver().switchTo().alert().getText();
         String expectedMessage = "Payment is successful";
