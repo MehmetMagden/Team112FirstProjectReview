@@ -15,16 +15,25 @@ public class US_032 extends TestBaseRapor {
 
     @Test()
     public void TC3201userNavigatesAndVerifiesToAdminPage() {
-        testMethods.TC3201userNavigatesAndVerifiesToAdminPage();
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+
     }
 
     @Test
     public void TC3202userAccessAndVerifiesOrdersSection() {
-        testMethods.TC3202userAccessAndVerifiesOrdersSection();
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+        testMethods.userAccessAndVerifiesOrdersSection();
+
     }
 
     @Test
     public void TC3203userViewsAndVerifiesAllPlacedOrder() {
-        testMethods.TC3203userViewAndVerifiesAllPlacedOrder();
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+        testMethods.userAccessAndVerifiesOrdersSection();
+        testMethods.userViewAndVerifiesAllPlacedOrder();
+
     }
 }

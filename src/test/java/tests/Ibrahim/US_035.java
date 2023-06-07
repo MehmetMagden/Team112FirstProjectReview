@@ -14,17 +14,26 @@ public class US_035 extends TestBaseRapor {
     TestMethods testMethods = new TestMethods();
 
     @Test
-    public void TC3501userNavigatesAndVerifiesToAdminPage (){
-        testMethods.TC3501userNavigatesAndVerifiesToAdminPage();
+    public void TC3501userNavigatesAndVerifiesToAdminPage() {
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+
     }
 
-    @Test public void TC3502userNavigatesAndVerifiesToSubscribersPage () {
-        testMethods.TC3502userNavigatesAndVerifiesToSubscribersPage();
+    @Test
+    public void TC3502userNavigatesAndVerifiesToSubscribersPage() {
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+        testMethods.userNavigatesAndVerifiesToSubscribersPage();
+
     }
 
-    @Test public void TC3503userAccessAndVerifiesAllNewsletterSubscribers () {
-        testMethods.TC3503userAccessAndVerifiesAllNewsletterSubscribers();
+    @Test
+    public void TC3503userAccessAndVerifiesAllNewsletterSubscribers() {
+
+        testMethods.userNavigatesAndVerifiesToAdminPage();
+        testMethods.userNavigatesAndVerifiesToSubscribersPage();
+        testMethods.userAccessAndVerifiesAllNewsletterSubscribers();
+
     }
-
-
 }
