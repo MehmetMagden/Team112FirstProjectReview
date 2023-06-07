@@ -33,6 +33,15 @@ public class US_030 {
         adminPage.addAdminDestinations.click();
 
         adminPage.addDestinationsName.sendKeys("Costa del Hudderfield"+ Keys.TAB);
+        actions.sendKeys("Slug"+ Keys.TAB).perform();
+        actions.sendKeys("Heading"+ Keys.TAB).perform();
+        actions.sendKeys("Short Description"+ Keys.TAB).perform();
+        actions.sendKeys("Package Heading"+ Keys.TAB).perform();
+        actions.sendKeys("Package Subheading"+ Keys.TAB).perform();
+        actions.sendKeys("Detail Heading"+ Keys.TAB).perform();
+        actions.sendKeys("Detail Subheading"+ Keys.TAB).perform();
+
+
 
         WebElement uploadPhoto = adminPage.addDestinationsUploadImage;
         String filePath = System.getProperty("user.home")+"C:\\Users\\Admin\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
