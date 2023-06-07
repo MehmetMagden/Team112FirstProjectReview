@@ -59,6 +59,8 @@ public class US027 {
         ReusableMethods.waitFor(5);
         adminPage.adminDashBoardEmailTemplateButton.click();
 
+
+
         Driver.quitDriver();
 
 }

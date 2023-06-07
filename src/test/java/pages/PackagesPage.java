@@ -29,6 +29,7 @@ public class PackagesPage {
     public WebElement featuredPackagesAllTogether;
 
 
+
     @FindBy(xpath = "(//div[@class='photo-title'])[4]")
     public WebElement buenosAiresPackageInPackagesPage;
 
@@ -37,9 +38,9 @@ public class PackagesPage {
 
 
 
+
    @FindBy (xpath = "/html/body/div[7]/div/div[2]/div[1]/div[2]")
    public WebElement theFirstPackagesWebElement;
-
 
 
 //   @FindBy (xpath = "(//div[@class='photo-title'])[2]")
@@ -50,4 +51,6 @@ public class PackagesPage {
 
    @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
    public WebElement moreInformationVisibility;
+
+
 }

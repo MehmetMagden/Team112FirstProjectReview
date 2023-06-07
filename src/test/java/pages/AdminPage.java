@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 import utilities.Driver;
 
 import java.nio.file.WatchEvent;
@@ -11,8 +12,6 @@ public class AdminPage {
     public  AdminPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-
-
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
@@ -52,6 +51,17 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
+
+
+    @FindBy(xpath = "(//span[normalize-space()='Order'])[1]")
+    public WebElement orderButtonInAdminPanelOnAdminPage;
+
+    @FindBy(xpath = "(//span[normalize-space()='Subscriber'])[1]")
+    public WebElement subscriberButtonInAdminPanelOnAdminPage;
+
+    @FindBy(xpath = "(//tr[@role='row'])[2]")
+    public WebElement firstInvoiceInViewOrders;
+
     @FindBy (tagName = "h6")
     public WebElement viewOrdersWebElement;
 
@@ -73,12 +83,13 @@ public class AdminPage {
     @FindBy (id = "dataTable_info")
     public WebElement allSubscribersWebElement;
 
-    @FindBy (partialLinkText = " Send Email to Subscribers")
+    @FindBy (xpath = "//a[text()='Send Email to Subscribers']")
     public WebElement sendEmailToSubcribersButton;
 
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+<<<<<<< HEAD
     @FindBy(id ="userDropdown")
     public WebElement adminDropDownButton;
 
@@ -89,6 +100,62 @@ public class AdminPage {
 
     @FindBy (xpath = "//span[text()='Packages']")
     public WebElement packagesButton;
+=======
+    @FindBy(xpath = "(//div[@role='textbox'])[1]")
+    public WebElement messageBoxInSendEmailSection;
+
+    @FindBy(xpath = "(//input[@type='text'])[1]")
+    public WebElement subjectBoxInSendEmailSection;
+
+    @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
+    public WebElement allSubscribersButtonInSendEmailSection;
+
+    @FindBy(xpath = "//button[text()='Send Email']")
+    public WebElement sendEmailButton;
+
+    @FindBy(className = "toast-message")
+    public WebElement warningMessage;
+
+    @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
+    public WebElement adminPagePackagesTab;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addPackages;
+
+    @FindBy (xpath = "(//input[@name='p_name'])[1]")
+    public WebElement addPackagesFirstTab;
+
+    @FindBy (xpath = "(//input[@type='file'])[1]")
+    public WebElement addPackagesUploadImage;
+
+    @FindBy (xpath = "(//div[@role='textbox'])[1]")
+    public WebElement addPackagesDescription;
+
+    @FindBy (xpath = "//input[@id='datepicker']" )
+    public  WebElement addPackagesStartDate;
+
+    @FindBy (xpath = "//input[@name='p_end_date']" )
+    public  WebElement addPackagesEndDate;
+
+    @FindBy (xpath = "//input[@id='datepicker2']" )
+    public  WebElement addPackagesLastBooking;
+
+    @FindBy (xpath = "(//select[@name='p_is_featured'])[1]")
+    public WebElement addPackagesIsFeatured;
+
+    @FindBy (xpath = "//select[@name='destination_id']")
+    public WebElement addPackagesDestination;
+
+    @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
+    public WebElement addPackagesMap;
+
+    @FindBy(xpath = "//a[text()='Detail']")
+    public WebElement adminOrderDetailButton;
+
+    @FindBy(xpath = "//h6[text()='Order Information']")
+    public WebElement adminOrderPageOrderInformationElement;
+
+>>>>>>> main
 
 
     }

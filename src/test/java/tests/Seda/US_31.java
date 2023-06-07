@@ -1,24 +1,43 @@
-package tests.Kaan;
+package tests.Seda;
 
+import com.github.javafaker.Faker;
+import org.checkerframework.checker.units.qual.K;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class US_030 {
+import java.awt.dnd.DragGestureEvent;
+import java.security.Key;
+
+public class US_31   {
+
+    /*
+    I should be able to Log in admin dashboard.
+
+   I should be able to verify that in the Packages Section, I can add a new package and confirm that
+
+   I should be able to confirm that the added package can be edited.
+
+  */
+
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
+    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+
+
     @Test
-    public void TC_30_01_adminLogin() {
+    public void  TC_31_AddPackagesToAdminDashboard(){
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
@@ -37,7 +56,7 @@ public class US_030 {
         actions.sendKeys("Slug"+ Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
-        String filePath =  System.getProperty("user.home") + "/Desktop/projectPhoto";
+        String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
         fileUpload.sendKeys(filePath);
 
 
@@ -75,6 +94,4 @@ public class US_030 {
     }
 
 
-
-
-    }
+}

@@ -15,7 +15,7 @@ public class HomePage {
 
     //==============HEADER==================
 
-    @FindBy(xpath = "//a[@href='https://qa.tripandway.com']")
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com'])[3]")
     public WebElement homeButtonInHeader;
 
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/services'])[2]")
