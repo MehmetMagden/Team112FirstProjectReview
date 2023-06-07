@@ -16,8 +16,7 @@ public class US_030 {
 public void setup(){
     Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
 }
-@AfterMethod
-public void tearDown (){Driver.closeDriver();}
+
     @Test
     public void TC_30_01_adminLogin() {
 
@@ -28,12 +27,7 @@ public void tearDown (){Driver.closeDriver();}
         adminPage.adminLogInButton.click();
         ReusableMethods.waitFor(2);
 
-
-
-
-    }
-    @Test
-    public void TC_30_02_addNewPackage(){
+        adminPage.packagesButton.click();
 
 
 

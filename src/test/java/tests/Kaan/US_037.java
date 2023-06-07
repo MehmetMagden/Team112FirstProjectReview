@@ -15,10 +15,12 @@ public class US_037 {
 After logging in as an admin,
 I should be able to verify that I can access the admin account profile settings screen to make changes to the profile information
   */
+AdminPage adminPage = new AdminPage();
 
+    Actions actions = new Actions(Driver.getDriver());
     @Test
     public void adminAccountProfileSettingsTest (){
-      /*  Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
         ReusableMethods.waitFor(2);
@@ -35,7 +37,7 @@ I should be able to verify that I can access the admin account profile settings 
 
         ReusableMethods.waitFor(3);
         Driver.closeDriver();
-*/
+
 
     }
 }
