@@ -86,5 +86,23 @@ public class AdminPage {
     @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
     public WebElement addPackages;
 
+    @FindBy (xpath = "(//input[@name='p_name'])[1]")
+    public WebElement addPackagesFirstTab;
+
+    @FindBy (xpath = "(//input[@type='file'])[1]")
+    public WebElement addPackagesUploadImage;
+
+    @FindBy (xpath = "(//div[@role='textbox'])[1]")
+    public WebElement addPackagesDescription;
+
+    @FindBy (xpath = "(//input[@id='datepicker'])[1]" )
+    public  WebElement addPackagesStartDate;
+
+    @FindBy (xpath = "(//select[@name='p_is_featured'])[1]")
+    public WebElement addPackagesIsFeatured;
+
+    @FindBy (xpath = "(//input[@aria-label='Search'])[1]")
+    public WebElement addPackagesDestination;
+
     }
 

@@ -24,7 +24,7 @@ public class US_14 extends TestBaseRapor {
     BasePage basePage = new BasePage();
     Actions actions = new Actions(Driver.getDriver());
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         packagesPage.packagesHeaderLink.click();
@@ -37,6 +37,7 @@ public class US_14 extends TestBaseRapor {
     @Test
     public void TC14_packagesPageIsActiveVisiable() {
 
+        extentTest = extentReports.createTest("TC14", "User Navigates To Packages Page");
         String expectedBanner = "PACKAGES";
         String actualBanner = packagesPage.packagesBannerText.getText();
         ReusableMethods.waitForVisibility(packagesPage.packagesBannerText, 5);
@@ -50,23 +51,22 @@ public class US_14 extends TestBaseRapor {
     @Test
     public void TC14_01_theFirstPackagesFeaturesTest() {
 
-
-        packagesPage.theFirstPackagesWebElement.click();
-
-        ReusableMethods.waitFor(5);
+        extentTest = extentReports.createTest("TC14_01", "User Navigates To The First Packages");
 
         String expectedBannerText = "3 DAYS IN BUENOS AIRES";
         String actualBannerText = packagesPage.theFirstPackageBannerText.getText();
         Assert.assertTrue(actualBannerText.contains(expectedBannerText));
+        extentTest.pass("Verify, if user can see the title in the banner");
 
         actions.sendKeys(Keys.END).perform();
         ReusableMethods.waitFor(2);
 
         Assert.assertTrue(packagesPage.moreInformationVisibility.isDisplayed());
+        extentTest.pass("Verify, if user can see information tabs in the page");
 
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
 
         Driver.quitDriver();

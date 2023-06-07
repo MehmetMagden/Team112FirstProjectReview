@@ -1,19 +1,28 @@
 package tests.Seda;
 
+import com.github.javafaker.Faker;
+import org.checkerframework.checker.units.qual.K;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.awt.dnd.DragGestureEvent;
+import java.security.Key;
 
-public class US_31 {
+public class US_31   {
 
     /*
-    I should be able to login admin dashboard.
+    I should be able to Log in admin dashboard.
 
    I should be able to verify that in the Packages Section, I can add a new package and confirm that
 
@@ -23,16 +32,17 @@ public class US_31 {
 
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
-    @BeforeTest
-    public void setUp() {
+
+    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+
+
+    @Test
+    public void  TC_31_AddPackagesToAdminDashboard(){
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
         adminPage.adminLogInButton.click();
-
-        }
-    @Test
-    public void  TC_31_AddPackagesToAdminDashboard(){
 
         String expectedTitle = "Admin Panel";
         String actualTitle = Driver.getDriver().getTitle();
@@ -40,6 +50,33 @@ public class US_31 {
 
         adminPage.adminPagePackagesTab.click();
         adminPage.addPackages.click();
+
+
+//        adminPage.addPackagesFirstTab.sendKeys("Name"+ Keys.TAB);
+//        actions.sendKeys("Slug"+ Keys.TAB).perform();
+//        actions.sendKeys("Image" + Keys.TAB).perform();
+//
+////        WebElement fileUpload = adminPage.addPackagesUploadImage;
+////        fileUpload.click();
+////        String filePath =  System.getProperty("user.home") + "/C:/Users/User/Desktop/Wise Quarter/project_sample_file.jpeg";
+////        fileUpload.sendKeys(filePath);
+//
+//        adminPage.addPackagesDescription.sendKeys("Description");
+//        actions.sendKeys("Short Description"+ Keys.TAB).perform();
+//        actions.sendKeys("Location" + Keys.TAB).perform();
+
+        // jse.executeScript("window.scrollBy(0,1300)");
+
+        actions.sendKeys(Keys.END);
+        WebElement isFeatured = adminPage.addPackagesIsFeatured;
+        Select selectFeatured = new Select(isFeatured);
+        ReusableMethods.waitFor(2);
+        selectFeatured.selectByValue("No");
+
+        WebElement destination = adminPage.addPackagesDestination;
+        Select selectDestination = new Select(destination);
+        ReusableMethods.waitFor(2);
+        selectFeatured.selectByValue("Istanbul, Turkey");
 
 
 
