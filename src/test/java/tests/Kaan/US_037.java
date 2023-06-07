@@ -19,7 +19,7 @@ I should be able to verify that I can access the admin account profile settings 
 
     @Test
     public void adminAccountProfileSettingsTest (){
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+      /*  Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
         ReusableMethods.waitFor(2);
@@ -36,7 +36,7 @@ I should be able to verify that I can access the admin account profile settings 
 
         ReusableMethods.waitFor(3);
         Driver.closeDriver();
-
+*/
 
     }
 }

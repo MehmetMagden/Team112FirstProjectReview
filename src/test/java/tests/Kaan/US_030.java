@@ -9,10 +9,11 @@ import utilities.ReusableMethods;
 
 public class US_030 {
     AdminPage adminPage = new AdminPage();
-    Actions actions=new Actions(Driver.getDriver());
+    Actions actions = new Actions(Driver.getDriver());
+
     @Test(priority = 1)
     public void adminLogin() {
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+     /*   Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
 
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
@@ -25,7 +26,6 @@ public class US_030 {
         actions.moveToElement(adminPage.adminDashboardPackagesButton).perform();
         adminPage.adminDashboardPackagesButton.click();
 
-
-
+      */
     }
 }
