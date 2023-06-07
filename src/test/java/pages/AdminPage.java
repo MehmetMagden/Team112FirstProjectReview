@@ -91,8 +91,17 @@ public class AdminPage {
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
 
-    @FindBy(xpath = "(//input[@name='subject']")
+    @FindBy(xpath = "(//input[@type='text'])[1]")
     public WebElement subjectBoxInSendEmailSection;
+
+    @FindBy(xpath = "//a[@class='btn btn-primary btn-sm']")
+    public WebElement allSubscribersButtonInSendEmailSection;
+
+    @FindBy(xpath = "//button[text()='Send Email']")
+    public WebElement sendEmailButton;
+
+    @FindBy(className = "toast-message")
+    public WebElement warningMessage;
 
 
     }
