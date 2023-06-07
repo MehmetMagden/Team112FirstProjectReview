@@ -12,7 +12,6 @@ public class AdminPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 

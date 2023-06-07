@@ -21,7 +21,7 @@ public class US017 {
     BasePage basePage = new BasePage();
 
     @Test(priority = 1)
-    public void TC017_01cotactPageShouldBeAccessable() {
+    public void TC017_01_contactPageAccessable() {
         contactPage = new ContactPage();
         basePage = new BasePage();
 
@@ -39,34 +39,32 @@ public class US017 {
     }
 
     @Test
-    public void TC17_02_01contactPageSuccsesfulMessageSubmit() {  // Waiting for message box locater problem to be resolved-Ali Temur
+    public void TC17_02_01_SuccsesfulMessageSubmit() {  // Waiting for message box locater problem to be resolved-Ali Temur
         contactPage = new ContactPage();
         basePage = new BasePage();
         Actions actions = new Actions(Driver.getDriver());
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+
+
         basePage.acceptCookiesButton.click();
         basePage.homePageContactButton.click();
-        ReusableMethods.waitFor(2);
-        js.executeScript("window.scrollBy(0, 500)");
-        contactPage.contactUsNameSearchBox.sendKeys("Elcin ");
-        ReusableMethods.waitFor(2);
+        contactPage.contactUsNameSearchBox.sendKeys("Elcin Kinsiz");
         contactPage.contactUsPhoneTextBox.sendKeys("902166167567");
-        ReusableMethods.waitFor(2);
         contactPage.contactUsEmailTextBox.sendKeys("elcin@hotmail.com");
-        ReusableMethods.waitFor(2);
         contactPage.contactUsMessageTextBox.sendKeys("Testing Contact Form Features");
-        ReusableMethods.waitFor(1);
-        actions.click(contactPage.contactUsMessageSubmitButton).perform();
-        ReusableMethods.waitFor(1);
-        js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0, -300)");
-        ReusableMethods.waitFor(10);
-        //WAITING FOR DEVELOPER TO GIVE TAG NAME FOR SUBMISSION EMAIL
-        // Assert.assertFalse(!contactPage.contactUsMessageSuccessfulySentMessage.isDisplayed());  //Element could not be found.Waiting to hear from Developer
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,1000)");
 
-        Driver.getDriver().quit();
+        actions.moveToElement(contactPage.getSubmitButton2).perform();
+        contactPage.submitButton.click();
+        ReusableMethods.waitFor(10);
+
+
+       // String actualMessage=contactPage.messageSent.getText();
+       // System.out.println(actualMessage);
+
+      //  Assert.assertEquals(actualMessage,"Message is sent successfully! Admin will contact you soon");
+     //
 
     }
 
@@ -78,6 +76,8 @@ public class US017 {
     //  System.out.println("Is There a Alert"+alert);
 
     //WAITING TO HEAR FROM DEVELOPER FOR TAGS ON THE MOVING ELEMENTS POP UP MESSAGES for tasks TC17_02_02 to 06 ALI TEMUR
+
+
     @Test
     public void TC017_02_02contactPageMessageSubmitWithWrongTypeOfInputDataInNameTextBox() {
         contactPage = new ContactPage();
@@ -88,20 +88,20 @@ public class US017 {
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         basePage.acceptCookiesButton.click();
         basePage.homePageContactButton.click();
-        ReusableMethods.waitFor(2);
-        js.executeScript("window.scrollBy(0, 500)");
+
+        //js.executeScript("window.scrollBy(0, 500)");
         contactPage.contactUsNameSearchBox.sendKeys("1234 ");
-        ReusableMethods.waitFor(2);
+
         contactPage.contactUsPhoneTextBox.sendKeys("902166167567");
-        ReusableMethods.waitFor(2);
+
         contactPage.contactUsEmailTextBox.sendKeys("elcin@hotmail.com");
-        ReusableMethods.waitFor(2);
+
         contactPage.contactUsMessageTextBox.sendKeys("Testing Contact Form Features");
-        ReusableMethods.waitFor(1);
-        actions.click(contactPage.contactUsMessageSubmitButton).perform();
-        ReusableMethods.waitFor(1);
-        js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollBy(0, -300)");
+
+        actions.click(contactPage.submitButton).perform();
+
+
+
         ReusableMethods.waitFor(10);
 
         Driver.quitDriver();
@@ -127,7 +127,7 @@ public class US017 {
         ReusableMethods.waitFor(2);
         contactPage.contactUsMessageTextBox.sendKeys("Testing Contact Form Features");
         ReusableMethods.waitFor(1);
-        actions.click(contactPage.contactUsMessageSubmitButton).perform();
+        actions.click(contactPage.submitButton).perform();
         ReusableMethods.waitFor(1);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0, -300)");
@@ -158,7 +158,7 @@ public class US017 {
         ReusableMethods.waitFor(2);
         contactPage.contactUsMessageTextBox.sendKeys("Testing Contact Form Features");
         ReusableMethods.waitFor(1);
-        actions.click(contactPage.contactUsMessageSubmitButton).perform();
+        actions.click(contactPage.submitButton).perform();
         ReusableMethods.waitFor(1);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0, -300)");
@@ -187,8 +187,8 @@ public class US017 {
         ReusableMethods.waitFor(2);
         contactPage.contactUsMessageTextBox.sendKeys("Testing Contact Form Features");
         ReusableMethods.waitFor(2);
-        actions.moveToElement(contactPage.contactUsMessageSubmitButton).perform();
-        ReusableMethods.waitForClickablility(contactPage.contactUsMessageSubmitButton, 3);
+        actions.moveToElement(contactPage.submitButton).perform();
+        ReusableMethods.waitForClickablility(contactPage.submitButton, 3);
     }
 
     @Test
@@ -211,7 +211,7 @@ public class US017 {
         ReusableMethods.waitFor(2);
         contactPage.contactUsMessageTextBox.sendKeys("  ");
         ReusableMethods.waitFor(1);
-        actions.click(contactPage.contactUsMessageSubmitButton).perform();
+        actions.click(contactPage.submitButton).perform();
         ReusableMethods.waitFor(1);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0, -300)");
@@ -255,9 +255,9 @@ public class US017 {
         Assert.assertTrue(actualMapWord.contains(expectedMapWord));
         Driver.quitDriver();
 
-
+ }
     }
-}
+
 
 
 
