@@ -7,11 +7,12 @@ import pages.BasePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 import java.util.Locale;
 import java.util.Set;
 
-public class US_07 {
+public class US_07 extends TestBaseRapor {
 
   BasePage basePage = new BasePage();
 
