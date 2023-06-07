@@ -23,11 +23,13 @@ public class US_21 extends TestBaseRapor {
         String expectedUrl="https://qa.tripandway.com/";
         Assert.assertTrue(actualUrl.equals(expectedUrl));
         extentTest.pass("User access the home page");
+
         homePage.logInButtonInHeader.click();
         String actualLogInPageUrl=Driver.getDriver().getCurrentUrl();
         String expectedLogInPageUrl="https://qa.tripandway.com/traveller/login";
         Assert.assertTrue(actualLogInPageUrl.equals(expectedLogInPageUrl));
         extentTest.pass("User can access login page");
+
         loginPage.cookiesAcceptButton.click();
         loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
         loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
@@ -36,15 +38,17 @@ public class US_21 extends TestBaseRapor {
         String actualLoginDashboardUrl=Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(actualLoginDashboardUrl.equals(expectedLoginDashboardUrl));
         extentTest.pass("User can access the login dashboard");
+
         loginPage.paymentHistoryButtonInUserLoginPage.click();
         String actualPaymentHistoryUrl=Driver.getDriver().getCurrentUrl();
         String expectedPaymentHistroyUrl="https://qa.tripandway.com/traveller/order";
         Assert.assertTrue(actualPaymentHistoryUrl.equals(expectedPaymentHistroyUrl));
         extentTest.pass("User can access payment history area");
+
         loginPage.viewAllPaymentElementInPaymentElementOnLoginPage.isDisplayed();
         extentTest.pass("User can view all payment element ");
-        Driver.closeDriver();
 
+        Driver.closeDriver();
 
 
     }
