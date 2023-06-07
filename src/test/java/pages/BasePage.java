@@ -148,6 +148,22 @@ public class BasePage {
     @FindBy(xpath = "(//div[@class='footer-address-item'])[3]")
     public WebElement footerEmail;
 
+    @FindBy (xpath = "//h1[normalize-space()='Services']")
+    public WebElement servicesAfterHeaderService;
+
+    @FindBy (xpath = "//h1[normalize-space()='Packages']")
+    public WebElement packagesAfterHeaderPackages;
+
+    @FindBy (xpath = "//ul[@id='menu']//a[normalize-space()='FAQ']")
+    public WebElement homePageFaqButton;
+    @FindBy (xpath = "//h1[normalize-space()='FAQ']")
+    public WebElement faqAfterHeaderFaq;
+    @FindBy (xpath = "//h1[normalize-space()='Blog']")
+    public WebElement blogAfterHeaderBlog;
+
+
+
+
 
     // ====-----======-------======-----======-------========
 
