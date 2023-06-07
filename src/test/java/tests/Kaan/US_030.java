@@ -32,20 +32,21 @@ public class US_030 {
         adminPage.adminDestinationsTab.click();
         adminPage.addAdminDestinations.click();
 
-        adminPage.addDestinationsName.sendKeys("Costa del Hudderfield"+ Keys.TAB);
-        actions.sendKeys("Slug"+ Keys.TAB).perform();
-        actions.sendKeys("Heading"+ Keys.TAB).perform();
-        actions.sendKeys("Short Description"+ Keys.TAB).perform();
-        actions.sendKeys("Package Heading"+ Keys.TAB).perform();
-        actions.sendKeys("Package Subheading"+ Keys.TAB).perform();
-        actions.sendKeys("Detail Heading"+ Keys.TAB).perform();
-        actions.sendKeys("Detail Subheading"+ Keys.TAB).perform();
-
-
+        adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
+        actions.sendKeys("Slug"+ Keys.TAB)
+               .sendKeys("Heading"+ Keys.TAB)
+               .sendKeys("Short Description"+ Keys.TAB)
+               .sendKeys("Package Heading"+ Keys.TAB)
+               .sendKeys("Package Subheading"+ Keys.TAB)
+               .sendKeys("Detail Heading"+ Keys.TAB)
+               .sendKeys("Detail Subheading"+ Keys.TAB)
+               .sendKeys().perform();
 
         WebElement uploadPhoto = adminPage.addDestinationsUploadImage;
-        String filePath = System.getProperty("user.home")+"C:\\Users\\Admin\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
+        String filePath = System.getProperty("user.home")+"\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
         uploadPhoto.sendKeys(filePath);
+
+
 
     }
 
