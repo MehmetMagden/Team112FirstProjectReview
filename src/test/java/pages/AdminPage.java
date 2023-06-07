@@ -89,7 +89,6 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
-<<<<<<< HEAD
     @FindBy(id ="userDropdown")
     public WebElement adminDropDownButton;
 
@@ -100,7 +99,7 @@ public class AdminPage {
 
     @FindBy (xpath = "//span[text()='Packages']")
     public WebElement packagesButton;
-=======
+
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
 
@@ -155,7 +154,6 @@ public class AdminPage {
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
->>>>>>> main
 
 
     }

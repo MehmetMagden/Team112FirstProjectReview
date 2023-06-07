@@ -37,7 +37,7 @@ public class US_030 {
         actions.sendKeys("Slug"+ Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
-        String filePath =  System.getProperty("user.home") + "/Desktop/projectPhoto";
+        String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
         fileUpload.sendKeys(filePath);
 
 
