@@ -51,7 +51,7 @@ public abstract class TestBaseRapor {
         } else if (result.getStatus() == ITestResult.SKIP) { // if skiped
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignores
         }
-        Driver.closeDriver();
+        //Driver.closeDriver();
 
     }
 

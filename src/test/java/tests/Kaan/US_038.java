@@ -8,7 +8,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class US_038 {
-    AdminPage adminPage = new AdminPage();
+
     @Test
     public void adminAccountChangePasswordTest(){
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));

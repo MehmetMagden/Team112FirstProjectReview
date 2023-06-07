@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.logging.XMLFormatter;
+
 public class LoginPage {
 
 
@@ -22,6 +24,12 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@name='form1']")
     public WebElement loginPageLoginButton;
+
+    @FindBy(xpath = "//div/a[text()='Login']")
+    public WebElement loginPageLoginButton2;   // alternative to the one above
+
+    @FindBy(xpath = "//li/a[text()='Dashboard']")
+    public WebElement userDashboard;
 
 
 

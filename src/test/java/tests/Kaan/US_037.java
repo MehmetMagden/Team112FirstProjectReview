@@ -15,7 +15,6 @@ public class US_037 {
 After logging in as an admin,
 I should be able to verify that I can access the admin account profile settings screen to make changes to the profile information
   */
-    AdminPage adminPage = new AdminPage();
 
     @Test
     public void adminAccountProfileSettingsTest (){

@@ -40,6 +40,9 @@ public class AdminPage {
     @FindBy(xpath = "//span[text()='Website Section']")
     public WebElement adminDashboardWebsiteSectionButton;
 
+    @FindBy(xpath = "//span[text()='Order']")
+    public WebElement adminDashboardOrderButton;
+
     @FindBy(xpath = "//span[text()='Email Template']")
     public  WebElement adminDashBoardEmailTemplateButton;
 
@@ -49,16 +52,33 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
-    @FindBy(id ="userDropdown")
-    public WebElement adminDropDownButton;
-    @FindBy(className= "dropdown-item")
-    public WebElement changeAdminPassword;
+    @FindBy (tagName = "h6")
+    public WebElement viewOrdersWebElement;
 
-    @FindBy(xpath = "m-0 mt-2 font-weight-bold text-primary")
-    public WebElement editAdminProfile;
+    @FindBy (id = "dataTable_info")
+    public WebElement allOrdersWebElement;
 
-    @FindBy (xpath = "//span[text()='Packages']")
-    public WebElement adminDashboardPackagesButton;
+    @FindBy (xpath = "(//div[@class='h5 mb-0 font-weight-bold text-gray-800'])[7]")
+    public WebElement adminMainPageCompletedOrdersWebElement;
+
+    @FindBy (xpath = "//span[text()='Subscriber']")
+    public WebElement subscriberButton;
+
+    @FindBy (xpath = "//a[text()='All Subscribers']")
+    public WebElement allSubscribersButton;
+
+    @FindBy (xpath = "//h6[text()='View Subscribers']")
+    public WebElement viewSubscribersWebElement;
+
+    @FindBy (id = "dataTable_info")
+    public WebElement allSubscribersWebElement;
+
+    @FindBy (partialLinkText = " Send Email to Subscribers")
+    public WebElement sendEmailToSubcribersButton;
+
+    @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
+    public WebElement adminDashboardVisibility;
+
 
 
     }
