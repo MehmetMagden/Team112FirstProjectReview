@@ -29,48 +29,10 @@ public class US_030 {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(expectedTitle, actualTitle);
 
-        adminPage.adminPagePackagesTab.click();
-        adminPage.addPackages.click();
+        adminPage.adminDestinationsTab.click();
+        adminPage.addAdminDestinations.click();
 
-
-        adminPage.addPackagesFirstTab.sendKeys("Name"+ Keys.TAB);
-        actions.sendKeys("Slug"+ Keys.TAB).perform();
-
-        WebElement fileUpload = adminPage.addPackagesUploadImage;
-        String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
-        fileUpload.sendKeys(filePath);
-
-
-        adminPage.addPackagesDescription.sendKeys("Description");
-        actions.sendKeys("Short Description"+ Keys.TAB).perform();
-        actions.sendKeys("Location" + Keys.TAB).perform();
-        actions.sendKeys("Location22" + Keys.TAB).perform();
-
-        ReusableMethods.waitFor(2);
-
-        actions.sendKeys("2023/06/28" + Keys.TAB).perform();
-        ReusableMethods.waitFor(2);
-        actions.sendKeys("2023/07/28" + Keys.TAB).perform();
-        ReusableMethods.waitFor(2);
-        actions.sendKeys("2023/05/28" + Keys.TAB).perform();
-        actions.sendKeys("Map" + Keys.TAB).perform();
-        actions.sendKeys("Itenary" + Keys.TAB).perform();
-        actions.sendKeys("Price" + Keys.TAB).perform();
-        actions.sendKeys("Policy" + Keys.TAB).perform();
-        actions.sendKeys("Terms" + Keys.TAB).perform();
-
-        WebElement isFeatured = adminPage.addPackagesIsFeatured;
-        Select selectFeatured = new Select(isFeatured);
-        ReusableMethods.waitFor(2);
-        selectFeatured.selectByValue("Yes");
-
-        WebElement destination = adminPage.addPackagesDestination;
-        Select selectDestination = new Select(destination);
-        ReusableMethods.waitFor(2);
-        selectDestination.selectByVisibleText("Istanbul, Turkey");
-
-        Driver.quitDriver();
-
+        adminPage.addDestinationsName.sendKeys("Costa del Hudderfield"+ Keys.TAB);
 
     }
 
