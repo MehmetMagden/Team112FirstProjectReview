@@ -27,16 +27,11 @@ TC_25_01	As a user, I should access my Dashboard
 TC_25_02	I should be able to navigate to "Payment History" page and see my latest payment.
             1) User navigates to Payment History page. URL changed.
 			2) User should see the package name on the list (e.g., Bangkok)
-
      */
 
     LoginPage loginPage = new LoginPage();
     BasePage basePage = new BasePage();
     DashboardPage dashboardPage = new DashboardPage();
-    PackagesPage packagesPage = new PackagesPage();
-    Actions actions = new Actions(Driver.getDriver());
-    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-
 
     @BeforeMethod
     public void setUp() {

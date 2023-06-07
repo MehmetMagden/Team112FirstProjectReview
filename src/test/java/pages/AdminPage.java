@@ -80,6 +80,7 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+
     @FindBy (xpath = "(//span[normalize-space()='Packages'])[1]")
     public WebElement adminPagePackagesTab;
 
@@ -112,6 +113,13 @@ public class AdminPage {
 
     @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
     public WebElement addPackagesMap;
+
+    @FindBy(xpath = "//a[text()='Detail']")
+    public WebElement adminOrderDetailButton;
+
+    @FindBy(xpath = "//h6[text()='Order Information']")
+    public WebElement adminOrderPageOrderInformationElement;
+
 
 
     }
