@@ -53,14 +53,13 @@ public class US_29 {
 				5) User edits the blog post name in the "Blog Name" box
 				6) User clicks the "Update" button
 				7) User should see "Blogs" page
-				8) User should see the new title of their blog as EDITED:
+				8) User should see the message "Blog is updated successfully!"
 				9) User closes the browser
      */
 
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
     BlogPage blogPage = new BlogPage();
-    Faker faker = new Faker();
 
     @BeforeMethod
     public void setUp(){
@@ -88,7 +87,11 @@ public class US_29 {
         blogPage.blogShortContent.sendKeys("Blog short content is provided!"); // Navigates to Blog short content and adds some content.
 
         WebElement chooseFile = blogPage.blogPhotoUpload;
-        chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\blog_photo.jpg");  // HOW to make the path dynamic?
+     // chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\Sample_Image.jpg");  // HOW to make the path dynamic?
+        String filePath =  System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
+        chooseFile.sendKeys(filePath);
+
+
         blogPage.submitNewBlog.click(); // Submits the new blog entry.
 
         String expectedText = "New Blog Entry";
@@ -101,7 +104,7 @@ public class US_29 {
     }
 
     @Test
-    public void TC_29_02_editBlogEntry(){ // pop-up mesaj'dan text almayi kullanamadim.
+    public void TC_29_02_editBlogEntry(){ // Pop-up mesaj'dan text almayi kullanamadim. (Blog is updated successfully!)
 
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password
@@ -114,8 +117,9 @@ public class US_29 {
         blogPage.blogTitle.sendKeys("    EDITED   ");
         blogPage.updateButton.click();
 
-        String expectedMessage = "EDITED";
-        Assert.assertTrue(blogPage.updateBlogCheck.getText().contains(expectedMessage));
+        String actualMessage = adminPage.warningMessage.getText();
+        String expectedMessage = "Blog is updated successfully!";
+        Assert.assertEquals(actualMessage, expectedMessage);
 
     }
 

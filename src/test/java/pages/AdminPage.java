@@ -55,8 +55,6 @@ public class AdminPage {
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
 
-
-
     @FindBy(xpath = "(//span[normalize-space()='Order'])[1]")
     public WebElement orderButtonInAdminPanelOnAdminPage;
 
@@ -92,6 +90,15 @@ public class AdminPage {
 
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
+
+    @FindBy(id ="userDropdown")
+    public WebElement adminDropDownButton;
+
+    @FindBy(className= "dropdown-item")
+    public WebElement changeAdminPassword;
+
+    @FindBy (xpath = "(//a[@class='dropdown-item'])[3]")
+    public WebElement adminLogoutButton;
 
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
@@ -147,7 +154,66 @@ public class AdminPage {
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
+    @FindBy(xpath = "//*[text()='Blog Section']")
+    public WebElement adminPanelBlogSectionButton;
+
+    @FindBy(xpath = "//*[text()='Categories']")
+    public WebElement adminPanelBlogSectionCategoriesButton;
 
 
-    }
+    @FindBy(xpath = "//*[text()=' Add New']")
+    public WebElement blogSectionCategoriesAddNewButton;
+
+
+    @FindBy(xpath = "//input[@name='category_name']")
+    public WebElement addCategoryNameBox;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addCategorySubmitButton;
+
+    @FindBy(xpath = "//div[@id='toast-container']")
+    public WebElement addCategorySuccessfulAlert;
+
+
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement categoriesSearchBox;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[1]")
+    public WebElement categoriesActionEditButton;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[2]")
+    public WebElement categoriesActionDeleteButton;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement editCategoryUpdateButton;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement editCategorySuccessfulAlert;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement categoriesDeletedSuccessfulAlert;
+
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
+     public WebElement editDestinationButton;
+
+    @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
+    public WebElement adminDestinationsTab;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addAdminDestinations;
+
+    @FindBy(xpath = "(//input[@name='d_name'])[1]")
+    public WebElement addDestinationsName;
+
+    @FindBy (xpath = "//input[@name='d_photo']")
+    public WebElement addDestinationsUploadImage;
+    @FindBy (xpath = "//button[@type='submit']")
+    public WebElement destinationsSubmitButton;
+}
 
