@@ -20,8 +20,11 @@ public class BasePage {
     @FindBy(xpath = "(//a[text()='Contact'])[2]")
     public WebElement homePageContactButton;
 
-    @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='Home']") // Including BlogButton the locators here,
-    public WebElement homePageHomeButton;                             //  except for destinations and contact,
+
+
+    // Including BlogButton the locators here, except for destinations and contact,
+    @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='Home']")
+    public WebElement homePageHomeButton;
     //  are for header menus on the home page
     @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='Services']")
     public WebElement homePageServicesButton;
@@ -35,46 +38,97 @@ public class BasePage {
     @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='FAQ']")
     public WebElement homePgeFaqButton;
 
-    @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='Blog']")  // the last header menu
+    @FindBy(xpath = "//ul[@id='menu']//a[normalize-space()='Blog']")
     public WebElement homePageBlogButton;
 
-    @FindBy(xpath = "//h3[normalize-space()='Featured Packages']")
+    @FindBy (xpath = "//h1[normalize-space()='Services']")
+    public WebElement servicesAfterHeaderService;
+
+    @FindBy (xpath = "//h1[normalize-space()='Packages']")
+    public WebElement packagesAfterHeaderPackages;
+
+    @FindBy (xpath = "//ul[@id='menu']//a[normalize-space()='FAQ']")
+    public WebElement homePageFaqButton;
+    @FindBy (xpath = "//h1[normalize-space()='FAQ']")
+    public WebElement faqAfterHeaderFaq;
+    @FindBy (xpath = "//h1[normalize-space()='Blog']")
+    public WebElement blogAfterHeaderBlog;
+
+
+
+
     // locators here are for the Featured Packages section in the footer
+    @FindBy(xpath = "//h3[normalize-space()='Featured Packages']")
     public WebElement featuredPackagesInFooter;
 
     @FindBy(xpath = "//div[@class='footer-item mt_30']//a[contains(text(),'3 days in Buenos Aires')]")
     public WebElement threeDaysInBuenosAiresButtonInFooter;
 
+    @FindBy(xpath = "//h1[contains(text(),'3 days in Buenos Aires')]")
+    public WebElement secondThreeDaysInBuenosAires;
+
     @FindBy(xpath = "//div[@class='footer-item mt_30']//a[contains(text(),'10 days in Buenos Aires')]")
     public WebElement tenDaysInBuenosAiresButtonInFooter;
+
+    @FindBy(xpath = "//h1[contains(text(),'10 days in Buenos Aires')]")
+    public WebElement secondTenDaysInBuenosAiresButton;
 
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeInLeft']//a[contains(text(),'3 days in Bangkok')]")
     public WebElement threeDaysInBangkokButtonInFooter;
 
+    @FindBy(xpath = "//h1[contains(text(),'3 days in Bangkok')]")
+    public WebElement secondThreeDaysInBangkokButton;
+
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeInLeft']//a[contains(text(),'7 days in Salina Island')]")
     public WebElement sevenDaysInSalinaIslandButtonInFooter;
+
+    @FindBy(xpath = "//h1[contains(text(),'7 days in Salina Island')]")
+    public WebElement secondSevenDaysInSalinaIslandButton;
 
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeInLeft']//a[normalize-space()='5 Day California']")
     public WebElement fiveDayCaliforniaButtonInFooter;
 
-    @FindBy(xpath = "//h3[normalize-space()='Latest Packages']")
+    @FindBy(xpath = "//h1[contains(text(),'5 Day California')]")
+    public WebElement secondFiveDayCaliforniaButton;
+
+
+
     // locators here are for the Latest Packages section in the footer
+    @FindBy(xpath = "//h3[normalize-space()='Latest Packages']")
     public WebElement latestPackagesInFooter;
 
     @FindBy(xpath = "//a[normalize-space()='Test Deneme']")
     public WebElement testDenemeButtonInFooter;
 
+    @FindBy(xpath = "//h1[contains(text(),'Test Deneme')]")
+    public WebElement secondTestDenemeButton;
+
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeIn']//a[normalize-space()='5 Day California']")
     public WebElement fiveDayCaliforniaButtonInLatestPackagesInFooter;
+
+    @FindBy(xpath = "//h1[contains(text(),'5 Day California')]")
+    public WebElement secondFiveDayCaliforniaButtonInLatestPackages;
 
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeIn']//a[contains(text(),'7 days in Salina Island')]")
     public WebElement sevenDaysInSalinaIslandButtonInLatestPackagesInFooter;
 
+    @FindBy(xpath = "//h1[contains(text(),'7 days in Salina Island')]")
+    public WebElement secondSevenDaysInSalinaIslandButtonInLatestPackages;
+
     @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeIn']//a[contains(text(),'3 days in Bangkok')]")
     public WebElement threeDaysInBangkokButtonInLatestPackagesInFooter;
 
+    @FindBy(xpath = "//h1[contains(text(),'3 days in Bangkok')]")
+    public WebElement secondThreeDaysInBangkokButtonInLatestPackages;
+
     @FindBy(xpath = "//a[normalize-space()='7 days in Istanbul']")
     public WebElement sevenDaysInIstanbulButtonInLatestPackagesInFooter;
+
+    @FindBy(xpath = "//h1[contains(text(),'7 days in Istanbul')]")
+    public WebElement secondSevenDaysInIstanbulButtonInLatestPackages;
+
+
+
 
     @FindBy(xpath = "(//div[@data-wow-delay='0.4s'])[2]")
     public WebElement footerRecentPosts;
@@ -148,18 +202,7 @@ public class BasePage {
     @FindBy(xpath = "(//div[@class='footer-address-item'])[3]")
     public WebElement footerEmail;
 
-    @FindBy (xpath = "//h1[normalize-space()='Services']")
-    public WebElement servicesAfterHeaderService;
 
-    @FindBy (xpath = "//h1[normalize-space()='Packages']")
-    public WebElement packagesAfterHeaderPackages;
-
-    @FindBy (xpath = "//ul[@id='menu']//a[normalize-space()='FAQ']")
-    public WebElement homePageFaqButton;
-    @FindBy (xpath = "//h1[normalize-space()='FAQ']")
-    public WebElement faqAfterHeaderFaq;
-    @FindBy (xpath = "//h1[normalize-space()='Blog']")
-    public WebElement blogAfterHeaderBlog;
 
 
 
