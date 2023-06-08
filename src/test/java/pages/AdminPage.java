@@ -172,10 +172,8 @@ public class AdminPage {
     @FindBy(className= "dropdown-item")
     public WebElement changeAdminPassword;
 
-    @FindBy (xpath = "//a[text()='Logout'")
+    @FindBy (xpath = "(//a[@class='dropdown-item'])[3]")
     public WebElement adminLogoutButton;
-
-
 
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
@@ -245,7 +243,7 @@ public class AdminPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
 
-    @FindBy(xpath = "(//i[@class='fas fa-edit'])[10]")
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
      public WebElement editDestinationButton;
 
 
