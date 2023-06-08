@@ -85,6 +85,9 @@ public class HomePage {
     @FindBy(xpath = "//h2[text()='Our Services']")
     public WebElement ourServicesTitleTextOnHomePage;
 
+    @FindBy(xpath = "//p[text()='Our team always provides quality services to our valuable clients']")
+    public WebElement textUnderOurServicesTitleOnHomepage;
+
     @FindBy(xpath = "(//div[@class='row'])[10]")//  --(//div[@class='main-headline'])[1]
     public WebElement ourServicesAreaOnHomepage;
 
@@ -285,8 +288,8 @@ public class HomePage {
     //================================LATEST BLOG==========================================
 
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[5]")
-    public WebElement latestBlogAreaText;
+    @FindBy(xpath = "(//div[@class='blog-area pt_80 pb_80'])[1]")
+    public WebElement latestBlogArea;
 
     @FindBy(xpath = "(//i[@class='fas fa-angle-right'])[3]")
     public WebElement sliderRightSideUnderTheLatestBlogOnHomePage;
@@ -337,8 +340,8 @@ public class HomePage {
     public WebElement ourClientAreaOnHomePage;
 //========================================================================================================
     //===============================NEWSLETTER ON HOMEPAGE===========================================
-    @FindBy(xpath = "(//div[@class='col'])[1]")
-    public WebElement newsLetterAreaTextOnHomepage;
+    @FindBy(xpath = "//div[@class='newsletter-bg']")
+    public WebElement newsLetterAreaOnHomepage;
 
     @FindBy(xpath = "(//input[@placeholder='Email Address'])[1]")
     public WebElement emailBoxUnderTheNewsLetterOnHomepage;
@@ -355,6 +358,10 @@ public class HomePage {
 //=====================Elements Of Destinations================
     @FindBy(xpath = "//div[@class='row mt_10']")
     public WebElement elementsOfDestionationsOnHomePage;
+    //================================================
+
+    @FindBy(xpath = "(//div[@class='slider-item'])[3]")
+    public WebElement heroAreaOnHomePage;
    
 
 
