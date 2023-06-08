@@ -26,10 +26,10 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
 			4) User verifies that company's address is visible
 
         	I can click the contact icons/text.
-            1) User can click the phone number to place a phone call
-			2) User can click the address to open Google Maps
-			3) User can click the email address to open an email app.
-			4) User closes the browser.
+            5) User can click the phone number to place a phone call
+			6) User can click the address to open Google Maps
+			7) User can click the email address to open an email app.
+			8) User closes the browser.
  */
     BasePage basePage = new BasePage();
     Actions actions = new Actions(Driver.getDriver());
@@ -55,14 +55,11 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
     @Test
     public void TC_08_02_footerContactDisplayAndClick() {
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(basePage.footerContact.isDisplayed());
+        Assert.assertTrue(basePage.footerContact.isDisplayed());
 
-        softAssert.assertTrue(basePage.footerAddress.isEnabled(), "Address is linked");
-        softAssert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
-        softAssert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
-
-        softAssert.assertAll();
+        Assert.assertTrue(basePage.footerAddress.isEnabled(), "Address is linked");
+        Assert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
+        Assert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
 
     }
 }

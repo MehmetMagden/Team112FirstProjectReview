@@ -14,6 +14,14 @@ public class UserDashboardPage {
     @FindBy(linkText = "Payment History")
     public WebElement paymentHistory;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[3]/form[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")
+
+    @FindBy(xpath = "//iframe[@title='PayPal']")                   //iframe[@aria-hidden='true']
+    public WebElement iFrame;
+
+    @FindBy(xpath = "//input[@id='card_number']")               // @FindBy(xpath = "//input[@autocompletetype='cc-number']")
     public WebElement creditCard;
+
+
+
+
 }
