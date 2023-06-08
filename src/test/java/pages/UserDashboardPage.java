@@ -18,7 +18,8 @@ public class UserDashboardPage {
     @FindBy(xpath = "//iframe[@title='PayPal']")                   //iframe[@aria-hidden='true']
     public WebElement iFrame;
 
-    @FindBy(xpath = "//input[@id='card_number']")               // @FindBy(xpath = "//input[@autocompletetype='cc-number']")
+    @FindBy(xpath = "//input[@id='card_number']")
+ //   @FindBy(xpath = "//input[@x-autocompletetype='cc-number']")
     public WebElement creditCard;
 
 
