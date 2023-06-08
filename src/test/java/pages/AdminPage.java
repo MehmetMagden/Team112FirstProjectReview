@@ -16,6 +16,8 @@ public class AdminPage {
 
 
 
+
+
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
