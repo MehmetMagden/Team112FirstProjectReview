@@ -36,24 +36,30 @@ public class US_030 {
         String actualTitle = Driver.getDriver().getTitle();
         Assert.assertEquals(expectedTitle, actualTitle);
 
-        //adminPage.adminDestinationsTab.click();
-        //adminPage.addAdminDestinations.click();
+        adminPage.adminDestinationsTab.click();
+        adminPage.addAdminDestinations.click();
 
-        //adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
+        adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
         actions.sendKeys("Slug"+ Keys.TAB)
                .sendKeys("Heading"+ Keys.TAB)
-               .sendKeys("Short Description"+ Keys.TAB)
+               .sendKeys("Short Description"+ Keys.TAB);
+
+        adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
+        actions.sendKeys("hey"+ Keys.TAB)
+               .sendKeys("now"+ Keys.TAB)
+               .sendKeys("get up"+ Keys.TAB)
+
                .sendKeys("Package Heading"+ Keys.TAB)
                .sendKeys("Package Subheading"+ Keys.TAB)
                .sendKeys("Detail Heading"+ Keys.TAB)
                .sendKeys("Detail Subheading"+ Keys.TAB)
                .sendKeys().perform();
 
-        //WebElement uploadPhoto = adminPage.addDestinationsUploadImage;
+        WebElement uploadPhoto = adminPage.addDestinationsUploadImage;
         String filePath = System.getProperty("user.home")+"\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
-        //uploadPhoto.sendKeys(filePath);
+        uploadPhoto.sendKeys(filePath);
 
-        //adminPage.destinationsSubmitButton.click();
+        adminPage.destinationsSubmitButton.click();
 
         String expectedWarningMessage = "Destination is added successfully!";
         String addDestinationsSubmitMessage = adminPage.warningMessage.getText();
@@ -62,10 +68,10 @@ public class US_030 {
         js.executeScript("window.scrollBy(0,10000)");
         adminPage.editDestinationButton.click();
 
-       // adminPage.addDestinationsName.clear();
-        //adminPage.addDestinationsName.sendKeys("Bolu Abant"+Keys.TAB);
+       adminPage.addDestinationsName.clear();
+        adminPage.addDestinationsName.sendKeys("Bolu Abant"+Keys.TAB);
         js.executeScript("window.scrollBy(0,10000)");
-       // adminPage.destinationsSubmitButton.click();
+       adminPage.destinationsSubmitButton.click();
 
 
         String expectedWarningMessage2 = "Destination is updated successfully!";
