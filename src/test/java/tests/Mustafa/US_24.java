@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -84,14 +85,12 @@ TC_24_02	I can navigate to Packages page and select a package.
         loginPage.loginPageLoginButton2.click();
         loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
         loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        ReusableMethods.waitFor(2);
         loginPage.loginPageLoginButton.click();
 
         packagesPage.packagesHeaderLink2.click(); // navigate to Packages page.
 
         ReusableMethods.waitFor(1);
         basePage.acceptCookies();
-        ReusableMethods.waitFor(2);
 
         jse.executeScript("window.scrollBy(0,550)");   // Sonunda bu calisti!
         ReusableMethods.waitFor(1);
@@ -101,58 +100,31 @@ TC_24_02	I can navigate to Packages page and select a package.
         WebElement totalPersonsDropDown = Driver.getDriver().findElement(By.xpath("//select[@id='numberPerson']"));
         Select select = new Select(totalPersonsDropDown);
         select.selectByValue("2");
-        ReusableMethods.waitFor(1);
 
         WebElement bookYourSeatButton = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-info btn-lg']"));
         bookYourSeatButton.click();
-        ReusableMethods.waitFor(1);
-
-        String firstWH = Driver.getDriver().getWindowHandle();
 
         WebElement payButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
         payButton.click();
-        ReusableMethods.waitFor(1);
 
-        /*
-        userDashboardPage.creditCard.sendKeys("4242424242424242");
+        Driver.getDriver().switchTo().frame("stripe_checkout_app");
+        ReusableMethods.waitForVisibility(userDashboardPage.creditCard,7);
+        jse.executeScript("arguments[1].value = arguments[0]; ", ConfigReader.getProperty("creditCardNumber"), userDashboardPage.creditCard);
+        userDashboardPage.creditCard.sendKeys(ConfigReader.getProperty("creditCardNumber"));
 
-        String creditCardNumber = "4242424242424242"; // Replace with your actual credit card number
-        String script = "arguments[0].value='" + creditCardNumber + "';";
-        ((JavascriptExecutor) Driver.getDriver()).executeScript(script, userDashboardPage.creditCard);
+        actions.sendKeys(Keys.TAB + ConfigReader.getProperty("expiryDate"))
+                .sendKeys((Keys.TAB + ConfigReader.getProperty("CVC")))
+                .sendKeys(Keys.TAB)
+                .sendKeys(Keys.ENTER)
+                .perform();
 
-        Driver.getDriver().switchTo().frame(userDashboardPage.iFrame);
+    //  Driver.getDriver().switchTo().defaultContent();
 
-                Set<String> allWHValues = Driver.getDriver().getWindowHandles();
-
-                String secondPageWHV="";
-                for (String eachWHV: allWHValues
-                ) {
-                    if (!eachWHV.equals(firstWH)) {
-                        secondPageWHV = eachWHV;
-                    }
-                }
-
-        Driver.getDriver().switchTo().window(secondPageWHV);
-
-                JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-                js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", userDashboardPage.creditCard);
-                userDashboardPage.creditCard.getAttribute("4242424242424242");
-
-                actions.
-                        sendKeys(userDashboardPage.creditCard, ConfigReader.getProperty("creditCardNumber"))
-                       .sendKeys(Keys.TAB)
-                       .sendKeys("1224")
-                       .sendKeys(Keys.TAB)
-                       .sendKeys("111")
-                       .sendKeys(Keys.TAB)
-                       .sendKeys(Keys.ENTER)
-                       .perform();
-
-        Driver.getDriver().switchTo().defaultContent();
-*/
-        String actualMessage = adminPage.warningMessage.getText();
+        String actualMessage = adminPage.warningMessage.getText(); // Chrome's Save Card prompt ruins the test!!
         String expectedMessage = "Payment is successful!";
         Assert.assertEquals(actualMessage, expectedMessage);
+
+
 
     }
 }

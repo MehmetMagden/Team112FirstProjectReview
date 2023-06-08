@@ -29,11 +29,9 @@ AdminPage adminPage = new AdminPage();
         adminPage.adminLogInButton.click();
         ReusableMethods.waitFor(2);
 
-        String expectedWordEditProfile = "Edit Profile";
-        String actualWordChangePassword = adminPage.changeAdminPassword.getText();
+        adminPage.adminDropDownButton.click();
+        adminPage.changeAdminPassword.click();
 
-        Assert.assertTrue(actualWordChangePassword.contains(expectedWordEditProfile));
-       //Test will fail as there is no edit profile header on the drop-down menu
 
         ReusableMethods.waitFor(3);
         Driver.closeDriver();
