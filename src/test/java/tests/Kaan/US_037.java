@@ -7,9 +7,10 @@ import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
 
-public class US_037 {
+public class US_037  extends TestBaseRapor {
 
    /*
 After logging in as an admin,
@@ -20,6 +21,8 @@ AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
     @Test
     public void adminAccountProfileSettingsTest (){
+        extentTest = extentReports.createTest("TC37", "User Navigates To Edit Password");
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
@@ -30,7 +33,12 @@ AdminPage adminPage = new AdminPage();
         ReusableMethods.waitFor(2);
 
         adminPage.adminDropDownButton.click();
-        adminPage.changeAdminPassword.click();
+
+        String expectedWordEditProfile = "Edit Profile";
+        String actualWordChangePassword = adminPage.changeAdminPassword.getText();
+        Assert.assertEquals(actualWordChangePassword,expectedWordEditProfile);
+        extentTest.fail("When user clicks the drop down there is no access to the Edit profile header");
+
 
 
         ReusableMethods.waitFor(3);
