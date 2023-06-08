@@ -85,7 +85,10 @@ public class HomePage {
     @FindBy(xpath = "//h2[text()='Our Services']")
     public WebElement ourServicesTitleTextOnHomePage;
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[1]")
+    @FindBy(xpath = "//p[text()='Our team always provides quality services to our valuable clients']")
+    public WebElement textUnderOurServicesTitleOnHomepage;
+
+    @FindBy(xpath = "(//div[@class='row'])[10]")//  --(//div[@class='main-headline'])[1]
     public WebElement ourServicesAreaOnHomepage;
 
     @FindBy(xpath = "//a[@href='https://qa.tripandway.com/service/international-tour']")
@@ -167,7 +170,7 @@ public class HomePage {
     //TEAM MEMBERS ON HOMEPAGE
 
     //Zara Williams
-    @FindBy(xpath = "(//div[@class='main-headline'])[4]")
+    @FindBy(xpath = "//div[@class='team-area bg-area pt_80 pb_80']")
     public WebElement teamMembersAreaOnHomepage;
 
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[6]")
@@ -252,8 +255,8 @@ public class HomePage {
     //=============================TESTİMONIAL ON HOMEPAGE===================================
 
 
-    @FindBy(xpath = "//h2[text()='Testimonial']")
-    public WebElement testimonialTextHomePage;
+    @FindBy(xpath = "(//div[@class='container wow fadeIn'])[6]")
+    public WebElement testimonialAreaHomePage;
 
     @FindBy(xpath = "//p[text()='Our happy clients always recommend our travel agency']")
     public WebElement textUnderTheTestimonial;
@@ -285,8 +288,8 @@ public class HomePage {
     //================================LATEST BLOG==========================================
 
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[5]")
-    public WebElement latestBlogAreaText;
+    @FindBy(xpath = "(//div[@class='blog-area pt_80 pb_80'])[1]")
+    public WebElement latestBlogArea;
 
     @FindBy(xpath = "(//i[@class='fas fa-angle-right'])[3]")
     public WebElement sliderRightSideUnderTheLatestBlogOnHomePage;
@@ -337,8 +340,8 @@ public class HomePage {
     public WebElement ourClientAreaOnHomePage;
 //========================================================================================================
     //===============================NEWSLETTER ON HOMEPAGE===========================================
-    @FindBy(xpath = "(//div[@class='col'])[1]")
-    public WebElement newsLetterAreaTextOnHomepage;
+    @FindBy(xpath = "//div[@class='newsletter-bg']")
+    public WebElement newsLetterAreaOnHomepage;
 
     @FindBy(xpath = "(//input[@placeholder='Email Address'])[1]")
     public WebElement emailBoxUnderTheNewsLetterOnHomepage;
@@ -346,10 +349,19 @@ public class HomePage {
     @FindBy(xpath = "(//input[@value='Submit'])[1]")
     public WebElement submitButtonUnderTheNewsLetterOnHomepage;
 
+//===============Homepage Hero Area Centre Point=================
+
+    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+    public WebElement centreSliderInHeroArea;
 
 
+//=====================Elements Of Destinations================
+    @FindBy(xpath = "//div[@class='row mt_10']")
+    public WebElement elementsOfDestionationsOnHomePage;
+    //================================================
 
-
+    @FindBy(xpath = "(//div[@class='slider-item'])[3]")
+    public WebElement heroAreaOnHomePage;
    
 
 
