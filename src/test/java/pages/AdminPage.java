@@ -195,7 +195,21 @@ public class AdminPage {
     @FindBy(xpath = "//div[@class='toast-message']")
     public WebElement categoriesDeletedSuccessfulAlert;
 
-    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
      public WebElement editDestinationButton;
+
+    @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
+    public WebElement adminDestinationsTab;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addAdminDestinations;
+
+    @FindBy(xpath = "(//input[@name='d_name'])[1]")
+    public WebElement addDestinationsName;
+
+    @FindBy (xpath = "//input[@name='d_photo']")
+    public WebElement addDestinationsUploadImage;
+    @FindBy (xpath = "//button[@type='submit']")
+    public WebElement destinationsSubmitButton;
 }
 
