@@ -40,9 +40,9 @@ public class US_030 {
         adminPage.addAdminDestinations.click();
 
         adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
-        actions.sendKeys("Slug"+ Keys.TAB)
-               .sendKeys("Heading"+ Keys.TAB)
-               .sendKeys("Short Description"+ Keys.TAB)
+        actions.sendKeys("hey"+ Keys.TAB)
+               .sendKeys("now"+ Keys.TAB)
+               .sendKeys("get up"+ Keys.TAB)
                .sendKeys("Package Heading"+ Keys.TAB)
                .sendKeys("Package Subheading"+ Keys.TAB)
                .sendKeys("Detail Heading"+ Keys.TAB)
