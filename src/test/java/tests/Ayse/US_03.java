@@ -91,6 +91,7 @@ public class US_03 {
         ReusableMethods.waitFor(5);
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
+        ReusableMethods.waitFor(2);
 
     }
 
@@ -258,7 +259,7 @@ public class US_03 {
     @Test//User should be able to click the functions about hero area in the body section of the Homepage
     public void userClickTheFunctionsAboutHeroArea() {
         setUpTest(homePage.heroAreaOnHomePage);
-        ReusableMethods.waitFor(10);
+       isClickableElementsInHeroSection();
 
         //2)User sould click read more button under the Salina Island area in hero section on the homepage
         //3)User sould click read more button under the The World Is Beatiful Area in hero section on the homepage
@@ -268,9 +269,13 @@ public class US_03 {
         //7)User should close the page
 
     }
-    public void isClickableEelementsInHeroSection(WebElement clickableElement,WebElement readMoreButton, String url){
+    public void isClickableElementsInHeroSection(WebElement clickableElement,WebElement readMoreButton, String url){
         clickableElement.click();
         ReusableMethods.waitFor(2);
+        String expectedUrl=url;
+        String actualUrl=Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(actualUrl.equals(expectedUrl));
+        Driver.getDriver().navigate().back();
 
 
     }

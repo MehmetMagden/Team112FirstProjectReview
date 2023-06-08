@@ -78,6 +78,9 @@ public class HomePage {
    @FindBy(xpath = "(//div[@class='owl-next'])[1]")
     public WebElement sliderOnRightSideOfHeroArea;
 
+   @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+   public WebElement firstIndicatorInHeroSection;
+
 
 //=============================================================================================
     //======================OUR SERVICES========================
