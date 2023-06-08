@@ -86,6 +86,83 @@ public class AdminPage {
     @FindBy (xpath = "//a[text()='Send Email to Subscribers']")
     public WebElement sendEmailToSubcribersButton;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
@@ -94,8 +171,9 @@ public class AdminPage {
 
     @FindBy(className= "dropdown-item")
     public WebElement changeAdminPassword;
-    @FindBy(xpath = "m-0 mt-2 font-weight-bold text-primary")
-    public WebElement editAdminProfile;
+
+    @FindBy (xpath = "//a[text()='Logout'")
+    public WebElement adminLogoutButton;
 
 
 
@@ -170,8 +248,7 @@ public class AdminPage {
     @FindBy(xpath = "(//i[@class='fas fa-edit'])[10]")
      public WebElement editDestinationButton;
 
-    @FindBy(className= "toast-message")
-    public WebElement destinationAddedSuccessfully;
+
 
 
     }
