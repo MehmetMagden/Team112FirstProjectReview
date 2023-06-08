@@ -211,5 +211,10 @@ public class AdminPage {
 
     @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
      public WebElement editDestinationButton;
+
+
+
+
+
 }
 
