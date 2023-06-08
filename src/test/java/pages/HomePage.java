@@ -167,7 +167,7 @@ public class HomePage {
     //TEAM MEMBERS ON HOMEPAGE
 
     //Zara Williams
-    @FindBy(xpath = "(//div[@class='main-headline'])[4]")
+    @FindBy(xpath = "//div[@class='team-area bg-area pt_80 pb_80']")
     public WebElement teamMembersAreaOnHomepage;
 
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[6]")
@@ -252,8 +252,8 @@ public class HomePage {
     //=============================TESTİMONIAL ON HOMEPAGE===================================
 
 
-    @FindBy(xpath = "//h2[text()='Testimonial']")
-    public WebElement testimonialTextHomePage;
+    @FindBy(xpath = "(//div[@class='container wow fadeIn'])[6]")
+    public WebElement testimonialAreaHomePage;
 
     @FindBy(xpath = "//p[text()='Our happy clients always recommend our travel agency']")
     public WebElement textUnderTheTestimonial;
@@ -352,7 +352,9 @@ public class HomePage {
     public WebElement centreSliderInHeroArea;
 
 
-
+//=====================Elements Of Destinations================
+    @FindBy(xpath = "//div[@class='row mt_10']")
+    public WebElement elementsOfDestionationsOnHomePage;
    
 
 
