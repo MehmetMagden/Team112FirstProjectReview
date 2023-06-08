@@ -143,7 +143,17 @@ public class AdminPage {
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
+   @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addPackagesSubmitButton;
 
+    @FindBy(className = "toast-message")
+    public WebElement addPackagesSubmitWarningMessage;
+
+    @FindBy (xpath = "//input[@name='seo_title']")
+    public WebElement getAddPackagesTitle;
+
+    @FindBy (xpath = "//input[@name='p_price']")
+    public WebElement addPackagesPriceTab;
 
     }
 

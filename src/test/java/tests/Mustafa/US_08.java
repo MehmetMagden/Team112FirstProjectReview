@@ -58,11 +58,11 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(basePage.footerContact.isDisplayed());
 
-        softAssert.assertTrue(basePage.footerAddress.isEnabled(), "Address is linked");
-        softAssert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
-        softAssert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
+        Assert.assertTrue(basePage.footerAddress.isEnabled(), "Address is linked");
+        Assert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
+        Assert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
 
-        softAssert.assertAll();
+        softAssert.assertAll(); // manuel olarak kontrol edip, raporlanacak.
 
     }
 }

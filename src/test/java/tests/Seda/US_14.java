@@ -24,18 +24,17 @@ public class US_14 extends TestBaseRapor {
     BasePage basePage = new BasePage();
     Actions actions = new Actions(Driver.getDriver());
 
-    @BeforeMethod
-    public void setUp() {
+
+    @Test
+    public void TC14_01_packagesPageIsActiveVisiable () {
+
+        packagesPage = new PackagesPage();
+        basePage = new BasePage();
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         packagesPage.packagesHeaderLink.click();
         basePage.acceptCookiesButton.click();
-        ReusableMethods.waitFor(5);
-    }
-
-
-
-    @Test
-    public void TC14_packagesPageIsActiveVisiable() {
+        ReusableMethods.waitFor(2);
 
         extentTest = extentReports.createTest("TC14", "User Navigates To Packages Page");
         String expectedBanner = "PACKAGES";
@@ -49,10 +48,20 @@ public class US_14 extends TestBaseRapor {
     }
 
     @Test
-    public void TC14_01_theFirstPackagesFeaturesTest() {
+    public void TC14_02_theFirstPackagesFeaturesTest() {
+
+        packagesPage = new PackagesPage();
+        actions = new Actions(Driver.getDriver());
+        //basePage = new BasePage();
+
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        //basePage.acceptCookiesButton.click();
+        packagesPage.packagesHeaderLink.click();
+        ReusableMethods.waitFor(2);
 
         extentTest = extentReports.createTest("TC14_01", "User Navigates To The First Packages");
 
+        packagesPage.theFirstPackagesWebElement.click();
         String expectedBannerText = "3 DAYS IN BUENOS AIRES";
         String actualBannerText = packagesPage.theFirstPackageBannerText.getText();
         Assert.assertTrue(actualBannerText.contains(expectedBannerText));
@@ -66,9 +75,5 @@ public class US_14 extends TestBaseRapor {
 
     }
 
-    @AfterMethod
-    public void tearDown() {
 
-        Driver.quitDriver();
-    }
 }
