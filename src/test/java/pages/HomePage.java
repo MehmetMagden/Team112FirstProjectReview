@@ -85,7 +85,7 @@ public class HomePage {
     @FindBy(xpath = "//h2[text()='Our Services']")
     public WebElement ourServicesTitleTextOnHomePage;
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[1]")
+    @FindBy(xpath = "(//div[@class='row'])[10]")//  --(//div[@class='main-headline'])[1]
     public WebElement ourServicesAreaOnHomepage;
 
     @FindBy(xpath = "//a[@href='https://qa.tripandway.com/service/international-tour']")
@@ -346,7 +346,10 @@ public class HomePage {
     @FindBy(xpath = "(//input[@value='Submit'])[1]")
     public WebElement submitButtonUnderTheNewsLetterOnHomepage;
 
+//===============Homepage Hero Area Centre Point=================
 
+    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+    public WebElement centreSliderInHeroArea;
 
 
 
