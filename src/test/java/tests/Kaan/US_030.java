@@ -46,7 +46,7 @@ public class US_030 {
                .sendKeys().perform();
 
         WebElement uploadPhoto = adminPage.addDestinationsUploadImage;
-        String filePath = System.getProperty("user.home")+"\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
+        String filePath = System.getProperty("user.home")+"\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         uploadPhoto.sendKeys(filePath);
 
         adminPage.destinationsSubmitButton.click();
