@@ -202,6 +202,10 @@ public class AdminPage {
     @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
      public WebElement editDestinationButton;
 
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement addCategoryWithoutNameAlertMEssage;
+
     @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
     public WebElement adminDestinationsTab;
 
@@ -215,5 +219,6 @@ public class AdminPage {
     public WebElement addDestinationsUploadImage;
     @FindBy (xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
+
 }
 
