@@ -14,18 +14,16 @@ public class US_013 extends TestBaseRapor {
 
     @Test()
     public void TC1301userNavigatesAndVerifiesToDestinationPage() {
-        testMethods.TC1301userNavigatesAndVerifiesToDestinationPage();
+
+        testMethods.userNavigatesAndVerifiesToDestinationPage();
+
     }
-
-
-
-   // @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
-
-
-   // @Test()
-        @Test(dependsOnMethods = {"TC1301userNavigatesToDestinationPage"})
+    @Test()
 
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
-        testMethods.TC1302userVerifiesDestinationPageVisibleAndActive();
+
+        testMethods.userNavigatesAndVerifiesToDestinationPage();
+        testMethods.userVerifiesDestinationPageVisibleAndActive();
+
     }
 }

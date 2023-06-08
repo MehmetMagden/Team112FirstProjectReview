@@ -1,6 +1,8 @@
 package tests.Seda;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.javafaker.Faker;
+import com.sun.source.tree.AssertTree;
 import org.checkerframework.checker.units.qual.A;
 import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,7 +14,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -22,6 +26,7 @@ import utilities.TestBaseRapor;
 import java.awt.dnd.DragGestureEvent;
 import java.security.Key;
 import java.time.Duration;
+
 
 public class US_31 {
 
@@ -53,24 +58,22 @@ public class US_31 {
         adminPage.adminPagePackagesTab.click();
         adminPage.addPackages.click();
 
-        adminPage.addPackagesFirstTab.sendKeys("Name" + Keys.TAB);
-        actions.sendKeys("Slug" + Keys.TAB).perform();
+       actions.sendKeys(adminPage.addPackagesFirstTab, "Name" + Keys.TAB)
+              .sendKeys("Slug" + Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
         //String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
-        String filePath = System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
+        String filePath = System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
 
-
-        adminPage.addPackagesDescription.sendKeys("Description");
-        actions.sendKeys("Short Description" + Keys.TAB)
+        actions.sendKeys(adminPage.addPackagesDescription, "Description")
+                .sendKeys("Short Description" + Keys.TAB)
                 .sendKeys("Location" + Keys.TAB)
-                .sendKeys("Deneme" + Keys.TAB)
-                .sendKeys().perform();
+                .sendKeys("Deneme" + Keys.TAB).perform();
 
         ReusableMethods.waitFor(2);
 
-        actions.sendKeys("12345678" + Keys.TAB).perform();
+        actions.sendKeys("2023/06/28" + Keys.TAB).perform();
         ReusableMethods.waitFor(2);
         actions.sendKeys("2023/07/28" + Keys.TAB).perform();
         ReusableMethods.waitFor(2);
@@ -79,8 +82,7 @@ public class US_31 {
                 .sendKeys("Itinerary" + Keys.TAB)
                 .sendKeys("Price" + Keys.TAB)
                 .sendKeys("Policy" + Keys.TAB)
-                .sendKeys("Terms" + Keys.TAB)
-                .sendKeys().perform();
+                .sendKeys("Terms" + Keys.TAB).perform();
 
         WebElement isFeatured = adminPage.addPackagesIsFeatured;
         Select selectFeatured = new Select(isFeatured);
@@ -92,15 +94,14 @@ public class US_31 {
         ReusableMethods.waitFor(2);
         selectDestination.selectByVisibleText("Istanbul, Turkey");
 
-        adminPage.getAddPackagesTitle.sendKeys("Title");
-        actions.sendKeys("Meta Description" + Keys.TAB);
+        actions.sendKeys(adminPage.getAddPackagesTitle, "Title")
+                .sendKeys("Meta Description" + Keys.TAB).perform();
 
         adminPage.addPackagesSubmitButton.click();
 
-
         String expectedWarningMessage = "Package is added successfully!";
-        String addPackagesSubmitWarningMessage = adminPage.addPackagesSubmitWarningMessage.getText();
-        Assert.assertEquals(addPackagesSubmitWarningMessage, expectedWarningMessage);
+        String submitWarningMessage = adminPage.warningMessage.getText();
+        Assert.assertEquals(submitWarningMessage, expectedWarningMessage);
 
     }
 
@@ -119,7 +120,7 @@ public class US_31 {
         actions.sendKeys("Slug" + Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
-        String filePath = System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\blog_photo.jpg";
+        String filePath = System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
 
         ReusableMethods.waitFor(3);
@@ -133,22 +134,48 @@ public class US_31 {
         actions.sendKeys("2023/05/28" + Keys.TAB).perform();
 
         jse.executeScript("window.scrollBy(0,650)");
-        adminPage.addPackagesPriceTab.sendKeys("ABCDE");
+
+        WebElement priceField =  adminPage.addPackagesPriceTab;
+
+        priceField.sendKeys("ABDCHskh");
+
+        ReusableMethods.waitFor(2);
+
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(priceField.getAttribute("value").matches("\\d+"),
+                "Price field should only contain numeric Value");
 
         adminPage.addPackagesSubmitButton.click();
 
-        String expectedWarningMessage = "Price Format is not Correct!";
+        ReusableMethods.waitFor(2);
+
+        String expectedWarningMessage = "Error Message";
         String actualWarningMessage = adminPage.warningMessage.getText();
-        Assert.assertEquals(actualWarningMessage , expectedWarningMessage, "Non-numeric characters should not be accepted");
+        softAssert.assertEquals(actualWarningMessage , expectedWarningMessage, "Non-numeric characters should not be accepted");
+
+        softAssert.assertAll();
 
     }
 
    @Test
-    public void requiredFieldNegativeTest(){
+    public void editAddedPackagesTest(){
 
+       Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+       adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+       adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
+       adminPage.adminLogInButton.click();
 
+       adminPage.adminPagePackagesTab.click();
+       actions.sendKeys(Keys.END);
+       adminPage.addedPackagesEditing.click();
 
+       adminPage.addPackagesFirstTab.sendKeys(" EditedName");
+       adminPage.addPackagesSubmitButton.click();
+
+       String expectedWarningMessage = "Package is updated successfully!";
+       String submitWarningMessage = adminPage.warningMessage.getText();
+       Assert.assertEquals(submitWarningMessage, expectedWarningMessage);
    }
-
 
 }
