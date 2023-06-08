@@ -12,6 +12,11 @@ public class US_038 {
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
+    /*After logging in as an admin,
+     I should be able to verify that I can access
+     the admin account password change screen to change the password
+     */
+
     @Test
     public void adminAccountChangePasswordTest(){
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
@@ -29,9 +34,10 @@ public class US_038 {
         adminPage.changeAdminPassword.click();
 
         String expectedWordChangePassword = "Edit Profile";
-        String actualWordEditProfile = adminPage.editAdminProfile.getText();
+        String actualWordEditProfile = adminPage.changeAdminPassword.getText();
+        Assert.assertEquals(actualWordEditProfile,expectedWordChangePassword);
 
-        Assert.assertTrue(actualWordEditProfile.contains(actualWordEditProfile));
+        adminPage.changeAdminPassword.click();
 
        //Test will fail as when you click the change password header it takes you to the edit profile section
         ReusableMethods.waitFor(3);

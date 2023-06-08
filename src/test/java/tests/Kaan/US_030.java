@@ -16,8 +16,14 @@ public class US_030 {
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
+
+   /*
+   After logging in as an admin,
+   I should be able to verify that in the Destinations section,
+   I can add a new destination and confirm that the added destination can be edited
+    */
     @Test
-    public void TC_30_01_adminLogin() {
+    public void TC_30_01_adminLoginAddAndEditPackageTest() {
 
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
