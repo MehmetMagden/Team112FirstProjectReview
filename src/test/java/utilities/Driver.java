@@ -16,7 +16,7 @@ public class Driver {
      */
     private Driver() { // SINGLETON PATERN
     }
-    static WebDriver driver;
+   private static WebDriver driver;
     public static WebDriver getDriver() {
         // to get the browser value from configuration.properties file
         String browser = ConfigReader.getProperty("browser"); // chrome
