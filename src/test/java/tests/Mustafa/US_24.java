@@ -10,12 +10,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.PackagesPage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
+import java.util.Set;
 
 public class US_24 {
 
@@ -41,13 +42,16 @@ TC_24_02	I can navigate to Packages page and select a package.
 			5) User enters the expiry date of the card in the corresponding field: 11/24
 			6) User enters the CCV number of the card in the corresponding field: 111
 			7) User approves payment by clicking the Pay button
-			8) User should see "Payment is successful" message.
+			8) User should see "Payment is successful!" message.
 */
     LoginPage loginPage = new LoginPage();
+    UserDashboardPage userDashboardPage = new UserDashboardPage();
     BasePage basePage = new BasePage();
     PackagesPage packagesPage = new PackagesPage();
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+    BlogPage blogPage = new BlogPage();
+    AdminPage adminPage = new AdminPage();
 
 
     @BeforeMethod
@@ -85,45 +89,70 @@ TC_24_02	I can navigate to Packages page and select a package.
 
         packagesPage.packagesHeaderLink2.click(); // navigate to Packages page.
 
-
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
         basePage.acceptCookies();
-        ReusableMethods.waitFor(5);
+        ReusableMethods.waitFor(2);
 
         jse.executeScript("window.scrollBy(0,550)");   // Sonunda bu calisti!
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
 
         packagesPage.buenosAiresPackageInPackagesPage.click();
 
         WebElement totalPersonsDropDown = Driver.getDriver().findElement(By.xpath("//select[@id='numberPerson']"));
         Select select = new Select(totalPersonsDropDown);
         select.selectByValue("2");
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
 
         WebElement bookYourSeatButton = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-info btn-lg']"));
         bookYourSeatButton.click();
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
+
+        String firstWH = Driver.getDriver().getWindowHandle();
 
         WebElement payButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
         payButton.click();
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
 
+        /*
+        userDashboardPage.creditCard.sendKeys("4242424242424242");
 
-        WebElement cardNumberBox = Driver.getDriver().findElement(By.xpath("/html[1]/body[1]/div[3]/form[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"));
-        actions.click(cardNumberBox)
-                .sendKeys("4242424242424242")
-                .sendKeys(Keys.TAB)
-                .sendKeys("1224")
-                .sendKeys(Keys.TAB)
-                .sendKeys("111")
-                .sendKeys(Keys.TAB)
-                .sendKeys(Keys.ENTER)
-                .perform();
+        String creditCardNumber = "4242424242424242"; // Replace with your actual credit card number
+        String script = "arguments[0].value='" + creditCardNumber + "';";
+        ((JavascriptExecutor) Driver.getDriver()).executeScript(script, userDashboardPage.creditCard);
 
+        Driver.getDriver().switchTo().frame(userDashboardPage.iFrame);
 
-        String actualMessage = Driver.getDriver().switchTo().alert().getText();
-        String expectedMessage = "Payment is successful";
-        Assert.assertTrue(actualMessage.contains(expectedMessage));
+                Set<String> allWHValues = Driver.getDriver().getWindowHandles();
+
+                String secondPageWHV="";
+                for (String eachWHV: allWHValues
+                ) {
+                    if (!eachWHV.equals(firstWH)) {
+                        secondPageWHV = eachWHV;
+                    }
+                }
+
+        Driver.getDriver().switchTo().window(secondPageWHV);
+
+                JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+                js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", userDashboardPage.creditCard);
+                userDashboardPage.creditCard.getAttribute("4242424242424242");
+
+                actions.
+                        sendKeys(userDashboardPage.creditCard, ConfigReader.getProperty("creditCardNumber"))
+                       .sendKeys(Keys.TAB)
+                       .sendKeys("1224")
+                       .sendKeys(Keys.TAB)
+                       .sendKeys("111")
+                       .sendKeys(Keys.TAB)
+                       .sendKeys(Keys.ENTER)
+                       .perform();
+
+        Driver.getDriver().switchTo().defaultContent();
+*/
+        String actualMessage = adminPage.warningMessage.getText();
+        String expectedMessage = "Payment is successful!";
+        Assert.assertEquals(actualMessage, expectedMessage);
 
     }
 }

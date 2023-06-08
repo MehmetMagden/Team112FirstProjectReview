@@ -1,17 +1,14 @@
 package tests.Mustafa;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BasePage;
-import pages.DashboardPage;
+import pages.UserDashboardPage;
 import pages.LoginPage;
-import pages.PackagesPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -31,7 +28,7 @@ TC_25_02	I should be able to navigate to "Payment History" page and see my lates
 
     LoginPage loginPage = new LoginPage();
     BasePage basePage = new BasePage();
-    DashboardPage dashboardPage = new DashboardPage();
+    UserDashboardPage userDashboardPage = new UserDashboardPage();
 
     @BeforeMethod
     public void setUp() {
@@ -53,7 +50,7 @@ TC_25_02	I should be able to navigate to "Payment History" page and see my lates
         ReusableMethods.waitFor(2);
         loginPage.loginPageLoginButton.click();
 
-        dashboardPage.paymentHistory.click();
+        userDashboardPage.paymentHistory.click();
 
         WebElement bangkokPackageVisibility = Driver.getDriver().findElement(By.xpath("//tbody/tr[2]/td[6]"));
         String actualText = bangkokPackageVisibility.getText();
