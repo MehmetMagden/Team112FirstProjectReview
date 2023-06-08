@@ -102,6 +102,8 @@ public class US_03 {
         basePage.acceptCookiesButton.click();
 
         List<WebElement> listOfOurServicesWebElement = new ArrayList<>();
+        listOfOurServicesWebElement.add(homePage.ourServicesTitleTextOnHomePage);
+        listOfOurServicesWebElement.add(homePage.textUnderOurServicesTitleOnHomepage);
         listOfOurServicesWebElement.add(homePage.ourServicesAreaOnHomepage);
         listOfOurServicesWebElement.add(homePage.internationalTourElementOnHomePage);
         listOfOurServicesWebElement.add(homePage.adventureTourElementOnHomePage);
@@ -256,7 +258,7 @@ public class US_03 {
     @Test//User should be able to click the functions about hero area in the body section of the Homepage
     public void userClickTheFunctionsAboutHeroArea() {
         setUpTest(homePage.heroAreaOnHomePage);
-        ReusableMethods.waitFor(9);
+        ReusableMethods.waitFor(10);
 
         //2)User sould click read more button under the Salina Island area in hero section on the homepage
         //3)User sould click read more button under the The World Is Beatiful Area in hero section on the homepage
@@ -264,6 +266,12 @@ public class US_03 {
         //5)User should click the slider on the right side of hero section on the homepage.
         //6)User should click the slider on the left side of hero section on the homepage
         //7)User should close the page
+
+    }
+    public void isClickableEelementsInHeroSection(WebElement clickableElement,WebElement readMoreButton, String url){
+        clickableElement.click();
+        ReusableMethods.waitFor(2);
+
 
     }
 

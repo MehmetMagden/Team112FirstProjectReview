@@ -112,6 +112,12 @@ public class HomePage {
 
     //================================FEATURED PACKAGES======================================
 
+    @FindBy(xpath = "//h2[text()='FEATURED PACKAGES']")
+    public WebElement titleOfFeaturedPackagesOnHomePage;
+
+    @FindBy(xpath = "//p[text()='All our featured tour packages are given below']")
+    public WebElement textUnderFeaturedPackagesTitleOnHomePage;
+
     @FindBy(xpath = "(//div[@class='main-headline'])[2]")
     public WebElement featuredAreaOnHomePage;
 
