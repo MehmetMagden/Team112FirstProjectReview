@@ -167,6 +167,12 @@ public class AdminPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
 
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[10]")
+     public WebElement editDestinationButton;
+
+    @FindBy(className= "toast-message")
+    public WebElement destinationAddedSuccessfully;
+
 
     }
 
