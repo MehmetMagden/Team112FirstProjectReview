@@ -89,6 +89,16 @@ public class AdminPage {
     @FindBy (xpath = "(//div[@class='row dashboard-page'])[1]")
     public WebElement adminDashboardVisibility;
 
+    @FindBy(id ="userDropdown")
+    public WebElement adminDropDownButton;
+
+    @FindBy(className= "dropdown-item")
+    public WebElement changeAdminPassword;
+    @FindBy(xpath = "m-0 mt-2 font-weight-bold text-primary")
+    public WebElement editAdminProfile;
+
+
+
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
 
@@ -143,6 +153,19 @@ public class AdminPage {
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
+    @FindBy(xpath = "(//span[normalize-space()='Destinations'])[1]")
+    public WebElement adminDestinationsTab;
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addAdminDestinations;
+
+    @FindBy (xpath = "(//input[@name='d_name'])[1]")
+    public WebElement addDestinationsName;
+
+    @FindBy (xpath = "//input[@name='d_photo']")
+    public WebElement addDestinationsUploadImage;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement destinationsSubmitButton;
 
 
     }
