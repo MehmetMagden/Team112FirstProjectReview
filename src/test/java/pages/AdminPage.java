@@ -143,7 +143,55 @@ public class AdminPage {
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
+    @FindBy(xpath = "//*[text()='Blog Section']")
+    public WebElement adminPanelBlogSectionButton;
+
+    @FindBy(xpath = "//*[text()='Categories']")
+    public WebElement adminPanelBlogSectionCategoriesButton;
 
 
-    }
+    @FindBy(xpath = "//*[text()=' Add New']")
+    public WebElement blogSectionCategoriesAddNewButton;
+
+
+    @FindBy(xpath = "//input[@name='category_name']")
+    public WebElement addCategoryNameBox;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addCategorySubmitButton;
+
+
+    @FindBy(xpath = "//div[@id='toast-container']")
+    public WebElement addCategorySuccessfulAlert;
+
+
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement categoriesSearchBox;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[1]")
+    public WebElement categoriesActionEditButton;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[2]")
+    public WebElement categoriesActionDeleteButton;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement editCategoryUpdateButton;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement editCategorySuccessfulAlert;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement categoriesDeletedSuccessfulAlert;
+
+
+
+
+
+}
 
