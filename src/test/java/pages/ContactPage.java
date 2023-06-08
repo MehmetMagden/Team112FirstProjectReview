@@ -31,22 +31,21 @@ public class ContactPage {
     public  WebElement submitButton;
 
     @FindBy(xpath = "//button[@class='btn btn-primary']")
-    public  WebElement getSubmitButton2;
+    public  WebElement SubmitButton2;
 
-    @FindBy(xpath = "//button[@class='wpcc-btn']")  //MSezgin 2ndCookies
-    public WebElement acceptButtonContactPage;
-
-    @FindBy(className = "toast.success")
-    public WebElement warningMessage;
+@FindBy(xpath = "(//div[@class='toast-message'])[1]")
+public WebElement nameBoxWarningEmpty;
     @FindBy(xpath = "//input[@title='Your phone number must enter your phone number with the country code and 12 digits and can only contain numbers.']")
-    public WebElement incorrectPhoneNumberMessage;
+    public WebElement incorrectPhoneNumberWarning;
 
-    @FindBy(className = "toastr.success")
-    public WebElement messageSent;
+    @FindBy(xpath = "//div[text()='Message can not be empty']")
+    public WebElement messageTextBoxWarning;
+ @FindBy(xpath = "//div[@class='toast-message']")
+ public WebElement messageSuccesfullySent;
 
- //   @FindBy(xpath = "//div[@class='toast-message']")
- //   public WebElement contactUsMessageSuccessfulySentMessage;
 
+    @FindBy(className = "toast-message")
+    public WebElement warningMessage;
 
 //-------Contact Informations---------------//
     @FindBy(xpath = "(//div[@class='contact-text'])[1]")
