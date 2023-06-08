@@ -16,21 +16,22 @@ public abstract class TestBaseRapor {
 
     protected static ExtentReports extentReports; //extent report'
     protected static ExtentTest extentTest; // saves failed or passed, also takes a picture
-    protected static ExtentHtmlReporter extentHtmlReporter; // Html rapor
+    protected static ExtentHtmlReporter extentHtmlReporter; // Html report
 
     // before the TEST
     @BeforeTest(alwaysRun = true) // alwaysRun : .
     public void setUpTest() {
-        extentReports = new ExtentReports(); // Strarts raporting
-        //After rapor is created, you decide where to save it
+
+        extentReports = new ExtentReports(); // Starts reporting
+        //After report is created, you decide where to save it
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
-        String filePath = System.getProperty("user.dir") + "/test-output/Rapor"+date+".html"; // user.dir path of the project
-        //Starts HTML raport and decides the file path
+        String filePath = System.getProperty("user.dir") + "/test-output/Report"+date+".html"; // user.dir path of the project
+        //Starts HTML report and decides the file path
         extentHtmlReporter = new ExtentHtmlReporter(filePath);
         extentReports.attachReporter(extentHtmlReporter);
 
         // We can add all info we want to add
-        extentReports.setSystemInfo("Enviroment","QA");
+        extentReports.setSystemInfo("Environment","QA");
         extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
         extentReports.setSystemInfo("Automation Engineer", "Ibrahim Unal");
         extentHtmlReporter.config().setDocumentTitle("First Test");
@@ -48,15 +49,14 @@ public abstract class TestBaseRapor {
             extentTest.fail(result.getName());
             extentTest.addScreenCaptureFromPath(screenshotLocation);
             extentTest.fail(result.getThrowable());
-        } else if (result.getStatus() == ITestResult.SKIP) { // if skiped
+        } else if (result.getStatus() == ITestResult.SKIP) { // if skipped
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignores
         }
-        Driver.closeDriver();
-
+       Driver.closeDriver();
     }
 
 
-    // To end raporting
+    // To end reporting
     @AfterTest(alwaysRun = true)
     public void tearDownTest() {
 

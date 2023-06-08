@@ -1,9 +1,8 @@
 package tests.Ibrahim;
 
 import org.testng.annotations.Test;
-import utilities.TestBaseRapor;
 
-public class US_013 extends TestBaseRapor {
+public class US_013 extends TestMethods {
 
     /*
     As a user, I should be able to navigate to the "Destination" page.
@@ -15,20 +14,21 @@ public class US_013 extends TestBaseRapor {
     @Test()
     public void TC1301userNavigatesAndVerifiesToDestinationPage() {
 
-
-
-
+        test = extent.createTest("TC_13_01", "User navigates destinations page");
         testMethods.userNavigatesAndVerifiesToDestinationPage();
+        test.pass("User can access Destination page");
 
     }
 
 
-    @Test()
-
+    @Test
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
 
+        test = extent.createTest("TC_13_02", "User verifies if destinations page is visible and active");
         testMethods.userNavigatesAndVerifiesToDestinationPage();
+        test.info("User navigates to Destination page");
         testMethods.userVerifiesDestinationPageVisibleAndActive();
+        test.pass("Verify, if destination page is visible and active");
 
     }
 }
