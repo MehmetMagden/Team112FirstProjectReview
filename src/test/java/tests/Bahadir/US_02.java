@@ -6,17 +6,19 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AboutUsPage;
 import pages.BasePage;
-import pages.HomePage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.TestBaseRapor;
 
-    public class US02 {
+    public class US_02 extends TestBaseRapor {
 
         BasePage homeHeaderMenu = new BasePage();
         AboutUsPage aboutUsPage = new AboutUsPage();
 
         @Test
         public void homeHeaderMenu() {
+
+            extentTest=extentReports.createTest("TC0201","user views homepage");
 
             BasePage homeHeaderMenu = new BasePage();
 
@@ -26,11 +28,12 @@ import utilities.Driver;
             String expectedWordHomeHeaderMenu = "HOME";
             String actualWordHomeHeaderMenu = homeHeaderMenu.homePageHomeButton.getText();
 
+            extentTest.pass("User can see home page");
             Assert.assertTrue(homeHeaderMenu.homePageHomeButton.isDisplayed());
 
 
             homeHeaderMenu.homePageHomeButton.click();
-
+            extentTest.info("Home button on header section  is clickable");
             Assert.assertTrue(homeHeaderMenu.homePageHomeButton.isEnabled());
 
 

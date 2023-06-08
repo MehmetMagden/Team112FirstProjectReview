@@ -1,5 +1,6 @@
 package tests.Kaan;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,7 +21,9 @@ public class US_030 {
     @Test
     public void TC_30_01_adminLogin() {
 
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
         adminPage.adminLogInButton.click();
@@ -47,6 +50,7 @@ public class US_030 {
         uploadPhoto.sendKeys(filePath);
 
         adminPage.destinationsSubmitButton.click();
+        js.executeScript("window.scrollBy(0,10000)");
 
 
 
