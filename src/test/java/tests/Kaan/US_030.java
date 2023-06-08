@@ -4,10 +4,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import utilities.ConfigReader;
@@ -18,8 +16,14 @@ public class US_030 {
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
+
+   /*
+   After logging in as an admin,
+   I should be able to verify that in the Destinations section,
+   I can add a new destination and confirm that the added destination can be edited
+    */
     @Test
-    public void TC_30_01_adminLogin() {
+    public void TC_30_01_adminLoginAddAndEditPackageTest() {
 
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
@@ -50,7 +54,34 @@ public class US_030 {
         uploadPhoto.sendKeys(filePath);
 
         adminPage.destinationsSubmitButton.click();
+
+        String expectedWarningMessage = "Destination is added successfully!";
+        String addDestinationsSubmitMessage = adminPage.warningMessage.getText();
+        Assert.assertEquals(addDestinationsSubmitMessage, expectedWarningMessage);
+
         js.executeScript("window.scrollBy(0,10000)");
+        adminPage.editDestinationButton.click();
+
+        adminPage.addDestinationsName.clear();
+        adminPage.addDestinationsName.sendKeys("Bolu Abant"+Keys.TAB);
+        js.executeScript("window.scrollBy(0,10000)");
+        adminPage.destinationsSubmitButton.click();
+
+
+        String expectedWarningMessage2 = "Destination is updated successfully!";
+        String editDestinationsSubmitMessage = adminPage.warningMessage.getText();
+        Assert.assertEquals(editDestinationsSubmitMessage, expectedWarningMessage2);
+
+        js.executeScript("window.scrollBy(0,10000)");
+        ReusableMethods.waitFor(3);
+        Driver.closeDriver();
+
+
+
+
+
+
+
 
 
 
