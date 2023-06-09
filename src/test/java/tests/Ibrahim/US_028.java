@@ -14,7 +14,6 @@ public class US_028 extends TestMethods {
 
     TestMethods testMethods = new TestMethods();
 
-
     @Test
     public void TC2801userNavigatesAndVerifiesToAdminPage() {
 

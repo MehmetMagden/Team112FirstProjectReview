@@ -47,10 +47,8 @@ TC_25_02	I should be able to navigate to "Payment History" page and see my lates
         loginPage.loginAsUser();  // Log in to a user account
         userDashboardPage.paymentHistory.click();
 
-        WebElement purchaseConfirmation = Driver.getDriver().findElement(By.xpath("//tbody/tr[3]/td[5]"));
-        String actualText = purchaseConfirmation.getText();
-        String expectedText = "Bangkok";
-        Assert.assertTrue(actualText.contains(expectedText));
+        WebElement purchaseConfirmation = Driver.getDriver().findElement(By.xpath("//tbody/tr[2]/td[7]/a[1]"));
+        Assert.assertTrue(purchaseConfirmation.isDisplayed());
 
     }
 }

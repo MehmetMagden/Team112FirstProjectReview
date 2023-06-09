@@ -8,17 +8,15 @@ import pages.BasePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
-import utilities.TestBaseRapor;
 
-public class US_04 extends TestBaseRapor {
+public class US_05 {
+
 
     BasePage footerSection = new BasePage();
 
 
     @Test
-    public void visibilityOfFeaturedPackagesSectionInTheFooter () {
-
-
+    public void visibilityOfLatestPackagesSectionInTheFooter() {
 
         BasePage footerSection = new BasePage();
 
@@ -29,19 +27,17 @@ public class US_04 extends TestBaseRapor {
         js.executeScript("window.scrollBy(0,10000)");
         ReusableMethods.waitFor(2);
 
-
-
-        Assert.assertTrue(footerSection.featuredPackagesInFooter.isDisplayed());
-        Assert.assertTrue(footerSection.threeDaysInBuenosAiresButtonInFooter.isDisplayed());
-        Assert.assertTrue(footerSection.tenDaysInBuenosAiresButtonInFooter.isDisplayed());
-        Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isDisplayed());
-        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isDisplayed());
-        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.latestPackagesInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.testDenemeButtonInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInLatestPackagesInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInLatestPackagesInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.threeDaysInBangkokButtonInLatestPackagesInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.sevenDaysInIstanbulButtonInLatestPackagesInFooter.isDisplayed());
 
     }
 
     @Test
-    public void clickablityOfFeaturedPackagesSectionInTheFooter () {
+    public void clickabilityOfLatestPackagesSectionInTheFooter() {
 
         BasePage footerSection = new BasePage();
 
@@ -52,23 +48,15 @@ public class US_04 extends TestBaseRapor {
         js.executeScript("window.scrollBy(0,10000)");
         ReusableMethods.waitFor(2);
 
-        Assert.assertTrue(footerSection.threeDaysInBuenosAiresButtonInFooter.isEnabled());
-        Assert.assertTrue(footerSection.tenDaysInBuenosAiresButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.latestPackagesInFooter.isEnabled());
+        Assert.assertTrue(footerSection.testDenemeButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInLatestPackagesInFooter.isEnabled());
         Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isEnabled());
         Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.secondFiveDayCaliforniaButtonInLatestPackages.isEnabled());
 
-        // NOTE: isEnabled test passed because of not being visible of 5 Day California. This situation was mentioned in bug report
+
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

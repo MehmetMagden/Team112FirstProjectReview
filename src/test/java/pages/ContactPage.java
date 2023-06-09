@@ -33,7 +33,7 @@ public class ContactPage {
     @FindBy(xpath = "//button[@class='btn btn-primary']")
     public  WebElement SubmitButton2;
 
-@FindBy(xpath = "(//div[@class='toast-message'])[1]")
+@FindBy(className = "('toast-message'")
 public WebElement nameBoxWarningEmpty;
     @FindBy(xpath = "//input[@title='Your phone number must enter your phone number with the country code and 12 digits and can only contain numbers.']")
     public WebElement incorrectPhoneNumberWarning;
@@ -46,6 +46,7 @@ public WebElement nameBoxWarningEmpty;
 
     @FindBy(className = "toast-message")
     public WebElement warningMessage;
+
 
 //-------Contact Informations---------------//
     @FindBy(xpath = "(//div[@class='contact-text'])[1]")

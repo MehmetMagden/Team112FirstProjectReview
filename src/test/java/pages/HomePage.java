@@ -171,6 +171,12 @@ public class HomePage {
 
     //=========================DESTINATION ON HOMEPAGE========================
 
+    @FindBy(xpath = "//h2[text()='Destination']")
+    public WebElement destinationsTitleInDestinationsSectionOnHomepage;
+
+    @FindBy(xpath = "//p[text()='All our awesome destination places of the world you can travel with us']")
+    public WebElement textUnderDestinationsTitleOnHomepage;
+
 
     @FindBy(xpath = "(//div[@class='container wow fadeIn'])[4]")//
     public WebElement destinationAreaOnHomePage;//(//div[@class='main-headline'])[3]
@@ -292,7 +298,7 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[8]")
     public WebElement averyJohnsonTwitterIkon;
 
-    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[8]")
+    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[8]")
     public WebElement averyJohnsonLinkedInIkon;
 
     @FindBy(xpath = "https://qa.tripandway.com/team-member/avery-johnson")
@@ -354,6 +360,11 @@ public class HomePage {
 
     //================================LATEST BLOG==========================================
 
+    @FindBy(xpath = "//h2[text()='Latest Blog']")
+    public WebElement titleOfLatestBlogOnHomepage;
+
+    @FindBy(xpath = "//p[text()='See all the latest blog about our activity from here']")
+    public WebElement textUndertitleOfLatestBlogOnHomepage;
 
     @FindBy(xpath = "(//div[@class='blog-area pt_80 pb_80'])[1]")
     public WebElement latestBlogArea;
@@ -407,6 +418,13 @@ public class HomePage {
     public WebElement ourClientAreaOnHomePage;
 //========================================================================================================
     //===============================NEWSLETTER ON HOMEPAGE===========================================
+
+    @FindBy(xpath = "(//div[@class='col'])[1]")
+    public WebElement titleAndTextAreaOfNewsLetterOnHomepage;
+
+    @FindBy(xpath = "//p[@xpath='1']")
+    public WebElement textUnderTitleOfNewsLetterOnHomepage;
+
     @FindBy(xpath = "//div[@class='newsletter-bg']")
     public WebElement newsLetterAreaOnHomepage;
 
@@ -429,6 +447,12 @@ public class HomePage {
 
     @FindBy(xpath = "(//div[@class='slider-item'])[3]")
     public WebElement heroAreaOnHomePage;
+
+
+    //=====================LatestBlog==================
+    @FindBy(xpath = "(//input[@placeholder='Search Here'])[1]")
+    public WebElement searchHereEachLatestBlog;
+   
 
 
 
