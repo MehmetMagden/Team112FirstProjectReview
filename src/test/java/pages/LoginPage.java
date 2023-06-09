@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.util.logging.XMLFormatter;
@@ -49,8 +50,34 @@ public class LoginPage {
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
 
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement adminLoginEmailAdressTextBox;
 
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement adminLogInPasswordTextBox;
 
+    @FindBy(xpath = "//button[text()='Login']")
+    public WebElement adminLogInButton;
+
+    // METHODS for quick login as a user or as an admin:
+
+    public void loginAsUser() {
+        loginPageLoginButton2.click();
+        String username = ConfigReader.get("userLoginEmailCorrect");
+        String password = ConfigReader.get("userLoginPasswordCorrect");
+        loginPageEmailAddressTextBox.sendKeys(username);
+        loginPagePasswordBox.sendKeys(password);
+        loginPageLoginButton.click();
+    }
+
+    public void loginAsAdmin() {
+        String username = ConfigReader.get("adminLoginEmailValid");
+        String password = ConfigReader.get("adminLoginPasswordValid");
+        adminLoginEmailAdressTextBox.sendKeys(username);
+        adminLogInPasswordTextBox.sendKeys(password);
+        adminLogInButton.click();
+
+    }
 
 
 

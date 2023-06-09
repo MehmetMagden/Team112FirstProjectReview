@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import utilities.ConfigReader;
@@ -40,9 +39,15 @@ public class US_030 {
         adminPage.addAdminDestinations.click();
 
         adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
+        actions.sendKeys("Slug"+ Keys.TAB)
+               .sendKeys("Heading"+ Keys.TAB)
+               .sendKeys("Short Description"+ Keys.TAB);
+
+        adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
         actions.sendKeys("hey"+ Keys.TAB)
                .sendKeys("now"+ Keys.TAB)
                .sendKeys("get up"+ Keys.TAB)
+
                .sendKeys("Package Heading"+ Keys.TAB)
                .sendKeys("Package Subheading"+ Keys.TAB)
                .sendKeys("Detail Heading"+ Keys.TAB)
@@ -62,10 +67,10 @@ public class US_030 {
         js.executeScript("window.scrollBy(0,10000)");
         adminPage.editDestinationButton.click();
 
-        adminPage.addDestinationsName.clear();
+       adminPage.addDestinationsName.clear();
         adminPage.addDestinationsName.sendKeys("Bolu Abant"+Keys.TAB);
         js.executeScript("window.scrollBy(0,10000)");
-        adminPage.destinationsSubmitButton.click();
+       adminPage.destinationsSubmitButton.click();
 
 
         String expectedWarningMessage2 = "Destination is updated successfully!";

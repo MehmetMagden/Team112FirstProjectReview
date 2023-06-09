@@ -1,5 +1,6 @@
 package tests.Elcin;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import pages.AdminPage;
@@ -61,7 +62,9 @@ public class US027 {
 
 
 
+
         Driver.quitDriver();
+
 
 }
 
