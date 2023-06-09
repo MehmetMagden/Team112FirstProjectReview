@@ -16,6 +16,8 @@ public class US_10 extends MethodBase{
     @Test
     public void TC10_termsConditionPage(){
 
+        extentTest = extentReports.createTest("TC10", "User navigates Terms and Condition Page");
+
         testMethod.endOfTheHomePage();
 
         basePage.termsConditions.click();
@@ -23,10 +25,8 @@ public class US_10 extends MethodBase{
         String expectedText = "TERMS AND CONDITIONS";
         String actualText = basePage.termsCondiotionsBanner.getText();
         Assert.assertTrue(actualText.contains(expectedText));
-
-
+        extentTest.pass("Verifies that user can reach Terms and Condition Page");
 
     }
-
 
 }
