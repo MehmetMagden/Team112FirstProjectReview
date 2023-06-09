@@ -79,6 +79,20 @@ public class ayse {
         }
 
     }
+    //   public Object switchToWindowUrl(String actualUrl){
+    //
+    //       actualUrl = Driver.getDriver().getWindowHandle();
+    //        Set<String> windowHandles = Driver.getDriver().getWindowHandles();
+    //        for (String handle : windowHandles) {
+    //            if (!handle.equals(actualUrl)) {
+    //                Driver.getDriver().switchTo().window(handle);
+    //                break;
+    //            }
+    //        }
+    //        String currentUrl= Driver.getDriver().getCurrentUrl();
+    //        System.out.println(currentUrl);
+    //        return currentUrl;
+    //    }
 
     @AfterMethod
     public void tearDown() {
