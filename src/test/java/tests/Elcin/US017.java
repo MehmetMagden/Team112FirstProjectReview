@@ -30,8 +30,7 @@ public class US017 {
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
-        // basePage.acceptCookies();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
         String expectedUrl = ConfigReader.getProperty("contactUrl");
         System.out.println(expectedUrl);
@@ -54,9 +53,8 @@ public class US017 {
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
-
         contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
         actions.sendKeys("00902165221591" + Keys.TAB)
                 .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
@@ -108,7 +106,7 @@ public class US017 {
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("" + Keys.TAB);
@@ -139,7 +137,7 @@ public class US017 {
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -170,7 +168,7 @@ public class US017 {
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -203,7 +201,7 @@ public class US017 {
 
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -228,7 +226,7 @@ public class US017 {
 
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -253,7 +251,7 @@ public class US017 {
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
             ReusableMethods.waitFor(2);
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
 
             contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -283,7 +281,7 @@ public class US017 {
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
 
-            basePage.acceptCookiesButton.click();
+            basePage.acceptCookies();
             basePage.homePageContactButton.click();
             ReusableMethods.waitFor(1);
 
