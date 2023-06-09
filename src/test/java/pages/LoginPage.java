@@ -10,13 +10,12 @@ import java.util.logging.XMLFormatter;
 
 public class LoginPage {
 
-
     public LoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-   @FindBy(xpath = "//button[text()='ACCEPT']")
-   public WebElement cookiesAcceptButton;
+    @FindBy(xpath = "//button[text()='ACCEPT']")
+    public WebElement cookiesAcceptButton;
 
     @FindBy(xpath = "//a[normalize-space()='Login']")
     public WebElement loginButtonHomePage;
@@ -40,7 +39,6 @@ public class LoginPage {
     @FindBy(xpath = "(//div[@class='detail-dashboard table-responsive mt_30'])[1]")
     public WebElement viewAllPaymentElementInPaymentElementOnLoginPage;
 
-
     @FindBy(xpath = "//div/a[text()='Login']")
     public WebElement loginPageLoginButton2;   // alternative to the one above
 
@@ -50,8 +48,19 @@ public class LoginPage {
     @FindBy(linkText = "Logout")
     public WebElement logOutButton;
 
+
+//===============Profile Edition========================//
+
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/traveller/profile-change'])")
+    public WebElement UpdateProfile;
+    @FindBy(xpath= "(//input[@type='text'])")
+    public WebElement Name;
+    @FindBy(xpath= "(//button[@type='submit'])")
+    public WebElement Submit;
+
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
+
 
     @FindBy(xpath = "//input[@id='password']")
     public WebElement adminLogInPasswordTextBox;
@@ -82,5 +91,5 @@ public class LoginPage {
 
 
 
-    }
+}
 

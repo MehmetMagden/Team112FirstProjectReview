@@ -14,10 +14,6 @@ public class AdminPage {
     }
 
 
-
-
-
-
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
@@ -235,6 +231,15 @@ public class AdminPage {
     public WebElement addDestinationsUploadImage;
     @FindBy (xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
+
+    @FindBy (xpath = "(//img[@class='img-profile rounded-circle'])")
+    public WebElement AdminMainPageProfile;
+
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/admin/photo-change'])")
+    public WebElement AdminChangingIMG;
+
+    @FindBy(xpath = "(//button[@class='btn btn-success'])")
+    public WebElement AdminPhotoUpdate;
 
 }
 
