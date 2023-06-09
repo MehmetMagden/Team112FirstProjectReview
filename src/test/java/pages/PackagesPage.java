@@ -52,5 +52,11 @@ public class PackagesPage {
    @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
    public WebElement moreInformationVisibility;
 
+   @FindBy (xpath = "//h4[text()='Tour Dates']")
+   public WebElement tourDatesText;
+
+    @FindBy(xpath = "//h4[text()='Book Now']")
+    public WebElement bookNowText;
+
 
 }
