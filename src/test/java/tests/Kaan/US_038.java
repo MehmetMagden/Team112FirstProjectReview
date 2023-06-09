@@ -7,8 +7,9 @@ import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class US_038 {
+public class US_038 extends TestBaseRapor {
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
@@ -19,6 +20,12 @@ public class US_038 {
 
     @Test
     public void adminAccountChangePasswordTest(){
+
+        extentTest = extentReports.createTest("TC38", "User Navigates To Change password");
+
+
+
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
 
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
@@ -33,14 +40,18 @@ public class US_038 {
         ReusableMethods.waitFor(2);
         adminPage.changeAdminPassword.click();
 
-        String expectedWordChangePassword = "Edit Profile";
+
+        String expectedWordChangePassword = "Change Password";
         String actualWordEditProfile = adminPage.changeAdminPassword.getText();
         Assert.assertEquals(actualWordEditProfile,expectedWordChangePassword);
+        extentTest.fail("When user access the change password header it takes you to the edit profile section");//Test failed as NO "Change Password" screen
 
-        adminPage.changeAdminPassword.click();
 
-       //Test will fail as when you click the change password header it takes you to the edit profile section
-        ReusableMethods.waitFor(3);
+
+
+
+
+
         Driver.closeDriver();
 
 
