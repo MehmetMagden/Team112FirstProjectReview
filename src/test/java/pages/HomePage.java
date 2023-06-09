@@ -217,8 +217,23 @@ public class HomePage {
     //==============================================================================================
     //TEAM MEMBERS ON HOMEPAGE
 
+    @FindBy(xpath = "//h2[text()='Team Members']")
+    public WebElement titleOfTeamMembersOnHomepage;
+
     @FindBy(xpath = "(//div[@class='headstyle'])[1]")
     public WebElement detailEachTeamMembers;
+
+    @FindBy (xpath = "//img[@alt='Facebook']")
+    public WebElement facebookImg;
+
+    @FindBy (xpath = "(//span[text()='Keşfet'])[1]")
+    public WebElement twitterKesfetArea;
+
+    @FindBy(xpath = "//h1[@data-test-id='hero__headline']")
+    public WebElement linkedinEmailBox;
+
+
+
 
     //Zara Williams
     @FindBy(xpath = "//div[@class='team-area bg-area pt_80 pb_80']")
@@ -292,13 +307,13 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/team-member/knox-mitchell'])[3]")
     public WebElement knoxMitchellText;
 
-    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[9]")
+    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[5]")
     public WebElement knoxMitchellFacebookIkon;
 
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[9]")
     public WebElement knoxMitchellTwitterIkon;
 
-    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[9]")
+    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[5]")
     public WebElement knoxMitchellLinkedInIkon;
 
     @FindBy (xpath = "https://qa.tripandway.com/team-member/knox-mitchell")

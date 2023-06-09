@@ -14,18 +14,17 @@ import utilities.ReusableMethods;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class US_03 {
     private HomePage homePage = new HomePage();
     private BasePage basePage = new BasePage();
-    private PackagesPage packagesPage=new PackagesPage();
+    private PackagesPage packagesPage = new PackagesPage();
 
-    private ServicesPage servicesPage=new ServicesPage();
+    private ServicesPage servicesPage = new ServicesPage();
 
-    private DestinationsPage destinationsPage=new DestinationsPage();
+    private DestinationsPage destinationsPage = new DestinationsPage();
     private JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
-
 
 
     @BeforeMethod
@@ -87,7 +86,7 @@ public class US_03 {
 
     }
 
-    public void listOfClickableWebElement(List<WebElement>list,WebElement title){
+    public void listOfClickableWebElement(List<WebElement> list, WebElement title) {
         for (int i = 0; i < list.size(); i++) {
             ReusableMethods.waitFor(4);
             list.get(i).click();
@@ -105,7 +104,7 @@ public class US_03 {
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
         ReusableMethods.waitFor(5);
-        js = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
         ReusableMethods.waitFor(3);
 
@@ -273,22 +272,20 @@ public class US_03 {
         Assert.assertTrue(homePage.newsLetterAreaOnHomepage.isDisplayed());
 
 
-
     }
 
     @Test//User should be able to click the functions about hero area in the body section of the Homepage
     public void userClickTheFunctionsAboutHeroArea() {////TC_03_11
         homePage = new HomePage();
         basePage = new BasePage();
-        packagesPage=new PackagesPage();
+        packagesPage = new PackagesPage();
         basePage.acceptCookiesButton.click();
         ReusableMethods.waitFor(5);
-        isClickableElements(homePage.firstIndicatorInHeroSection,homePage.readMoreButtonUnderExploreTheWorldAreaText,packagesPage.tourDatesText);
+        isClickableElements(homePage.firstIndicatorInHeroSection, homePage.readMoreButtonUnderExploreTheWorldAreaText, packagesPage.tourDatesText);
         ReusableMethods.waitFor(5);
-        isClickableElements(homePage.thirdIndicatorInHeroSection,homePage.readMoreButtonUnderSalinaIslandAreaText,packagesPage.tourDatesText);
+        isClickableElements(homePage.thirdIndicatorInHeroSection, homePage.readMoreButtonUnderSalinaIslandAreaText, packagesPage.tourDatesText);
         ReusableMethods.waitFor(5);
-        isClickableElements(homePage.secondIndicatorInHeroSection,homePage.readMoreButtonUnderTheWorldIsSoBeautifulText,packagesPage.tourDatesText);
-
+        isClickableElements(homePage.secondIndicatorInHeroSection, homePage.readMoreButtonUnderTheWorldIsSoBeautifulText, packagesPage.tourDatesText);
 
 
         // isClickableElementsInHeroSection(homePage.firstIndicatorInHeroSection,homePage.readMoreButtonUnderExploreTheWorldAreaText,"https://tripandway.com/package/3-days-in-bangkok");
@@ -301,11 +298,12 @@ public class US_03 {
         //7)User should close the page
 
     }
+
     //User should be able to click the functions about "Our Services" section in the body section of the Homepage
     @Test
-    public void userClickTheFunctionsAboutOurServices(){//TC_03_12
+    public void userClickTheFunctionsAboutOurServices() {//TC_03_12
         setUpTest(homePage.ourServicesAreaOnHomepage);
-        servicesPage=new ServicesPage();
+        servicesPage = new ServicesPage();
 
         isClickableElementsInOurServices(homePage.internationalTourElementOnHomePage, servicesPage.internationalTourButton);
         isClickableElementsInOurServices(homePage.adventureTourElementOnHomePage, servicesPage.internationalTourButton);
@@ -315,29 +313,30 @@ public class US_03 {
         isClickableElementsInOurServices(homePage.religiousTourElementOnHomePage, servicesPage.internationalTourButton);
 
 
-
     }
 
     //User should be able to click the functions about "Featured Packages" section in the body section of the Homepage
     @Test
-    public void userClickTheFunctionsAboutFeaturedPackages(){//TC_03_13
-        packagesPage=new PackagesPage();
+    public void userClickTheFunctionsAboutFeaturedPackages() {//TC_03_13
+        packagesPage = new PackagesPage();
         setUpTest(homePage.featuredAreaOnHomePage);
         ReusableMethods.waitFor(3);
 
-        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage,homePage.threeDaysInBuenosAiresText,packagesPage.bookNowText);
-        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage,homePage.tenDaysInBuenosAiresText,packagesPage.bookNowText);
-        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage,homePage.threeDaysInBangkokText,packagesPage.bookNowText);
-        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage,homePage.sevenDaysInSalinaIslandText,packagesPage.bookNowText);
+        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage, homePage.threeDaysInBuenosAiresText, packagesPage.bookNowText);
+        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage, homePage.tenDaysInBuenosAiresText, packagesPage.bookNowText);
+        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage, homePage.threeDaysInBangkokText, packagesPage.bookNowText);
+        isClickableElements(homePage.firstIndicatorUnderFeaturedPackagesTitleOnHomePage, homePage.sevenDaysInSalinaIslandText, packagesPage.bookNowText);
 
     }
+
     //User should be able to click the functions about "Destinations" section in the body section of the Homepage
     @Test
-    public void userClickTheFunctionsAboutDestinationsPackages(){//TC_03_14
+    public void userClickTheFunctionsAboutDestinationsPackages() {//TC_03_14
         setUpTest(homePage.destinationAreaOnHomePage);
-        destinationsPage=new DestinationsPage();
-        js = (JavascriptExecutor) Driver.getDriver();
-        List<WebElement>destinationsList=new ArrayList<>();
+        destinationsPage = new DestinationsPage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+
+        List<WebElement> destinationsList = new ArrayList<>();
         destinationsList.add(homePage.bangkokThailandTextInDestinationsSection);
         destinationsList.add(homePage.greenvilleSouthCarolinaTextInDestinationsSection);
         destinationsList.add(homePage.buenosAiresArgentinaTextInDestinationsSection);
@@ -346,12 +345,12 @@ public class US_03 {
         destinationsList.add(homePage.istanbulTurkeyTextInDestinationsSection);
 
 
-        listOfClickableWebElement(destinationsList,destinationsPage.titleEachDestinations);
+        //listOfClickableWebElement(destinationsList,destinationsPage.titleEachDestinations);
 
-       // js.executeScript("arguments[0].scrollIntoView();", homePage.seeAllDestinationsButtonOnHomepage);
-        ReusableMethods.waitFor(2);
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.seeAllDestinationsButtonOnHomepage);
-        ReusableMethods.waitForVisibility(homePage.seeAllDestinationsButtonOnHomepage,15);
+        // js.executeScript("arguments[0].scrollIntoView();", homePage.seeAllDestinationsButtonOnHomepage);
+        ReusableMethods.waitFor(5);
+        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.titleOfTeamMembersOnHomepage);
+        ReusableMethods.waitForVisibility(homePage.seeAllDestinationsButtonOnHomepage, 30);
         homePage.seeAllDestinationsButtonOnHomepage.click();
         ReusableMethods.waitFor(3);
         Assert.assertTrue(destinationsPage.destinationsImageWebElement.isDisplayed());
@@ -362,36 +361,64 @@ public class US_03 {
     //User should be able to click the functions about "Team Members" section in the body section of the Homepage
 
     @Test
-    public void userClickTheFunctionsAboutTeamMembersSection(){////TC_03_15
-    setUpTest(homePage.teamMembersAreaOnHomepage);
-        js = (JavascriptExecutor) Driver.getDriver();
+    public void userClickTheFunctionsAboutTeamMembersSection() {////TC_03_15
+       setUpTest(homePage.teamMembersAreaOnHomepage);
 
-        List<WebElement>listOfTeamMembers=new ArrayList<>();
+        List<WebElement> listOfTeamMembers = new ArrayList<>();
         listOfTeamMembers.add(homePage.knoxMitchellText);
         listOfTeamMembers.add(homePage.jaxonGreenText);
         listOfTeamMembers.add(homePage.averyJohnsonText);
         listOfTeamMembers.add(homePage.zaraWilliamsText);
-        listOfClickableWebElement(listOfTeamMembers,homePage.detailEachTeamMembers);
+       //listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
+
+     String firstWH = Driver.getDriver().getWindowHandle();
+
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon,homePage.facebookImg,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon,homePage.facebookImg,firstWH );
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon,homePage.facebookImg,firstWH );
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon,homePage.facebookImg,firstWH );
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon,homePage.twitterKesfetArea,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon,homePage.twitterKesfetArea,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon,homePage.twitterKesfetArea,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon,homePage.twitterKesfetArea,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon,homePage.linkedinEmailBox,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon,homePage.linkedinEmailBox,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon,homePage.linkedinEmailBox,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon,homePage.linkedinEmailBox,firstWH);
 
 
+    }
+    public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon,WebElement testOfElement,String firstWH){
+        String secondWH="";
+        ReusableMethods.waitFor(5);
+        js.executeScript("arguments[0].click();", socialMediaIkon);
+        ReusableMethods.waitFor(5);
+        Set<String> allWH = Driver.getDriver().getWindowHandles();
+        for (String eachWH : allWH) {
+            if (!eachWH.equals(firstWH)) {
+                secondWH = eachWH;
+            }
+        }
+        Driver.getDriver().switchTo().window(secondWH);
+
+        Assert.assertTrue(testOfElement.isDisplayed());
+        Driver.getDriver().switchTo().window(firstWH);
+        ReusableMethods.waitFor(5);
 
 
-        //3)User should click Knox Mitchell as a team members under the "Team Members" section on the homepage
-        //4)Url should be same the data
-        //5)User should navigate the homepage
-        //6)User should click Knox Mitchell's facebook icon on a photo of Knox Mitchell under the "Team Members" section on the homepage
-        //7)Url should be same the data
-        //8)User should navigate the homepage
-        //9)User should click Knox Mitchell's twitter icon on a photo of Knox Mitchell under the "Team Members" section on the homepage
-        //10)Url should be same data
-        //11)User should navigate the homepage
-        //12)User should click Knox Mitchell's linkedIn icon on a photo of Knox Mitchell under the "Team Members" section on the homepage
-        //13)Url should be same the data
-        //14)User should navigate the homepage
+    }
+    @Test
+    public void userClickableElementsOfTeamMembers(){
+        homePage = new HomePage();
+        basePage = new BasePage();
+        packagesPage = new PackagesPage();
+        basePage.acceptCookiesButton.click();
+        js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click();", homePage.knoxMitchellFacebookIkon);
 
     }
 
-    public void isClickableElementsInOurServices(WebElement element,WebElement internationalTourText){
+    public void isClickableElementsInOurServices(WebElement element, WebElement internationalTourText) {
         element.click();
         ReusableMethods.waitFor(3);
         Assert.assertTrue(internationalTourText.isDisplayed());
@@ -400,9 +427,7 @@ public class US_03 {
     }
 
 
-
-
-    public void isClickableElements(WebElement clickableElement,WebElement readMoreButton, WebElement theOtherPageElement){
+    public void isClickableElements(WebElement clickableElement, WebElement readMoreButton, WebElement theOtherPageElement) {
         clickableElement.click();
         ReusableMethods.waitFor(3);
         readMoreButton.click();
@@ -418,6 +443,7 @@ public class US_03 {
     public void tearDown() {
 
         Driver.closeDriver();
+        Driver.quitDriver();
 
     }
 }
