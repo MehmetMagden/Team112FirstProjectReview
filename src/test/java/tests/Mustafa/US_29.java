@@ -85,6 +85,10 @@ public class US_29 {
         blogPage.blogShortContent.sendKeys("Blog short content is provided!"); // Navigates to Blog short content and adds some content.
 
         WebElement chooseFile = blogPage.blogPhotoUpload;
+        chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\Sample_Image.jpg");  // HOW to make the path dynamic?
+
+     // chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\Sample_Image.jpg");  // HOW to make the path dynamic?
+
         String filePath =  System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         chooseFile.sendKeys(filePath);
 

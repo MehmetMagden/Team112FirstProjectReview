@@ -52,5 +52,10 @@ public class PackagesPage {
    @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
    public WebElement moreInformationVisibility;
 
+   @FindBy (xpath = "//a[@href='https://qa.tripandway.com/package/7-days-in-istanbul']")
+    public WebElement theThirdPackages;
+
+   @FindBy (xpath = "//a[@href='https://qa.tripandway.com/package/10-days-in-buenos-aires'] ")
+    public WebElement theSecondPackages;
 
 }
