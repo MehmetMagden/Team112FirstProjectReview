@@ -1,6 +1,7 @@
 package tests.Ayse;
 
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -31,15 +32,17 @@ public class US_03 {
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-
-    }
-
-    //User should be able to see the functions about hero area in the body section of the Home page
-    @Test(priority = 2)
-    public void userCanSeeTheFunctionsAboutHeroArea() {
         homePage = new HomePage();
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
+    }
+
+    //User should be able to see the functions about hero area in the body section of the Home page
+    @Test
+    public void userCanSeeTheFunctionsAboutHeroArea() {//TC_03_01
+      // homePage = new HomePage();
+      // basePage = new BasePage();
+      // basePage.acceptCookiesButton.click();
         homePage.exploreTheWorldArea.isDisplayed();
         ReusableMethods.waitFor(5);
         ReusableMethods.waitForVisibility(homePage.theWorldIsSoBeautifulAreaOnHomepage, 15);
@@ -73,45 +76,9 @@ public class US_03 {
 
     }
 
-    public void listOfVisibleWebElementTest(List<WebElement> list, WebElement areaOfPage) {
-
-        ReusableMethods.waitFor(5);
-        js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
-        for (int i = 0; i < list.size(); i++) {
-            ReusableMethods.waitFor(3);
-            Assert.assertTrue(list.get(i).isDisplayed());
-
-        }
-
-    }
-
-    public void listOfClickableWebElement(List<WebElement> list, WebElement title) {
-        for (int i = 0; i < list.size(); i++) {
-            ReusableMethods.waitFor(4);
-            list.get(i).click();
-            ReusableMethods.waitFor(3);
-            Assert.assertTrue(title.isDisplayed());
-            Driver.getDriver().navigate().back();
-            ReusableMethods.waitFor(3);
-
-        }
-
-    }
-
-    public void setUpTest(WebElement areaOfPage) {
-        homePage = new HomePage();
-        basePage = new BasePage();
-        basePage.acceptCookiesButton.click();
-        ReusableMethods.waitFor(5);
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
-        ReusableMethods.waitFor(3);
-
-    }
 
     //User should be able to see the functions about "Our Services" section in the body section of the Homepage
-    @Test(priority = 1)
+    @Test//TC_03_02
     public void userCanSeeTheFunctionsAboutOurServicesSection() {
         homePage = new HomePage();
         basePage = new BasePage();
@@ -134,7 +101,7 @@ public class US_03 {
 
     //User should be able to see the functions about "Featured Packages" section in the body section of the Homepage
     @Test
-    public void userSeeFunctionsAboutFeaturedPackagesSection() {
+    public void userSeeFunctionsAboutFeaturedPackagesSection() {//TC_03_03
         homePage = new HomePage();
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
@@ -160,7 +127,7 @@ public class US_03 {
 
     //User should be able to see the functions about "Counter Area" section in the body section of the Homepage
     @Test
-    public void userSeeFunctionsAboutCounterAreaSection() {
+    public void userSeeFunctionsAboutCounterAreaSection() {//TC_03_04
         homePage = new HomePage();
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
@@ -173,19 +140,22 @@ public class US_03 {
 //User should be able to see verify that the functions about "Destinations" section in the body section of the Homepage
 
     @Test
-    public void userSeeFunctionsOfDestinationsSection() {
+    public void userSeeFunctionsOfDestinationsSection() {//TC_03_05
         homePage = new HomePage();
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
-        ReusableMethods.waitFor(3);
-        js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.destinationAreaOnHomePage);
-        ReusableMethods.waitFor(3);
-        Assert.assertTrue(homePage.destinationAreaOnHomePage.isDisplayed());
-        ReusableMethods.waitFor(3);
-        Assert.assertTrue(homePage.elementsOfDestionationsOnHomePage.isDisplayed());
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.seeAllDestinationsButtonOnHomepage);
-        Assert.assertTrue(homePage.seeAllDestinationsButtonOnHomepage.isDisplayed());
+
+        List<WebElement>listOfDestinations=new ArrayList<>();
+        listOfDestinations.add(homePage.destinationsTitleInDestinationsSectionOnHomepage);
+        listOfDestinations.add(homePage.textUnderDestinationsTitleOnHomepage);
+        listOfDestinations.add(homePage.bangkokThailandTextInDestinationsSection);
+        listOfDestinations.add(homePage.greenvilleSouthCarolinaTextInDestinationsSection);
+        listOfDestinations.add(homePage.buenosAiresArgentinaTextInDestinationsSection);
+        listOfDestinations.add(homePage.marrakeshMoroccoTextInDestinationsSection);
+        listOfDestinations.add(homePage.salinaIslandItalyTextInDestinationsSection);
+        listOfDestinations.add(homePage.istanbulTurkeyTextInDestinationsSection);
+        listOfDestinations.add(homePage.seeAllDestinationsButtonOnHomepage);
+         listOfVisibleWebElementTest(listOfDestinations,homePage.destinationAreaOnHomePage);
 
     }
 
@@ -234,16 +204,31 @@ public class US_03 {
         homePage = new HomePage();
         basePage = new BasePage();
         basePage.acceptCookiesButton.click();
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(5);
         js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.latestBlogArea);
-        ReusableMethods.waitFor(3);
+        js.executeScript("window.scrollBy(0,4800)");
+      // js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.latestBlogArea);
+        ReusableMethods.waitFor(10);
+        Assert.assertTrue(homePage.titleOfLatestBlogOnHomepage.isEnabled());
+        ReusableMethods.waitFor(10);
+        Assert.assertTrue(homePage.textUndertitleOfLatestBlogOnHomepage.isEnabled());
+        ReusableMethods.waitFor(10);
+        Assert.assertTrue(homePage.bangkokAreaUnderTheLatestBlogOnHomepage.isEnabled());
+        ReusableMethods.waitFor(10);
+        Assert.assertTrue(homePage.buenosAiresAreaUnderTheLatestBlogOnHomePage.isEnabled());
+        ReusableMethods.waitFor(15);
+        Assert.assertTrue(homePage.discoveringGreenvilleAreaUnderTheLatestBlogOnHomePage.isEnabled());
+        ReusableMethods.waitFor(15);
+        Assert.assertTrue(homePage.istanbulAreaUnderTheLatestBlogOnHomePage.isEnabled());
+        ReusableMethods.waitFor(15);
+        Assert.assertTrue(homePage.discoveringGreenvilleAreaUnderTheLatestBlogOnHomePage.isEnabled());
+        ReusableMethods.waitFor(15);
+        Assert.assertTrue(homePage.salinaIslandAreaUnderTheLatesBlogOnHomepage.isEnabled());
 
-        Assert.assertTrue(homePage.latestBlogArea.isDisplayed());
-        Assert.assertTrue(homePage.sliderRightSideUnderTheLatestBlogOnHomePage.isDisplayed());
-        Assert.assertTrue(homePage.sliderLeftSideUnderTheLatestBlogOnHomePage.isDisplayed());
+
 
     }
+
 
     @Test//User should be able to see functions about "Our Client" section in the body section of the Homepage
     public void userSeeFunctionsAboutOurClientSection() {//TC_03_09
@@ -261,15 +246,17 @@ public class US_03 {
     @Test
 //User should be able to see verify that the functions about "Newsletter" section in the body section of the Homepage
     public void userSeeFunctionsAboutNewsletterSection() {//TC_03_10
-        // homePage = new HomePage();
-        // basePage = new BasePage();
-        // basePage.acceptCookiesButton.click();
-        // ReusableMethods.waitFor(3);
+
         // JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        // js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.newsLetterAreaOnHomepage);
-        // ReusableMethods.waitFor(3);
+
         setUpTest(homePage.newsLetterAreaOnHomepage);
-        Assert.assertTrue(homePage.newsLetterAreaOnHomepage.isDisplayed());
+
+        ReusableMethods.waitFor(5);
+        Assert.assertTrue(homePage.titleAndTextAreaOfNewsLetterOnHomepage.isDisplayed());
+        ReusableMethods.waitFor(5);
+        Assert.assertTrue(homePage.emailBoxUnderTheNewsLetterOnHomepage.isDisplayed());
+        ReusableMethods.waitFor(5);
+        Assert.assertTrue(homePage.submitButtonUnderTheNewsLetterOnHomepage.isDisplayed());
 
 
     }
@@ -288,14 +275,6 @@ public class US_03 {
         isClickableElements(homePage.secondIndicatorInHeroSection, homePage.readMoreButtonUnderTheWorldIsSoBeautifulText, packagesPage.tourDatesText);
 
 
-        // isClickableElementsInHeroSection(homePage.firstIndicatorInHeroSection,homePage.readMoreButtonUnderExploreTheWorldAreaText,"https://tripandway.com/package/3-days-in-bangkok");
-
-        //2)User sould click read more button under the Salina Island area in hero section on the homepage
-        //3)User sould click read more button under the The World Is Beatiful Area in hero section on the homepage
-        //4)User sould see read more button under the Explore The World Area in hero section on the homepage
-        //5)User should click the slider on the right side of hero section on the homepage.
-        //6)User should click the slider on the left side of hero section on the homepage
-        //7)User should close the page
 
     }
 
@@ -334,7 +313,7 @@ public class US_03 {
     public void userClickTheFunctionsAboutDestinationsPackages() {//TC_03_14
         setUpTest(homePage.destinationAreaOnHomePage);
         destinationsPage = new DestinationsPage();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js = (JavascriptExecutor) Driver.getDriver();
 
         List<WebElement> destinationsList = new ArrayList<>();
         destinationsList.add(homePage.bangkokThailandTextInDestinationsSection);
@@ -349,9 +328,10 @@ public class US_03 {
 
         // js.executeScript("arguments[0].scrollIntoView();", homePage.seeAllDestinationsButtonOnHomepage);
         ReusableMethods.waitFor(5);
-        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.titleOfTeamMembersOnHomepage);
-        ReusableMethods.waitForVisibility(homePage.seeAllDestinationsButtonOnHomepage, 30);
-        homePage.seeAllDestinationsButtonOnHomepage.click();
+       // js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.titleOfTeamMembersOnHomepage);
+       // ReusableMethods.waitForVisibility(homePage.seeAllDestinationsButtonOnHomepage, 30);
+
+        js.executeScript("arguments[0].click();", homePage.seeAllDestinationsButtonOnHomepage);
         ReusableMethods.waitFor(3);
         Assert.assertTrue(destinationsPage.destinationsImageWebElement.isDisplayed());
         Driver.getDriver().navigate().back();
@@ -361,54 +341,76 @@ public class US_03 {
     //User should be able to click the functions about "Team Members" section in the body section of the Homepage
 
     @Test
-    public void userClickTheFunctionsAboutTeamMembersSection() {////TC_03_15
-       setUpTest(homePage.teamMembersAreaOnHomepage);
+    public void userClickTheFunctionsAboutTeamMembersSection() {//TC_03_15
+        setUpTest(homePage.teamMembersAreaOnHomepage);
 
         List<WebElement> listOfTeamMembers = new ArrayList<>();
         listOfTeamMembers.add(homePage.knoxMitchellText);
         listOfTeamMembers.add(homePage.jaxonGreenText);
         listOfTeamMembers.add(homePage.averyJohnsonText);
         listOfTeamMembers.add(homePage.zaraWilliamsText);
-       //listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
+        listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
 
-     String firstWH = Driver.getDriver().getWindowHandle();
-
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon,homePage.facebookImg,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-
-
-    }
-    public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon,WebElement testOfElement,String firstWH){
-        String secondWH="";
-        ReusableMethods.waitFor(5);
-        js.executeScript("arguments[0].click();", socialMediaIkon);
-        ReusableMethods.waitFor(5);
-        Set<String> allWH = Driver.getDriver().getWindowHandles();
-        for (String eachWH : allWH) {
-            if (!eachWH.equals(firstWH)) {
-                secondWH = eachWH;
-            }
-        }
-        Driver.getDriver().switchTo().window(secondWH);
-
-        Assert.assertTrue(testOfElement.isDisplayed());
-        Driver.getDriver().switchTo().window(firstWH);
-        ReusableMethods.waitFor(5);
+        String firstWH = Driver.getDriver().getWindowHandle();
+        ReusableMethods.waitFor(8);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon, homePage.linkedinEmailBox, firstWH);
 
 
     }
-    @Test
-    public void userClickableElementsOfTeamMembers(){
+
+
+    @Test//User should be able to click functions about "Latest Blog" section in the body section of the Homepage
+    public void userClickTheFunctionsAboutLatestBlogSection(){//TC_03_16
+        homePage=new HomePage();
+        js = (JavascriptExecutor) Driver.getDriver();
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        basePage.acceptCookies();
+//        js.executeScript("arguments[0].scrollIntoView();", homePage.latestBlogArea);
+        js.executeScript("window.scrollBy(0,5200)");
+        List<WebElement> elementsOfLatestBlogList = new ArrayList<>();
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheIstanbulAreaTextOnHomepage);
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheAncientCapitalTextOnHomePage);
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheSalinaIslandTextOnHomepage);
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheBangkokAreaTextOnHomepage);
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheBuenosAiresAreaTextOnHomepage);
+        elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheDiscoveringGreenvilleAreaTextOnHomepage);
+
+        latestBlogClickable(elementsOfLatestBlogList, homePage.searchHereEachLatestBlog);
+
+    }
+
+    @Test//User should be able to click the functions about "Newsletter" section in the body section of the Homepage
+    public void userClickTheFunctionsAboutNewsletterSection(){//TC_03_17
+        js = (JavascriptExecutor) Driver.getDriver();
+        Faker faker = new Faker();
+        AdminPage adminPage = new AdminPage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+
+        js.executeScript("arguments[0].scrollIntoView();", homePage.emailBoxUnderTheNewsLetterOnHomepage);
+
+        homePage.emailBoxUnderTheNewsLetterOnHomepage.sendKeys(faker.internet().emailAddress());
+        homePage.submitButtonUnderTheNewsLetterOnHomepage.click();
+
+        String actualMessage = adminPage.warningMessage.getText(); // Chrome's Save Card prompt ruins the test!!
+        String expectedMessage = "To activate your subscription please check your email and follow instruction there.";
+        Assert.assertEquals(actualMessage, expectedMessage);
+
+    }
+
+
+    public void userClickableElementsOfTeamMembers() {
         homePage = new HomePage();
         basePage = new BasePage();
         packagesPage = new PackagesPage();
@@ -437,8 +439,90 @@ public class US_03 {
         Driver.getDriver().navigate().back();
         ReusableMethods.waitFor(3);
     }
+    public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon, WebElement testOfElement, String firstWH) {
+        String secondWH = "";
+        ReusableMethods.waitFor(5);
+        js.executeScript("arguments[0].click();", socialMediaIkon);
+        ReusableMethods.waitFor(5);
+        Set<String> allWH = Driver.getDriver().getWindowHandles();
+        for (String eachWH : allWH) {
+            if (!eachWH.equals(firstWH)) {
+                secondWH = eachWH;
+            }
+        }
+        Driver.getDriver().switchTo().window(secondWH);
 
+        Assert.assertTrue(testOfElement.isDisplayed());
+        Driver.getDriver().switchTo().window(firstWH);
+        ReusableMethods.waitFor(5);
+    }
 
+    public void latestBlogClickable (List<WebElement> list , WebElement clickElement) {
+
+        for (WebElement each:list
+        ) {
+            ReusableMethods.waitFor(5);
+            js.executeScript("arguments[0].click();", each);
+            ReusableMethods.waitFor(3);
+            Assert.assertTrue(clickElement.isDisplayed());
+            Driver.getDriver().navigate().back();
+            ReusableMethods.waitFor(1);
+        }
+    }
+
+    public void listOfVisibleWebElementTest(List<WebElement> list, WebElement areaOfPage) {
+
+        ReusableMethods.waitFor(5);
+        js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
+        for (int i = 0; i < list.size(); i++) {
+            ReusableMethods.waitFor(5);
+            Assert.assertTrue(list.get(i).isDisplayed());
+            ReusableMethods.waitFor(5);
+
+        }
+
+    }
+
+    public void listOfClickableWebElement(List<WebElement> list, WebElement title) {
+        for (int i = 0; i < list.size(); i++) {
+            ReusableMethods.waitFor(4);
+            list.get(i).click();
+            ReusableMethods.waitFor(3);
+            Assert.assertTrue(title.isDisplayed());
+            Driver.getDriver().navigate().back();
+            ReusableMethods.waitFor(3);
+
+        }
+
+    }
+
+    public void setUpTest(WebElement areaOfPage) {
+        homePage = new HomePage();
+        basePage = new BasePage();
+        basePage.acceptCookiesButton.click();
+        ReusableMethods.waitFor(5);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", areaOfPage);
+        ReusableMethods.waitFor(3);
+
+    }
+
+    public void isVisibleElementOfWebElementListForEach(List<WebElement>list){
+        ReusableMethods.waitFor(10);
+
+        try {
+            for (WebElement each:list
+            ) {
+                ReusableMethods.waitFor(20);
+                Assert.assertTrue(each.isDisplayed());
+                ReusableMethods.waitFor(10);
+            }
+        } catch (Exception e) {
+            System.out.println(e+"Element is not display");
+        }
+
+    }
     @AfterMethod
     public void tearDown() {
 
