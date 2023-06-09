@@ -38,7 +38,7 @@ public class BlogPage {
     @FindBy(xpath = "//td[contains(text(),'New Blog Entry')]")
     public WebElement newBlogEntryCheck;
 
-    @FindBy(xpath = "(//a[@class='btn btn-warning btn-sm'])[8]")
+    @FindBy(xpath = "(//a[@class='btn btn-warning btn-sm'])[7]")
     public WebElement editBlog;
 
     @FindBy(xpath = "//button[@type='submit']")
