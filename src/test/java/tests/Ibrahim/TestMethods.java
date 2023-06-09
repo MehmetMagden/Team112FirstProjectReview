@@ -55,20 +55,20 @@ public class TestMethods {
         basePage = new BasePage();
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("tripAndWayUrl");
-        Assert.assertEquals(actualTestData, expectedTestData);
-        Assert.assertTrue(basePage.homePageDestinationsButton.isEnabled());
+        Assert.assertEquals(actualTestData, expectedTestData, "Actual page is NOT main page");
+        Assert.assertTrue(basePage.homePageDestinationsButton.isEnabled() , "Main page is NOT active");
         basePage.homePageDestinationsButton.click();
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("destinationsUrl");
-        Assert.assertEquals(actualTestData, expectedTestData);
+        Assert.assertEquals(actualTestData, expectedTestData , "Actual page is NOT Destinations page");
 
     }
 
     public void userVerifiesDestinationPageVisibleAndActive() {
 
         destinationsPage = new DestinationsPage();
-        Assert.assertTrue(destinationsPage.destinationsImageWebElement.isDisplayed());
-        Assert.assertTrue(destinationsPage.destinationsFirstPackageWebElement.isEnabled());
+        Assert.assertTrue(destinationsPage.destinationsImageWebElement.isDisplayed(), "Destination page is NOT displayed");
+        Assert.assertTrue(destinationsPage.destinationsFirstPackageWebElement.isEnabled(), "Destination page is NOT active");
 
     }
 
@@ -83,8 +83,8 @@ public class TestMethods {
         ReusableMethods.waitFor(2);
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminDashboardUrl");
-        Assert.assertEquals(actualTestData, expectedTestData);
-        Assert.assertTrue(adminPage.adminDashboardVisibility.isDisplayed());
+        Assert.assertEquals(actualTestData, expectedTestData, "Actual page is NOT admin dashboard");
+        Assert.assertTrue(adminPage.adminDashboardVisibility.isDisplayed(), "Admin dashboard is NOT displayed");
         ReusableMethods.waitFor(2);
 
     }
@@ -96,10 +96,10 @@ public class TestMethods {
         adminPage.adminDashboardOrderButton.click();
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminOrdersPageUrl");
-        Assert.assertEquals(actualTestData,expectedTestData);
+        Assert.assertEquals(actualTestData,expectedTestData, "Actual page is NOT Orders page");
         actualTestData = adminPage.viewOrdersWebElement.getText();
         expectedTestData = "View Orders";
-        Assert.assertTrue(actualTestData.contains(expectedTestData));
+        Assert.assertTrue(actualTestData.contains(expectedTestData), "Orders page is NOT displayed");
         ReusableMethods.waitFor(2);
 
     }
@@ -109,7 +109,7 @@ public class TestMethods {
         adminPage = new AdminPage();
         Assert.assertTrue(adminPage.allOrdersWebElement.isDisplayed());
         actualTestData = adminPage.allOrdersWebElement.getText();
-        Assert.assertTrue(actualTestData.contains(ordersAmount));
+        Assert.assertTrue(actualTestData.contains(ordersAmount), "All placed orders is NOT displayed");
         ReusableMethods.waitFor(2);
 
     }
@@ -123,8 +123,8 @@ public class TestMethods {
         ReusableMethods.waitFor(2);
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminSubscribersPageUrl");
-        Assert.assertEquals(actualTestData,expectedTestData);
-        Assert.assertTrue(adminPage.viewSubscribersWebElement.isDisplayed());
+        Assert.assertEquals(actualTestData,expectedTestData, "Actual page is NOT Subscribers page");
+        Assert.assertTrue(adminPage.viewSubscribersWebElement.isDisplayed(), "Subscribers page is NOT displayed");
         ReusableMethods.waitFor(2);
 
     }
@@ -132,11 +132,11 @@ public class TestMethods {
     public void userAccessAndVerifiesAllNewsletterSubscribers() {
 
         adminPage = new AdminPage();
-        Assert.assertTrue(adminPage.allSubscribersButton.isEnabled());
+        Assert.assertTrue(adminPage.allSubscribersButton.isEnabled(), "All Subscribers button is NOT enabled");
         ReusableMethods.waitFor(2);
         actualTestData = adminPage.allSubscribersWebElement.getText();
         expectedTestData ="Showing 1 to 10 of";
-        Assert.assertTrue(actualTestData.contains(expectedTestData));
+        Assert.assertTrue(actualTestData.contains(expectedTestData), "All Subscribers list is NOT displayed");
         ReusableMethods.waitFor(2);
 
     }
@@ -148,8 +148,8 @@ public class TestMethods {
         adminPage.adminPanelBlogSectionCategoriesButton.click();
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminCategoriesPageUrl");
-        Assert.assertEquals(actualTestData,expectedTestData);
-        Assert.assertTrue(adminPage.blogSectionCategoriesAddNewButton.isEnabled());
+        Assert.assertEquals(actualTestData,expectedTestData, "Actual page is NOT Categories page");
+        Assert.assertTrue(adminPage.blogSectionCategoriesAddNewButton.isEnabled(),"Categories page is NOT displayed");
         ReusableMethods.waitFor(2);
     }
 
@@ -157,10 +157,16 @@ public class TestMethods {
 
         adminPage = new AdminPage();
         adminPage.blogSectionCategoriesAddNewButton.click();
-        Assert.assertTrue(adminPage.addCategorySubmitButton.isEnabled());
+        Assert.assertTrue(adminPage.addCategorySubmitButton.isEnabled(), "Categories page is NOT active");
+        adminPage.addCategorySubmitButton.click();
+        Assert.assertTrue(adminPage.addCategoryWithoutNameAlertMEssage.isDisplayed());
+        ReusableMethods.waitFor(2);
         adminPage.addCategoryNameBox.sendKeys("Team112");
         adminPage.addCategorySubmitButton.click();
-        Assert.assertTrue(adminPage.addCategorySuccessfulAlert.isDisplayed());
+        expectedTestData = "Category is added successfully!";
+        actualTestData = adminPage.addCategorySuccessfulAlert.getText();
+        Assert.assertEquals(actualTestData,expectedTestData, "New category is NOT added");
+        Assert.assertTrue(adminPage.addCategorySuccessfulAlert.isDisplayed(),"New category is NOT added");
         ReusableMethods.waitFor(2);
 
     }
@@ -170,11 +176,14 @@ public class TestMethods {
         adminPage = new AdminPage();
         adminPage.categoriesSearchBox.sendKeys("Team112");
         adminPage.categoriesActionEditButton.click();
-        Assert.assertTrue(adminPage.editCategoryUpdateButton.isEnabled());
+        Assert.assertTrue(adminPage.editCategoryUpdateButton.isEnabled(), "Category edit button is NOT active");
         adminPage.addCategoryNameBox.clear();
         adminPage.addCategoryNameBox.sendKeys("T112-Category Edited");
         adminPage.editCategoryUpdateButton.click();
-        Assert.assertTrue(adminPage.editCategorySuccessfulAlert.isDisplayed());
+        expectedTestData = "Category is updated successfully!";
+        actualTestData = adminPage.addCategorySuccessfulAlert.getText();
+        Assert.assertEquals(actualTestData,expectedTestData, "Category is NOT updated");
+        Assert.assertTrue(adminPage.editCategorySuccessfulAlert.isDisplayed(), "Category is NOT updated");
         ReusableMethods.waitFor(2);
 
     }
@@ -183,10 +192,13 @@ public class TestMethods {
 
         adminPage = new AdminPage();
         adminPage.categoriesSearchBox.sendKeys("T112-Category Edited");
-        Assert.assertTrue(adminPage.categoriesActionDeleteButton.isEnabled());
+        Assert.assertTrue(adminPage.categoriesActionDeleteButton.isEnabled(), "Category delete button is NOT active");
         adminPage.categoriesActionDeleteButton.click();
         Driver.getDriver().switchTo().alert().accept();
-        Assert.assertTrue(adminPage.categoriesDeletedSuccessfulAlert.isDisplayed());
+        expectedTestData = "Category is deleted successfully!";
+        actualTestData = adminPage.addCategorySuccessfulAlert.getText();
+        Assert.assertEquals(actualTestData,expectedTestData, "Category is NOT deleted");
+        Assert.assertTrue(adminPage.categoriesDeletedSuccessfulAlert.isDisplayed(),"Category is NOT deleted");
         ReusableMethods.waitFor(2);
 
     }

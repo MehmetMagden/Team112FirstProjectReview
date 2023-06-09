@@ -189,7 +189,6 @@ public class BasePage {
     @FindBy(xpath = "//div[@class='footer-area pt_50 pb_80']")
     public WebElement footerContact;
 
-
     @FindBy(xpath = "(//div[@class='footer-address-item'])[1]")
     public WebElement footerAddress;
 
@@ -201,12 +200,6 @@ public class BasePage {
 
     @FindBy(xpath = "(//div[@class='footer-address-item'])[3]")
     public WebElement footerEmail;
-
-
-
-
-
-
 
     // ====-----======-------======-----======-------========
 

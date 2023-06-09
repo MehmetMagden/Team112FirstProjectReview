@@ -1,9 +1,6 @@
 package tests.Mustafa;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -51,14 +48,13 @@ TC_24_02	I can navigate to Packages page and select a package.
     PackagesPage packagesPage = new PackagesPage();
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-    BlogPage blogPage = new BlogPage();
     AdminPage adminPage = new AdminPage();
-
 
     @BeforeMethod
     public void setUp() {
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // navigate to homepage
+        Driver.getDriver().get(ConfigReader.get("tripAndWayUrl")); // navigate to homepage
         basePage.acceptCookies();
+
     }
     @AfterMethod
     public void tearDown(){
@@ -67,11 +63,7 @@ TC_24_02	I can navigate to Packages page and select a package.
     @Test
     public void TC_24_01_customerLogin(){
 
-        loginPage.loginPageLoginButton2.click();
-        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
-        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        ReusableMethods.waitFor(2);
-        loginPage.loginPageLoginButton.click();
+        loginPage.loginAsUser();  // Log in to a user account
 
         String expectedText = "Dashboard";
         String actualText = loginPage.userDashboard.getText();
@@ -81,11 +73,7 @@ TC_24_02	I can navigate to Packages page and select a package.
     @Test
     public void TC_24_02_selectPackageAndPay(){
 
-        // Log in to user account
-        loginPage.loginPageLoginButton2.click();
-        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
-        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        loginPage.loginPageLoginButton.click();
+        loginPage.loginAsUser();  // Log in to a user account
 
         packagesPage.packagesHeaderLink2.click(); // navigate to Packages page.
 
