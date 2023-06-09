@@ -53,4 +53,18 @@ public class PackagesPage {
    public WebElement moreInformationVisibility;
 
 
+   @FindBy (xpath = "//h4[text()='Tour Dates']")
+   public WebElement tourDatesText;
+
+    @FindBy(xpath = "//h4[text()='Book Now']")
+    public WebElement bookNowText;
+
+
+   @FindBy (xpath = "//a[@href='https://qa.tripandway.com/package/7-days-in-istanbul']")
+    public WebElement theThirdPackages;
+
+   @FindBy (xpath = "//a[@href='https://qa.tripandway.com/package/10-days-in-buenos-aires'] ")
+    public WebElement theSecondPackages;
+
+
 }

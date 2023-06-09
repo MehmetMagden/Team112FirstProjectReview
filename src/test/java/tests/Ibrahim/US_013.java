@@ -20,8 +20,8 @@ public class US_013 extends TestMethods {
 
     }
 
-
     @Test
+
     public void TC1302userVerifiesDestinationPageVisibleAndActive() {
 
         test = extent.createTest("TC_13_02", "User verifies if destinations page is visible and active");

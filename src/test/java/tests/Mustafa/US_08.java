@@ -1,12 +1,17 @@
 package tests.Mustafa;
+import com.github.javafaker.Faker;
 import net.bytebuddy.implementation.auxiliary.MethodCallProxy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pages.AdminPage;
 import pages.BasePage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -61,5 +66,8 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
         Assert.assertTrue(basePage.footerPhone.isEnabled(), "Phone is linked");
         Assert.assertTrue(basePage.footerEmail.isEnabled(), "Email is linked");
 
+        //softAssert.assertAll(); // manuel olarak kontrol edip, raporlanacak.
+
     }
+
 }

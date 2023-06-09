@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -189,7 +190,6 @@ public class BasePage {
     @FindBy(xpath = "//div[@class='footer-area pt_50 pb_80']")
     public WebElement footerContact;
 
-
     @FindBy(xpath = "(//div[@class='footer-address-item'])[1]")
     public WebElement footerAddress;
 
@@ -204,9 +204,11 @@ public class BasePage {
 
 
 
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/privacy-policy'])")
+    public static WebElement PrivacyPolicy;
 
 
-
+    //@FindBy(xpath = "//p[text()='3153 Foley Street']")
 
     // ====-----======-------======-----======-------========
 

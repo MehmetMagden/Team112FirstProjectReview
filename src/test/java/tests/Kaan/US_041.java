@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.AdminPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class US_041 {
     AdminPage adminPage = new AdminPage();
@@ -25,6 +26,26 @@ public class US_041 {
 
         adminPage.adminDropDownButton.click();
         adminPage.adminLogoutButton.click();
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
+        adminPage.adminLogInButton.click();
+
+
+
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
+        adminPage.adminLogInButton.click();
+
+
+        adminPage.visitWebsiteButtonAtTheTopOfAdminPage.click();
+
+
+        ReusableMethods.waitFor(2);
+        Driver.closeDriver();
+
+
+
+
 
 
 

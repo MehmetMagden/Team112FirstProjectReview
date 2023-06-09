@@ -44,19 +44,11 @@ TC_25_02	I should be able to navigate to "Payment History" page and see my lates
     @Test
     public void TC_25_01_customerLogin() {
 
-        loginPage.loginPageLoginButton2.click();
-        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
-        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        ReusableMethods.waitFor(2);
-        loginPage.loginPageLoginButton.click();
-
+        loginPage.loginAsUser();  // Log in to a user account
         userDashboardPage.paymentHistory.click();
 
-        WebElement bangkokPackageVisibility = Driver.getDriver().findElement(By.xpath("//tbody/tr[2]/td[6]"));
-        String actualText = bangkokPackageVisibility.getText();
-        System.out.println(actualText);
-        String expectedText = "Bangkok";
-        Assert.assertTrue(actualText.contains(expectedText));
+        WebElement purchaseConfirmation = Driver.getDriver().findElement(By.xpath("//tbody/tr[2]/td[7]/a[1]"));
+        Assert.assertTrue(purchaseConfirmation.isDisplayed());
 
     }
 }
