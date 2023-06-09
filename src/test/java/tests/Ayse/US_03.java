@@ -267,6 +267,27 @@ public class US_03 {
 
     }
 
+    @Test
+    public void registerToNewsletter(){  // TC_03_17
+
+        /*
+        1)User should access to the homepage
+        2)User should scroll the page until see the text of "Newsletter on the homepage
+        3)User should send to email box any email under the Newsletter section on the homepage
+        4)User should click submit button under the Newsletter section on the homepage
+        5)User should verify that the email has been submitted
+        6)User should close the page
+        */
+
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        js.executeScript("window.scrollBy(0,550)");
+        ReusableMethods.waitFor(1);
+
+
+    }
+
+
+
     @AfterMethod
     public void tearDown() {
 
