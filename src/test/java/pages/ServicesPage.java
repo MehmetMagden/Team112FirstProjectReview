@@ -12,6 +12,15 @@ public class ServicesPage {
 
 
     }
+    @FindBy(tagName = "//h1")
+    public WebElement titleOfPackage;
+
+    @FindBy(xpath = "//a[@href='https://qa.tripandway.com/service/international-tour']")
+    public WebElement internationalTourButton;
+
+
+
+
 
 
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/services'])[2]")
