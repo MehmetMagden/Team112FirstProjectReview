@@ -12,6 +12,12 @@ public class AdminPage {
     public  AdminPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
+
+
+
+
+
+
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
@@ -144,33 +150,47 @@ public class AdminPage {
     @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
     public WebElement addPackagesMap;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addPackagesSubmitButton;
+
+   @FindBy (xpath = "//tbody/tr[7]/td[7]/a[1]/i[1]")
+   public WebElement addedPackagesEditing;
+
+    @FindBy (xpath = "//input[@name='seo_title']")
+    public WebElement getAddPackagesTitle;
+
+    @FindBy (xpath = "//input[@name='p_price']")
+    public WebElement addPackagesPriceTab;
+
     @FindBy(xpath = "//a[text()='Detail']")
     public WebElement adminOrderDetailButton;
 
     @FindBy(xpath = "//h6[text()='Order Information']")
     public WebElement adminOrderPageOrderInformationElement;
 
+    @FindBy(xpath = "(//span[normalize-space()='Destinations'])[1]")
+    public WebElement adminDestinationsTab;
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addAdminDestinations;
+
     @FindBy(xpath = "//*[text()='Blog Section']")
     public WebElement adminPanelBlogSectionButton;
+
 
     @FindBy(xpath = "//*[text()='Categories']")
     public WebElement adminPanelBlogSectionCategoriesButton;
 
-
     @FindBy(xpath = "//*[text()=' Add New']")
     public WebElement blogSectionCategoriesAddNewButton;
 
-
     @FindBy(xpath = "//input[@name='category_name']")
     public WebElement addCategoryNameBox;
-
 
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement addCategorySubmitButton;
 
     @FindBy(xpath = "//div[@id='toast-container']")
     public WebElement addCategorySuccessfulAlert;
-
 
     @FindBy(xpath = "//input[@type='search']")
     public WebElement categoriesSearchBox;
@@ -195,7 +215,7 @@ public class AdminPage {
     @FindBy(xpath = "//div[@class='toast-message']")
     public WebElement categoriesDeletedSuccessfulAlert;
 
-    @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
      public WebElement editDestinationButton;
 
 
@@ -203,10 +223,10 @@ public class AdminPage {
     public WebElement addCategoryWithoutNameAlertMEssage;
 
     @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
-    public WebElement adminDestinationsTab;
+    public WebElement adminDestinationsTab1;
 
     @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
-    public WebElement addAdminDestinations;
+    public WebElement addAdminDestinations1;
 
     @FindBy(xpath = "(//input[@name='d_name'])[1]")
     public WebElement addDestinationsName;
