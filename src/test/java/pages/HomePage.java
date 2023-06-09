@@ -429,7 +429,7 @@ public class HomePage {
 
     @FindBy(xpath = "(//div[@class='slider-item'])[3]")
     public WebElement heroAreaOnHomePage;
-   
+
 
 
 

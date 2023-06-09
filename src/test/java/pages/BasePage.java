@@ -208,8 +208,15 @@ public class BasePage {
     public static WebElement PrivacyPolicy;
 
 
+
     //@FindBy(xpath = "//p[text()='3153 Foley Street']")
 
     // ====-----======-------======-----======-------========
+
+    @FindBy (xpath = "//a[normalize-space()='Terms and Conditions']")
+    public  WebElement termsConditions;
+
+    @FindBy (xpath = "//h1[normalize-space()='Terms and Conditions']")
+    public WebElement termsCondiotionsBanner;
 
 }

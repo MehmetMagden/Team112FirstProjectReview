@@ -13,7 +13,6 @@ public class US_26 extends MethodBase {
      */
 
     AdminPage adminPage = new AdminPage();
-   // MethodBase testMethod = new MethodBase();
 
     @Test
     public void navigateTheAdminDashboard() {

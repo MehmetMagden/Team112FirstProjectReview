@@ -22,9 +22,7 @@ public class US_15 extends MethodBase {
 
         extentTest = extentReports.createTest("TC15", "User Navigates To About Us Page");
 
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-        basePage.acceptCookies();
-        aboutUsPage.aboutUsHeaderLink.click();
+        testMethod.navigateAboutUsPage();
 
         String expectedWordMission = "OUR MISSION";
         String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
