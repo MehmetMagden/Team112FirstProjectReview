@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AdminPage;
 import pages.BasePage;
 import pages.HomePage;
 import utilities.ConfigReader;
@@ -15,11 +16,13 @@ import utilities.ReusableMethods;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ayse {
 
     HomePage homePage = new HomePage();
     BasePage basePage = new BasePage();
+    AdminPage adminPage=new AdminPage();
 
     @BeforeMethod
     public void setUp() {
@@ -79,6 +82,50 @@ public class ayse {
         }
 
     }
+    @Test
+    public void deneme(){
+        adminPage=new AdminPage();
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
+        adminPage.adminLogInButton.click();
+        ReusableMethods.waitFor(5);
+        String firstWH=Driver.getDriver().getWindowHandle();
+        String secondWH="";
+        
+        adminPage.visitWebsiteButtonAtTheTopOfAdminPage.click();
+        Set<String>allWH=Driver.getDriver().getWindowHandles();
+        for (String each:allWH
+             ) {
+            if(!each.equals(firstWH)){
+                secondWH=each;
+            }
+        }
+        Driver.getDriver().switchTo().window(secondWH);
+
+        String expectedUrl = "https://qa.tripandway.com/";
+        String actualUrl = Driver.getDriver().getCurrentUrl();
+
+        Assert.assertEquals(actualUrl,expectedUrl);
+        
+    }
+ //public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon, WebElement testOfElement, String firstWH) {
+ //    String secondWH = "";
+ //    ReusableMethods.waitFor(5);
+ //    js.executeScript("arguments[0].click();", socialMediaIkon);
+ //    ReusableMethods.waitFor(5);
+ //    Set<String> allWH = Driver.getDriver().getWindowHandles();
+ //    for (String eachWH : allWH) {
+ //        if (!eachWH.equals(firstWH)) {
+ //            secondWH = eachWH;
+ //        }
+ //    }
+ //    Driver.getDriver().switchTo().window(secondWH);
+
+ //    Assert.assertTrue(testOfElement.isDisplayed());
+ //    Driver.getDriver().switchTo().window(firstWH);
+ //    ReusableMethods.waitFor(5);
+ //}
     //   public Object switchToWindowUrl(String actualUrl){
     //
     //       actualUrl = Driver.getDriver().getWindowHandle();
