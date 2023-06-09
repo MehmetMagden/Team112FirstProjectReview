@@ -63,6 +63,5 @@ TC_08_02	User can see the company's contact info after scrolling down to the bot
 
         //softAssert.assertAll(); // manuel olarak kontrol edip, raporlanacak.
 
-
     }
 }

@@ -13,9 +13,8 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US_14 extends TestBaseRapor {
+public class US_14 extends MethodBase {
     /*
-
     As a user, I should be able to navigate to the "Featured Packages" page.
     I should then verify that the packages are visible and active on the page.
     */
@@ -24,16 +23,14 @@ public class US_14 extends TestBaseRapor {
     BasePage basePage = new BasePage();
     Actions actions = new Actions(Driver.getDriver());
 
-
     @Test
-    public void TC14_01_packagesPageIsActiveVisiable () {
-
-        packagesPage = new PackagesPage();
-        basePage = new BasePage();
+    public void TC14_01_packagesPageIsActiveVisible () {
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        basePage.acceptCookies();
+
         packagesPage.packagesHeaderLink.click();
-        basePage.acceptCookiesButton.click();
+
         ReusableMethods.waitFor(2);
 
         extentTest = extentReports.createTest("TC14", "User Navigates To Packages Page");
@@ -43,19 +40,17 @@ public class US_14 extends TestBaseRapor {
         Assert.assertTrue(actualBanner.contains(expectedBanner));
         extentTest.pass("Verify, if user can see the title in the banner");
 
-        Assert.assertTrue(packagesPage.featuredPackagesAllTogether.isDisplayed());
-        extentTest.pass("User sees all packages in the page");
+        Assert.assertTrue(packagesPage.theFirstPackagesWebElement.isDisplayed() &&
+                                  packagesPage.theSecondPackages.isDisplayed() &&
+                                  packagesPage.theThirdPackages.isDisplayed());
+        extentTest.pass("Verifies that user can see the first three packages in the page");
     }
 
     @Test
     public void TC14_02_theFirstPackagesFeaturesTest() {
 
-        packagesPage = new PackagesPage();
-        actions = new Actions(Driver.getDriver());
-        //basePage = new BasePage();
-
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-        //basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         packagesPage.packagesHeaderLink.click();
         ReusableMethods.waitFor(2);
 
@@ -65,15 +60,13 @@ public class US_14 extends TestBaseRapor {
         String expectedBannerText = "3 DAYS IN BUENOS AIRES";
         String actualBannerText = packagesPage.theFirstPackageBannerText.getText();
         Assert.assertTrue(actualBannerText.contains(expectedBannerText));
-        extentTest.pass("Verify, if user can see the title in the banner");
+        extentTest.pass("Verifies that  user can see the title in the banner");
 
         actions.sendKeys(Keys.END).perform();
         ReusableMethods.waitFor(2);
 
         Assert.assertTrue(packagesPage.moreInformationVisibility.isDisplayed());
-        extentTest.pass("Verify, if user can see information tabs in the page");
-
+        extentTest.pass("Verifies that user can see information tabs in the page");
     }
-
 
 }

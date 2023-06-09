@@ -39,7 +39,9 @@ public class US_038 {
 
         adminPage.changeAdminPassword.click();
 
-      // Test will fail as when you click the change password header it takes you to the edit profile section
+
+       //Test will fail as when you click the change password header it takes you to the edit profile section
+
         ReusableMethods.waitFor(3);
         Driver.closeDriver();
 
