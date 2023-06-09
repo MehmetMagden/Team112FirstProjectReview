@@ -215,7 +215,7 @@ public class AdminPage {
     @FindBy(xpath = "//div[@class='toast-message']")
     public WebElement categoriesDeletedSuccessfulAlert;
 
-    @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
      public WebElement editDestinationButton;
 
 
@@ -235,6 +235,15 @@ public class AdminPage {
     public WebElement addDestinationsUploadImage;
     @FindBy (xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
+
+    @FindBy (xpath = "(//img[@class='img-profile rounded-circle'])")
+    public WebElement AdminMainPageProfile;
+
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/admin/photo-change'])")
+    public WebElement AdminChangingIMG;
+
+    @FindBy(xpath = "(//button[@class='btn btn-success'])")
+    public WebElement AdminPhotoUpdate;
 
 }
 
