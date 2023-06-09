@@ -299,6 +299,7 @@ public class US_03 {
 
     }
 
+
     //User should be able to click the functions about "Our Services" section in the body section of the Homepage
     @Test
     public void userClickTheFunctionsAboutOurServices() {//TC_03_12
@@ -314,6 +315,7 @@ public class US_03 {
 
 
     }
+
 
     //User should be able to click the functions about "Featured Packages" section in the body section of the Homepage
     @Test
@@ -362,34 +364,36 @@ public class US_03 {
 
     @Test
     public void userClickTheFunctionsAboutTeamMembersSection() {////TC_03_15
-       setUpTest(homePage.teamMembersAreaOnHomepage);
+        setUpTest(homePage.teamMembersAreaOnHomepage);
 
         List<WebElement> listOfTeamMembers = new ArrayList<>();
         listOfTeamMembers.add(homePage.knoxMitchellText);
         listOfTeamMembers.add(homePage.jaxonGreenText);
         listOfTeamMembers.add(homePage.averyJohnsonText);
         listOfTeamMembers.add(homePage.zaraWilliamsText);
-       //listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
+        //listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
 
-     String firstWH = Driver.getDriver().getWindowHandle();
+        String firstWH = Driver.getDriver().getWindowHandle();
 
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon,homePage.facebookImg,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon,homePage.facebookImg,firstWH );
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon,homePage.twitterKesfetArea,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon,homePage.linkedinEmailBox,firstWH);
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon,homePage.linkedinEmailBox,firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon, homePage.facebookImg, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon, homePage.twitterKesfetArea, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon, homePage.linkedinEmailBox, firstWH);
+        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon, homePage.linkedinEmailBox, firstWH);
 
 
     }
-    public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon,WebElement testOfElement,String firstWH){
-        String secondWH="";
+
+    public void socialMediaIkonsTestOfTeamMembers(WebElement socialMediaIkon, WebElement testOfElement, String
+            firstWH) {
+        String secondWH = "";
         ReusableMethods.waitFor(5);
         js.executeScript("arguments[0].click();", socialMediaIkon);
         ReusableMethods.waitFor(5);
@@ -407,8 +411,9 @@ public class US_03 {
 
 
     }
+
     @Test
-    public void userClickableElementsOfTeamMembers(){
+    public void userClickableElementsOfTeamMembers() {
         homePage = new HomePage();
         basePage = new BasePage();
         packagesPage = new PackagesPage();
@@ -427,7 +432,8 @@ public class US_03 {
     }
 
 
-    public void isClickableElements(WebElement clickableElement, WebElement readMoreButton, WebElement theOtherPageElement) {
+    public void isClickableElements(WebElement clickableElement, WebElement readMoreButton, WebElement
+            theOtherPageElement) {
         clickableElement.click();
         ReusableMethods.waitFor(3);
         readMoreButton.click();
@@ -447,3 +453,4 @@ public class US_03 {
 
     }
 }
+

@@ -10,7 +10,6 @@ import java.util.logging.XMLFormatter;
 
 public class LoginPage {
 
-
     public LoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -39,7 +38,6 @@ public class LoginPage {
 
     @FindBy(xpath = "(//div[@class='detail-dashboard table-responsive mt_30'])[1]")
     public WebElement viewAllPaymentElementInPaymentElementOnLoginPage;
-
 
     @FindBy(xpath = "//div/a[text()='Login']")
     public WebElement loginPageLoginButton2;   // alternative to the one above
@@ -89,6 +87,9 @@ public class LoginPage {
         adminLogInButton.click();
 
     }
+
+
+
 
 }
 
