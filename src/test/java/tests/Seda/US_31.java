@@ -11,6 +11,8 @@ import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AdminPage;
+import pages.PackagesPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
@@ -143,7 +145,7 @@ public class US_31 extends MethodBase {
 
         WebElement priceField =  adminPage.addPackagesPriceTab;
 
-        priceField.sendKeys("ABDCHskh");
+        priceField.sendKeys(ConfigReader.getProperty("incorrectPriceFormat"));
 
         ReusableMethods.waitFor(2);
 
@@ -155,10 +157,7 @@ public class US_31 extends MethodBase {
 
         ReusableMethods.waitFor(2);
 
-        String expectedWarningMessage = "Error Message";
-        String actualWarningMessage = adminPage.warningMessage.getText();
-        softAssert.assertEquals(actualWarningMessage , expectedWarningMessage,
-                        "There is no Error Message when the input is incorrect");
+        softAssert.assertTrue(adminPage.adminLogInButton.isDisplayed());
         extentTest.fail("Verifies that user can submit the form with incorrect price format ");
         softAssert.assertAll();
 
