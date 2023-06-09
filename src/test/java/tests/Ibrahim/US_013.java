@@ -16,7 +16,7 @@ public class US_013 extends TestMethods {
 
         test = extent.createTest("TC_13_01", "User navigates destinations page");
         testMethods.userNavigatesAndVerifiesToDestinationPage();
-        test.pass("User can access Destination page");
+        test.pass("Verify, if User can access Destination page");
 
     }
 

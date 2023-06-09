@@ -75,12 +75,10 @@ public class TestMethods {
     public void userNavigatesAndVerifiesToAdminPage(){
 
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
-        ReusableMethods.waitFor(2);
         adminPage = new AdminPage();
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
         adminPage.adminLogInButton.click();
-        ReusableMethods.waitFor(2);
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminDashboardUrl");
         Assert.assertEquals(actualTestData, expectedTestData, "Actual page is NOT admin dashboard");
@@ -120,7 +118,6 @@ public class TestMethods {
         adminPage = new AdminPage();
         adminPage.subscriberButton.click();
         adminPage.allSubscribersButton.click();
-        ReusableMethods.waitFor(2);
         actualTestData = Driver.getDriver().getCurrentUrl();
         expectedTestData = ConfigReader.getProperty("adminSubscribersPageUrl");
         Assert.assertEquals(actualTestData,expectedTestData, "Actual page is NOT Subscribers page");
@@ -133,7 +130,6 @@ public class TestMethods {
 
         adminPage = new AdminPage();
         Assert.assertTrue(adminPage.allSubscribersButton.isEnabled(), "All Subscribers button is NOT enabled");
-        ReusableMethods.waitFor(2);
         actualTestData = adminPage.allSubscribersWebElement.getText();
         expectedTestData ="Showing 1 to 10 of";
         Assert.assertTrue(actualTestData.contains(expectedTestData), "All Subscribers list is NOT displayed");
@@ -160,7 +156,6 @@ public class TestMethods {
         Assert.assertTrue(adminPage.addCategorySubmitButton.isEnabled(), "Categories page is NOT active");
         adminPage.addCategorySubmitButton.click();
         Assert.assertTrue(adminPage.addCategoryWithoutNameAlertMEssage.isDisplayed());
-        ReusableMethods.waitFor(2);
         adminPage.addCategoryNameBox.sendKeys("Team112");
         adminPage.addCategorySubmitButton.click();
         expectedTestData = "Category is added successfully!";
