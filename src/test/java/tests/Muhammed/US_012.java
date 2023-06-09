@@ -10,12 +10,17 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
+
+
 public class US_012 extends TestBaseRapor {
 
         BasePage basePage= new BasePage();
         ServicesPage servicesPage= new ServicesPage();
         @Test
         public void US012_TC01ServicePageAndItems(){
+
+                BasePage basePage= new BasePage();
+                ServicesPage servicesPage= new ServicesPage();
                 ServicesPage servicesPage1 = new ServicesPage();
 
                 Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
@@ -25,23 +30,23 @@ public class US_012 extends TestBaseRapor {
                 //User access to home page
 
                 basePage.acceptCookies();
-                ReusableMethods.waitFor(2);
+                ReusableMethods.waitFor(3);
                 ServicesPage.HeaderServicesButton.click();
                 Assert.assertTrue(ServicesPage.ServiceItems.isDisplayed());
                 Assert.assertTrue(ServicesPage.ServiceInternationalTOurItem.isDisplayed());
                 Assert.assertTrue(ServicesPage.ServiceAdventureTourItem.isDisplayed());
                 Assert.assertTrue(ServicesPage.ServiceCultureTourItem.isDisplayed());
-                Assert.assertTrue(ServicesPage.ServiceBussinessTOurItem.isDisplayed());
-                Assert.assertTrue(ServicesPage.ServiceHealthTOurItem.isDisplayed());
+                Assert.assertTrue(ServicesPage.ServiceBusinessTOurItem.isDisplayed());
                 Assert.assertTrue(ServicesPage.ServiceReligiousTOurItem.isDisplayed());
-                ReusableMethods.waitFor(2);
+                ReusableMethods.waitFor(3);
 
                 Assert.assertTrue(ServicesPage.ServiceInternationalTOurItem.isEnabled());
                 Assert.assertTrue(ServicesPage.ServiceAdventureTourItem.isEnabled());
                 Assert.assertTrue(ServicesPage.ServiceCultureTourItem.isEnabled());
-                Assert.assertTrue(ServicesPage.ServiceBussinessTOurItem.isEnabled());
+                Assert.assertTrue(ServicesPage.ServiceBusinessTOurItem.isEnabled());
                 Assert.assertTrue(ServicesPage.ServiceHealthTOurItem.isEnabled());
                 Assert.assertTrue(ServicesPage.ServiceReligiousTOurItem.isEnabled());
+                ReusableMethods.waitFor(5);
 
         }
 

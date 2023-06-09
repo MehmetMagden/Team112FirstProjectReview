@@ -31,7 +31,7 @@ public class ServicesPage {
     public static WebElement ServiceCultureTourItem;
 
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/service/bussiness-tour'])")
-    public static WebElement ServiceBussinessTOurItem;
+    public static WebElement ServiceBusinessTOurItem;
 
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/service/health-tour'])")
     public static WebElement ServiceHealthTOurItem;
