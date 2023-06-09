@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -37,7 +38,7 @@ public class BlogPage {
     @FindBy(xpath = "//td[contains(text(),'New Blog Entry')]")
     public WebElement newBlogEntryCheck;
 
-    @FindBy(xpath = "(//a[@class='btn btn-warning btn-sm'])[8]")
+    @FindBy(xpath = "(//a[@class='btn btn-warning btn-sm'])[7]")
     public WebElement editBlog;
 
     @FindBy(xpath = "//button[@type='submit']")

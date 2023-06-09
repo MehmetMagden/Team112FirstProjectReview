@@ -1,4 +1,4 @@
 package tests.Kaan;
 
-public class Delete {
+public class US_45 {
 }

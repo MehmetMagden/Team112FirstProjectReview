@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AdminPage;
 import pages.BlogPage;
+import pages.LoginPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -53,12 +54,12 @@ public class US_29 {
 				5) User edits the blog post name in the "Blog Name" box
 				6) User clicks the "Update" button
 				7) User should see "Blogs" page
-				8) User should see the new title of their blog as EDITED:
+				8) User should see the message "Blog is updated successfully!"
 				9) User closes the browser
      */
 
     AdminPage adminPage = new AdminPage();
-    Actions actions = new Actions(Driver.getDriver());
+    LoginPage loginPage = new LoginPage();
     BlogPage blogPage = new BlogPage();
     Faker faker = new Faker();
 
@@ -73,22 +74,24 @@ public class US_29 {
 
     @Test
     public void TC_29_01_createBlogAsAdmin () {
-
-        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
-        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password
-        adminPage.adminLogInButton.click(); // Click the Log in button
-
+        loginPage.loginAsAdmin();
         Assert.assertTrue(adminPage.adminDashboardVisibility.isDisplayed());  // Check if admin Dashboard is visible?
 
         blogPage.blogSection.click(); // Click Blog Section on the left menu
         blogPage.blogs.click(); // Click Blogs under "Blog Section".
         blogPage.blogsAddNewButton.click(); // Clicks Add New button under "Blogs" section.
-        blogPage.blogTitle.sendKeys("New Blog Entry"); // Navigates to Blog Title and adds a random title.
+        blogPage.blogTitle.sendKeys(faker.number().digits(2) + " New Blog Entry"); // Navigates to Blog Title and adds a random title.
         blogPage.blogContent.sendKeys("New Blog Content entry is provided."); // Navigates to Blog content and adds some content.
         blogPage.blogShortContent.sendKeys("Blog short content is provided!"); // Navigates to Blog short content and adds some content.
 
         WebElement chooseFile = blogPage.blogPhotoUpload;
-        chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\blog_photo.jpg");  // HOW to make the path dynamic?
+        chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\Sample_Image.jpg");  // HOW to make the path dynamic?
+
+     // chooseFile.sendKeys("C:\\Users\\mstfk\\Downloads\\Sample_Image.jpg");  // HOW to make the path dynamic?
+
+        String filePath =  System.getProperty("user.home") + "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
+        chooseFile.sendKeys(filePath);
+
         blogPage.submitNewBlog.click(); // Submits the new blog entry.
 
         String expectedText = "New Blog Entry";
@@ -101,21 +104,20 @@ public class US_29 {
     }
 
     @Test
-    public void TC_29_02_editBlogEntry(){ // pop-up mesaj'dan text almayi kullanamadim.
+    public void TC_29_02_editBlogEntry(){
 
-        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid")); // input admin email
-        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid")); // input admin password
-        adminPage.adminLogInButton.click(); // Click the Log in button
-
+        loginPage.loginAsAdmin();
         blogPage.blogSection.click(); // Click Blog Section on the left menu
         blogPage.blogs.click(); // Click Blogs under "Blog Section".
 
-        blogPage.editBlog.click();
+        blogPage.editBlog.click(); // 7th blog will be edited. If it doesn't work, try 8th or 9th etc.
         blogPage.blogTitle.sendKeys("    EDITED   ");
         blogPage.updateButton.click();
+        ReusableMethods.waitFor(2);
 
-        String expectedMessage = "EDITED";
-        Assert.assertTrue(blogPage.updateBlogCheck.getText().contains(expectedMessage));
+        String actualMessage = adminPage.warningMessage.getText();
+        String expectedMessage = "Blog is updated successfully!";
+        Assert.assertEquals(actualMessage, expectedMessage);
 
     }
 

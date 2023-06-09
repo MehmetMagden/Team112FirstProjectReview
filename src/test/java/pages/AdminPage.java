@@ -13,6 +13,14 @@ public class AdminPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> main
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 
@@ -51,8 +59,6 @@ public class AdminPage {
 
     @FindBy (xpath = "//a[normalize-space()='Visit Website']")
     public WebElement visitWebsiteButtonAtTheTopOfAdminPage;
-
-
 
     @FindBy(xpath = "(//span[normalize-space()='Order'])[1]")
     public WebElement orderButtonInAdminPanelOnAdminPage;
@@ -95,10 +101,9 @@ public class AdminPage {
 
     @FindBy(className= "dropdown-item")
     public WebElement changeAdminPassword;
-    @FindBy(xpath = "m-0 mt-2 font-weight-bold text-primary")
-    public WebElement editAdminProfile;
 
-
+    @FindBy (xpath = "(//a[@class='dropdown-item'])[3]")
+    public WebElement adminLogoutButton;
 
     @FindBy(xpath = "(//div[@role='textbox'])[1]")
     public WebElement messageBoxInSendEmailSection;
@@ -148,6 +153,18 @@ public class AdminPage {
     @FindBy (xpath ="(//textarea[@name='p_map'])[1]" )
     public WebElement addPackagesMap;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addPackagesSubmitButton;
+
+   @FindBy (xpath = "//tbody/tr[7]/td[7]/a[1]/i[1]")
+   public WebElement addedPackagesEditing;
+
+    @FindBy (xpath = "//input[@name='seo_title']")
+    public WebElement getAddPackagesTitle;
+
+    @FindBy (xpath = "//input[@name='p_price']")
+    public WebElement addPackagesPriceTab;
+
     @FindBy(xpath = "//a[text()='Detail']")
     public WebElement adminOrderDetailButton;
 
@@ -159,15 +176,77 @@ public class AdminPage {
     @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
     public WebElement addAdminDestinations;
 
-    @FindBy (xpath = "(//input[@name='d_name'])[1]")
+    @FindBy(xpath = "//*[text()='Blog Section']")
+    public WebElement adminPanelBlogSectionButton;
+
+
+    @FindBy(xpath = "//*[text()='Categories']")
+    public WebElement adminPanelBlogSectionCategoriesButton;
+
+    @FindBy(xpath = "//*[text()=' Add New']")
+    public WebElement blogSectionCategoriesAddNewButton;
+
+    @FindBy(xpath = "//input[@name='category_name']")
+    public WebElement addCategoryNameBox;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement addCategorySubmitButton;
+
+    @FindBy(xpath = "//div[@id='toast-container']")
+    public WebElement addCategorySuccessfulAlert;
+
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement categoriesSearchBox;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[1]")
+    public WebElement categoriesActionEditButton;
+
+
+    @FindBy(xpath = "//tbody/tr/td[4]/a[2]")
+    public WebElement categoriesActionDeleteButton;
+
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement editCategoryUpdateButton;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement editCategorySuccessfulAlert;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement categoriesDeletedSuccessfulAlert;
+
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
+     public WebElement editDestinationButton;
+
+
+    @FindBy(xpath = "//div[@class='toast-message']")
+    public WebElement addCategoryWithoutNameAlertMEssage;
+
+    @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
+    public WebElement adminDestinationsTab1;
+
+    @FindBy (xpath = "(//a[normalize-space()='Add New'])[1]")
+    public WebElement addAdminDestinations1;
+
+    @FindBy(xpath = "(//input[@name='d_name'])[1]")
     public WebElement addDestinationsName;
 
     @FindBy (xpath = "//input[@name='d_photo']")
     public WebElement addDestinationsUploadImage;
-
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy (xpath = "//button[@type='submit']")
     public WebElement destinationsSubmitButton;
 
+    @FindBy (xpath = "(//img[@class='img-profile rounded-circle'])")
+    public WebElement AdminMainPageProfile;
 
-    }
+    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/admin/photo-change'])")
+    public WebElement AdminChangingIMG;
+
+    @FindBy(xpath = "(//button[@class='btn btn-success'])")
+    public WebElement AdminPhotoUpdate;
+
+}
 
