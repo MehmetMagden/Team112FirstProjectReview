@@ -23,6 +23,9 @@ public class US_038 extends TestBaseRapor {
 
         extentTest = extentReports.createTest("TC38", "User Navigates To Change password");
 
+
+
+
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
 
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
@@ -37,15 +40,18 @@ public class US_038 extends TestBaseRapor {
         ReusableMethods.waitFor(2);
         adminPage.changeAdminPassword.click();
 
+
         String expectedWordChangePassword = "Change Password";
         String actualWordEditProfile = adminPage.changeAdminPassword.getText();
         Assert.assertEquals(actualWordEditProfile,expectedWordChangePassword);
         extentTest.fail("When user access the change password header it takes you to the edit profile section");//Test failed as NO "Change Password" screen
 
-        adminPage.changeAdminPassword.click();
 
-       //Test will fail as when you click the change password header it takes you to the edit profile section
-        ReusableMethods.waitFor(3);
+
+
+
+
+
         Driver.closeDriver();
 
 

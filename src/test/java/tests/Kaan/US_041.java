@@ -30,11 +30,23 @@ public class US_041 {
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
         adminPage.adminLogInButton.click();
 
+
+
+        adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+        adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
+        adminPage.adminLogInButton.click();
+
+
         adminPage.visitWebsiteButtonAtTheTopOfAdminPage.click();
 
 
         ReusableMethods.waitFor(2);
         Driver.closeDriver();
+
+
+
+
+
 
 
 

@@ -195,7 +195,7 @@ public class AdminPage {
     @FindBy(xpath = "//div[@class='toast-message']")
     public WebElement categoriesDeletedSuccessfulAlert;
 
-    @FindBy(xpath = "(//i[@class='fas fa-edit'])[11]")
+    @FindBy(xpath = "(//i[@class='fas fa-edit'])[8]")
      public WebElement editDestinationButton;
 
     @FindBy (xpath = "(//span[normalize-space()='Destinations'])[1]")
