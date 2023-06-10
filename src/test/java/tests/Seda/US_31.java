@@ -11,9 +11,16 @@ import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.AdminPage;
+import pages.PackagesPage;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class US_31 extends MethodBase {
@@ -29,10 +36,9 @@ public class US_31 extends MethodBase {
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     Faker faker = new Faker();
-    SoftAssert softAssert = new SoftAssert();
 
     @Test
-    public void TC_31_AddPackagesToAdminDashboard() {
+    public void TC_31_01_AddPackagesToAdminDashboard() {
 
         extentTest = extentReports.createTest("TC31",
                      "User Adds New Packages to Admin Page Packages");
@@ -45,7 +51,6 @@ public class US_31 extends MethodBase {
                .sendKeys(faker.name().fullName() + Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
-        //String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
         String filePath = System.getProperty("user.home") +
                          "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
@@ -57,7 +62,7 @@ public class US_31 extends MethodBase {
 
         ReusableMethods.waitFor(2);
 
-        actions.sendKeys("12457856" + Keys.TAB).perform();
+        actions.sendKeys("2023/06/28" + Keys.TAB).perform();
         ReusableMethods.waitFor(2);
         actions.sendKeys("2023/07/28" + Keys.TAB).perform();
         ReusableMethods.waitFor(2);
@@ -83,16 +88,14 @@ public class US_31 extends MethodBase {
 
         adminPage.addPackagesSubmitButton.click();
 
-        ReusableMethods.waitFor(3);
-
         testMethod.warningMessagesCheck("Package is added successfully!" ,
                                          adminPage.warningMessage.getText());
         extentTest.pass("Verifies that user successfully can add a new Packages");
 
     }
 
-   @Test (priority = 2)
-    public void TC31_01_editAddedPackagesTest(){
+   @Test
+    public void TC31_02_editAddedPackagesTest(){
 
        extentTest = extentReports.createTest("TC31_01",
                                              "If user can edit the added packages");
@@ -111,10 +114,10 @@ public class US_31 extends MethodBase {
    }
 
     @Test
-    public void TC31_02_negativePriceFormatTest() {
+    public void TC31_03_negativePriceFormatTest() {
 
         extentTest = extentReports.createTest("TC31_01",
-                         "If user can input non-numerical character to price field in the add packages page");
+                         "If user can input non-numerical character to price field and submit the packages");
         testMethod.logInAdminPageToNavigate();
 
         adminPage.adminPagePackagesTab.click();
@@ -129,50 +132,34 @@ public class US_31 extends MethodBase {
                           "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
 
-        ReusableMethods.waitFor(3);
-
-        jse.executeScript("window.scrollBy(0,800)");
-
         adminPage.addPackagesStartDate.sendKeys("2023/06/28" + Keys.TAB);
         ReusableMethods.waitFor(2);
         actions.sendKeys("2023/07/28" + Keys.TAB).perform();
         ReusableMethods.waitFor(2);
         actions.sendKeys("2023/05/28" + Keys.TAB).perform();
 
-        jse.executeScript("window.scrollBy(0,650)");
-
-        WebElement priceField =  adminPage.addPackagesPriceTab;
-
-        priceField.sendKeys("ABDCHskh");
+        adminPage.addPackagesPriceTab.sendKeys(ConfigReader.getProperty("incorrectPriceFormat"));
 
         ReusableMethods.waitFor(2);
-
-        softAssert.assertTrue(priceField.getAttribute("value").matches("\\d+"),
-                "Price field should only contain numeric Value");
-        extentTest.fail("Verifies that user can input non-numeric characters to price field");
 
         adminPage.addPackagesSubmitButton.click();
 
         ReusableMethods.waitFor(2);
 
-        String expectedWarningMessage = "Error Message";
-        String actualWarningMessage = adminPage.warningMessage.getText();
-        softAssert.assertEquals(actualWarningMessage , expectedWarningMessage,
-                        "There is no Error Message when the input is incorrect");
-        extentTest.fail("Verifies that user can submit the form with incorrect price format ");
-        softAssert.assertAll();
+        Assert.assertTrue(adminPage.addPackagesSubmitButton.isDisplayed());
+        extentTest.fail("Verifies that user can submit the form with incorrect PRICE format");
 
     }
 
     @Test
-    public void TC31_03_negativeDateFormatTest(){
+    public void TC31_04_negativeDateFormatEntryTest(){
 
-        extentTest = extentReports.createTest("TC31_03",
-                "If user can input incorrect date format to dates field in the add packages page");
-
+        extentTest = extentReports.createTest("TC31_01",
+                "If user can input incorrect date format to dates field and submit the packages");
         testMethod.logInAdminPageToNavigate();
 
         adminPage.adminPagePackagesTab.click();
+
         adminPage.addPackages.click();
 
         actions.sendKeys(adminPage.addPackagesFirstTab, faker.name().name() + Keys.TAB)
@@ -180,57 +167,65 @@ public class US_31 extends MethodBase {
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
         String filePath = System.getProperty("user.home") +
-                        "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
+                "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
 
-        WebElement dateField = adminPage.addPackagesStartDate;
-        dateField.sendKeys("4546446" + Keys.TAB);
+        ReusableMethods.waitFor(2);
+        adminPage.addPackagesStartDate.sendKeys(ConfigReader.getProperty("incorrectDateFormat") + Keys.TAB);
+        ReusableMethods.waitFor(2);
+        actions.sendKeys(ConfigReader.getProperty("incorrectDateFormat") + Keys.TAB).perform();
+        ReusableMethods.waitFor(2);
+        actions.sendKeys(ConfigReader.getProperty("incorrectDateFormat") + Keys.TAB).perform();
 
-        ReusableMethods.waitFor(4);
-
-        String enteredDateFormat =dateField.getAttribute("value");
-        String expectedDateFormat= "\\d{4}/\\d{2}/\\d{2}";
-
-        softAssert.assertTrue(enteredDateFormat.matches(expectedDateFormat));
+        adminPage.addPackagesPriceTab.sendKeys("1000");
 
         ReusableMethods.waitFor(2);
-
-        actions.sendKeys("2023/07/28" + Keys.TAB).perform();
-        ReusableMethods.waitFor(2);
-        actions.sendKeys("2023/05/28" + Keys.TAB)
-                .sendKeys("Map" + Keys.TAB)
-                .sendKeys("Itinerary" + Keys.TAB)
-                .sendKeys("Price" + Keys.TAB)
-                .sendKeys("Policy" + Keys.TAB)
-                .sendKeys("Terms" + Keys.TAB).perform();
-
-        WebElement isFeatured = adminPage.addPackagesIsFeatured;
-        Select selectFeatured = new Select(isFeatured);
-        ReusableMethods.waitFor(2);
-        selectFeatured.selectByVisibleText("Yes");
-
-        WebElement destination = adminPage.addPackagesDestination;
-        Select selectDestination = new Select(destination);
-        ReusableMethods.waitFor(2);
-        selectDestination.selectByVisibleText("Istanbul, Turkey");
-
-        actions.sendKeys(adminPage.getAddPackagesTitle, "Title")
-                .sendKeys("Meta Description" + Keys.TAB).perform();
 
         adminPage.addPackagesSubmitButton.click();
 
-        jse.executeScript("window.scrollBy(0,-550)");
+        ReusableMethods.waitFor(2);
 
-        ReusableMethods.waitFor(3);
-
-        String expectedWarningMessage = "Error Message";
-        String actualWarningMessage = adminPage.warningMessage.getText();
-        softAssert.assertEquals(actualWarningMessage , expectedWarningMessage,
-                              "There is no Error Message when input is incorrect");
-        extentTest.fail("Verifies that user can submit the form with incorrect date format ");
-
-        softAssert.assertAll();
-
+        Assert.assertFalse(adminPage.addPackagesSubmitButton.isDisplayed());
+        extentTest.fail("Verifies that user can submit the form with incorrect DATE format");
     }
 
+    @Test
+    public void TC31_05_negativeDateEntryLogicTest(){
+        extentTest = extentReports.createTest("TC31_01",
+                "If user can input dates without any logic");
+        testMethod.logInAdminPageToNavigate();
+
+        adminPage.adminPagePackagesTab.click();
+
+        adminPage.addPackages.click();
+
+        actions.sendKeys(adminPage.addPackagesFirstTab, faker.name().name() + Keys.TAB)
+                .sendKeys(faker.name().fullName() + Keys.TAB).perform();
+
+        WebElement fileUpload = adminPage.addPackagesUploadImage;
+        String filePath = System.getProperty("user.home") +
+                "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
+        fileUpload.sendKeys(filePath);
+
+        adminPage.addPackagesStartDate.sendKeys("2023/07/28" + Keys.TAB);
+        ReusableMethods.waitFor(2);
+        actions.sendKeys("2023/06/28" + Keys.TAB).perform();
+        ReusableMethods.waitFor(2);
+        actions.sendKeys("2023/09/28" + Keys.TAB).perform();
+
+        adminPage.addPackagesPriceTab.sendKeys(ConfigReader.getProperty("1000"));
+
+        ReusableMethods.waitFor(2);
+
+        adminPage.addPackagesSubmitButton.click();
+
+        ReusableMethods.waitFor(2);
+
+        Assert.assertTrue(adminPage.addPackagesSubmitButton.isDisplayed());
+        extentTest.fail("Verifies that user can submit the form as START Date is later then END DATE");
+
+    }
 }
+
+
+

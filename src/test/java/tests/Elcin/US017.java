@@ -1,70 +1,82 @@
 package tests.Elcin;
 
-import org.apache.hc.core5.reactor.Command;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.ScriptKey;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AdminPage;
 import pages.BasePage;
 import pages.ContactPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-import javax.swing.*;
+public class US017 extends TestBaseRapor {
+    @BeforeMethod
+    public void setUp() {
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-public class US017 {
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        Driver.quitDriver();
+    }
 
     ContactPage contactPage = new ContactPage();
     BasePage basePage = new BasePage();
 
     Actions actions = new Actions(Driver.getDriver());
 
-    @Test(priority = 1)
-    public void TC017_01_contactPageAccessable() {
-        contactPage = new ContactPage();
-        basePage = new BasePage();
-
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+    @Test
+    public void TC017_01_contactPageAccessable() { //done
+        extentTest = extentReports.createTest("TC017_01", "User should be able to access to Contact page");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
         String expectedUrl = ConfigReader.getProperty("contactUrl");
         System.out.println(expectedUrl);
         String actualUrl = Driver.getDriver().getCurrentUrl();
         System.out.println(actualUrl);
         Assert.assertEquals(actualUrl, expectedUrl);
+        extentTest.pass("User can successfuly access to contact page");
         ReusableMethods.waitFor(3);
-        Driver.quitDriver();
+
     }
 
     @Test
-    public void TC17_02_01_SuccsesfulMessageSubmit() {  //PASSED
-        contactPage = new ContactPage();
-        basePage = new BasePage();
+    public void TC17_02_01_SuccsesfulMessageSubmit() { //done
+        extentTest = extentReports.createTest("TC017_02_01", "User can send a message to admin by inputing requested data type");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
-
         contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
-        actions.sendKeys("902165221591" + Keys.TAB)
+        actions.sendKeys("00902165221591" + Keys.TAB)
                 .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
                 .sendKeys("Message box worked" + Keys.TAB)
                 .sendKeys(Keys.ENTER).perform();
         js.executeScript("window.scrollBy(0, -500)");
         Assert.assertTrue(contactPage.messageSuccesfullySent.isDisplayed());
+        //extentTest.pass("User able to send a message by inputing requested data in requested format");
         System.out.println(contactPage.messageSuccesfullySent.getText());
 
-        Driver.getDriver().quit();
     }
 
+   /*
     @Test
-    public void TC017_02_02shouldNotBeAbleToSubmitMessageWithDigitsInsertedInTheNameTextBox() { //??????????
+    public void TC017_02_02_shouldNotBeAbleToSubmitMessageWithDigitsInsertedInTheNameTextBox() {
+        // Test cannot be completed with automation due to lack of tag on moving alert.
+        // Test carried out manually and user cannot send message when digit inserted in name box.
         contactPage = new ContactPage();
         basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
@@ -81,55 +93,54 @@ public class US017 {
 
         ReusableMethods.waitFor(1);
         js.executeScript("window.scrollBy(0, -300)");
-        String expectedMessage = " ";
+        String expectedMessage = "Message is sent successfully! Admin will contact you soon";
         String actualMessage = contactPage.messageSuccesfullySent.getText();
         System.out.println(actualMessage);
 
         Assert.assertTrue(!contactPage.messageSuccesfullySent.isDisplayed());
 
 
-        Driver.getDriver();
-    }
+
+
+   */
 
     @Test
     public void TC017_02_02shouldNotBeAbleToSubmitAMessageWithNothingInsertedInTheNameTextBox() {
-        contactPage = new ContactPage();
-
-        basePage = new BasePage();
+        extentTest = extentReports.createTest("TC017_02_02", "User should't be able to send a message without inserting a name in the name text box");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
 
-        contactPage.contactUsNameSearchBox.sendKeys(" " + Keys.TAB);
-        actions.sendKeys("902165221591" + Keys.TAB)
+        contactPage.contactUsNameSearchBox.sendKeys("" + Keys.TAB);
+        actions.sendKeys("00902165221591" + Keys.TAB)
                 .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
-                .sendKeys("Message box worked" + Keys.TAB)
-                .sendKeys(Keys.ENTER).perform();
+                .sendKeys("Message box worked" + Keys.TAB).perform();
+        js.executeScript("window.scrollBy(0, 500)");
+        contactPage.submitButton.sendKeys(Keys.ENTER);
 
-        ReusableMethods.waitFor(1);
-        js.executeScript("window.scrollBy(0, -300)");
+        ReusableMethods.waitFor(2);
+        js.executeScript("window.scrollBy(0, -500)");
         String expectedMessage = "Name can not be empty";
-        String actualMessage =contactPage.nameBoxWarningEmpty.getText();
+        System.out.println(expectedMessage);
+        String actualMessage = contactPage.warningMessage.getText();
         System.out.println(actualMessage);
-        Assert.assertEquals(actualMessage,expectedMessage);
-
-
-
+        Assert.assertEquals(actualMessage, expectedMessage);
+        //  extentTest.pass("User shouln't be able send a message with empyt name text box");
 
 
     }
 
     @Test
-    public void TC017_02_03contactPageMessageSubmitWithWrongTypeDataOnPhoneTextBox() {  //passed
-        contactPage = new ContactPage();
-        contactPage = new ContactPage();
-        basePage = new BasePage();
+    public void TC017_02_03contactPageMessageSubmitWithWrongTypeDataOnPhoneTextBox() {  //done
+        extentTest = extentReports.createTest("TC017_02_03", "User should't be able to send a message by entering other than digits in the phone text box");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
 
         contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
@@ -146,22 +157,18 @@ public class US017 {
         System.out.println(actualMessage);
 
         Assert.assertTrue(contactPage.incorrectPhoneNumberWarning.isDisplayed());
-
-
-        Driver.quitDriver();
+        extentTest.pass("User shouln't be able send a message by entereing data other than digits in the phone text box");
     }
 
     @Test
-    public void TC017_02_04shouldNotBeAbleToSubmitAMessageWithContactNumberLessThan12DigitPhoneNumber() {  //passed
-
-        contactPage = new ContactPage();
-        basePage = new BasePage();
+    public void TC017_02_04shouldNotBeAbleToSubmitAMessageWithContactNumberLessThan12DigitPhoneNumber() {  //done
+        //  extentTest = extentReports.createTest("TC017_02_04", "User should't be able to send a message with insurting less than 12 digits in the phone text box");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
-
         contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
         actions.sendKeys("90216522" + Keys.TAB)
                 .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
@@ -177,133 +184,120 @@ public class US017 {
         System.out.println(actualMessage);
 
         Assert.assertTrue(contactPage.incorrectPhoneNumberWarning.isDisplayed());
+        extentTest.pass("User shouln't be able send a message with a telephone number less than 12 digits insurted in the phone text box");
 
-        Driver.quitDriver();
 
     }
-    @Test
-    public void TC017_02_05shouldNotBeAbleToSubmitAMessageWithIncorrectEmailFormat() {
 
-        contactPage = new ContactPage();
-        basePage = new BasePage();
+    @Test
+    public void TC017_02_05shouldNotBeAbleToSubmitAMessageWithIncorrectEmailFormat() { //BUG Done
+        extentTest = extentReports.createTest("TC017_02_05", "User should't be able to send a message if email address does not contain @ symbol");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
 
-        contactPage.contactUsNameSearchBox.sendKeys("Elcin");
-        contactPage.contactUsPhoneTextBox.sendKeys("902165221591");
-        contactPage.contactUsEmailTextBox.sendKeys("a1234321bcgmail.com");
-        contactPage.contactUsMessageTextBox.sendKeys("Message box worked");
-        actions.sendKeys(Keys.ENTER).perform();
+        contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
+        actions.sendKeys("00902165221591" + Keys.TAB)
+                .sendKeys("a1234321bcgmail.com" + Keys.TAB)
+                .sendKeys("Message box worked" + Keys.TAB)
+                .sendKeys(Keys.ENTER).perform();
+        js.executeScript("window.scrollBy(0, -500)");
+        Assert.assertFalse(contactPage.messageSuccesfullySent.isDisplayed());
+        extentTest.fail("User shouln't be able send a message if email address doesn't contain @ symboll");
+        System.out.println(contactPage.messageSuccesfullySent.getText());
 
 
-        ReusableMethods.waitFor(1);
-        js.executeScript("window.scrollBy(0, -1000)");
-        ReusableMethods.waitFor(5);
-
-        Assert.assertFalse(!contactPage.messageSuccesfullySent.isDisplayed());
-
-        Driver.quitDriver();
     }
 
+    @Test
+    public void TC017_02_06shouldNotBeAbleToSubmitAMessageWithIncorrectEmailFormat() { //BUG Done
+        extentTest = extentReports.createTest("TC017_02_06", "User should't be able to send a message if email address does not contain .com symbol");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        ReusableMethods.waitFor(2);
+        basePage.acceptCookies();
+        basePage.homePageContactButton.click();
+        contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
+        actions.sendKeys("00902165221591" + Keys.TAB)
+                .sendKeys("a1234321bcgmail@hhh" + Keys.TAB)
+                .sendKeys("Message box worked" + Keys.TAB)
+                .sendKeys(Keys.ENTER).perform();
+        js.executeScript("window.scrollBy(0, -500)");
+        Assert.assertFalse(contactPage.messageSuccesfullySent.isDisplayed());
+        extentTest.fail("User shouln't be able send a message if email address doesn't contain .com symboll");
+        System.out.println(contactPage.messageSuccesfullySent.getText());
+
+
+    }
 
     @Test
-    public void TC017_02_06shouldNotBeAbleToSendEmpytMessage() {  //passed
-        contactPage = new ContactPage();
-        basePage = new BasePage();
+    public void TC017_02_07shouldNotBeAbleToSendEmpytMessage() {  //done
+        extentTest = extentReports.createTest("TC017_02_07", "User should't be able to send a message with empty message in the message text box");
+        ContactPage contactPage = new ContactPage();
+        BasePage basePage = new BasePage();
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
-
-        contactPage.contactUsNameSearchBox.sendKeys("Elcin"+Keys.TAB);
-        actions.sendKeys("902165221591"+Keys.TAB)
-                .sendKeys("a1234321bc@gmail.com"+ Keys.TAB)
-                .sendKeys("  "+Keys.TAB)
+        contactPage.contactUsNameSearchBox.sendKeys("Elcin" + Keys.TAB);
+        actions.sendKeys("902165221591" + Keys.TAB)
+                .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
+                .sendKeys("" + Keys.TAB)
                 .sendKeys(Keys.ENTER).perform();
 
         ReusableMethods.waitFor(1);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0, -300)");
-        String expectedMessage="Message can not be empty";
-        String actualMessage=contactPage.messageTextBoxWarning.getText();
+        String expectedMessage = "Message can not be empty";
+        String actualMessage = contactPage.messageTextBoxWarning.getText();
         System.out.println(actualMessage);
         Assert.assertTrue(actualMessage.contains(expectedMessage));
-
-        Driver.getDriver().quit();
-
+        extentTest.pass("User shouln't be able send a message with empyt message text box");
 
     }
 
     @Test
-    public void TC017_03contactPageContactInformationsAreVisible() {   //passed
+    public void TC017_03contactPageContactInformationsAreVisible() {   //done
+        extentTest = extentReports.createTest("TC017_03", "Contact Informations are Visiable");
         ContactPage contactPage = new ContactPage();
         BasePage basePage = new BasePage();
         Actions actions = new Actions(Driver.getDriver());
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-
-        basePage.acceptCookiesButton.click();
+        basePage.acceptCookies();
         basePage.homePageContactButton.click();
         ReusableMethods.waitFor(1);
-
         js.executeScript("window.scrollBy(0, 500)");
         ReusableMethods.waitFor(2);
 
         String expectedAddress = "3153 Foley Street";
         String actualAddress = contactPage.contactInfoActualAddress.getText();
         Assert.assertTrue(actualAddress.contains(expectedAddress));
+        extentTest.pass("User can see the company address");
 
         String expectedEmailAddress = "info@tripandway.com";
         String actualEmailAddress = contactPage.contactInfoActualEmailAddress.getText();
         Assert.assertTrue(actualEmailAddress.contains(expectedEmailAddress));
+        extentTest.pass("User can see the company email address");
 
 
         String expectedPhoneNumber = "Office 1: 202-456-3789";
         String actualPhoneNumber = contactPage.contactInformationActualPhoneNumber.getText();
         Assert.assertTrue(actualPhoneNumber.contains(expectedPhoneNumber));
+        extentTest.pass("User can see the company phone number");
 
         String expectedMapWord = "Address in Map";
         System.out.println(expectedMapWord);
         String actualMapWord = contactPage.contactInformationAddressMap.getText();
         System.out.println(actualMapWord);
         Assert.assertTrue(actualMapWord.contains(expectedMapWord));
-        Driver.quitDriver();
+        extentTest.pass("User can see the map");
 
- }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

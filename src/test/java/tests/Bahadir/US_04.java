@@ -8,14 +8,17 @@ import pages.BasePage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import utilities.TestBaseRapor;
 
-public class US_04 {
+public class US_04 extends TestBaseRapor {
 
     BasePage footerSection = new BasePage();
 
 
     @Test
-    public void featuredPackagesSectionInTheFooter () {
+    public void visibilityOfFeaturedPackagesSectionInTheFooter () {
+
+
 
         BasePage footerSection = new BasePage();
 
@@ -25,21 +28,39 @@ public class US_04 {
         ReusableMethods.waitFor(2);
         js.executeScript("window.scrollBy(0,10000)");
         ReusableMethods.waitFor(2);
+
+
+
         Assert.assertTrue(footerSection.featuredPackagesInFooter.isDisplayed());
         Assert.assertTrue(footerSection.threeDaysInBuenosAiresButtonInFooter.isDisplayed());
         Assert.assertTrue(footerSection.tenDaysInBuenosAiresButtonInFooter.isDisplayed());
         Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isDisplayed());
-       Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isDisplayed());
-    //    Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isDisplayed());
+        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isDisplayed());
 
+    }
 
+    @Test
+    public void clickablityOfFeaturedPackagesSectionInTheFooter () {
 
+        BasePage footerSection = new BasePage();
 
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        Actions actions = new Actions(Driver.getDriver());
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        ReusableMethods.waitFor(2);
+        js.executeScript("window.scrollBy(0,10000)");
+        ReusableMethods.waitFor(2);
 
-
+        Assert.assertTrue(footerSection.threeDaysInBuenosAiresButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.tenDaysInBuenosAiresButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isEnabled());
 
 
     }
+
 
 
 

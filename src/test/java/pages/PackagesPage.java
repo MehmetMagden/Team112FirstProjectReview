@@ -49,7 +49,7 @@ public class PackagesPage {
    @FindBy (xpath = "(//h1[contains(text(),'3 days in Buenos Aires')])[1]")
     public WebElement theFirstPackageBannerText;
 
-   @FindBy (xpath = "(//ul[@id='pills-tab'])[1]")
+   @FindBy (xpath = "//h4[normalize-space()='More Information']")
    public WebElement moreInformationVisibility;
 
 

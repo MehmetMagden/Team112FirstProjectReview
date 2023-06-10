@@ -25,8 +25,6 @@ public class US_36 extends TestBaseRapor {
         extentTest.info("Admin can access admin page ");
         ReusableMethods.waitFor(3);
 
-      //  JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-       // js.executeScript("window.scrollBy(0,1000)");
 
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(adminPage.subscriberButton).perform();
