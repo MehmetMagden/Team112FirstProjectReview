@@ -448,10 +448,12 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='slider-item'])[3]")
     public WebElement heroAreaOnHomePage;
 
+
     //=====================LatestBlog==================
     @FindBy(xpath = "(//input[@placeholder='Search Here'])[1]")
     public WebElement searchHereEachLatestBlog;
    
+
 
 
 

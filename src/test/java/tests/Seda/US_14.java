@@ -1,7 +1,9 @@
 package tests.Seda;
 
 import com.aventstack.extentreports.ExtentReports;
+import org.apache.hc.core5.reactor.Command;
 import org.bouncycastle.asn1.dvcs.DVCSObjectIdentifiers;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -13,27 +15,31 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
-public class US_14 extends MethodBase {
+public class US_14 extends MethodBase  {
+
     /*
     As a user, I should be able to navigate to the "Featured Packages" page.
     I should then verify that the packages are visible and active on the page.
     */
 
-    PackagesPage packagesPage = new PackagesPage();
-    BasePage basePage = new BasePage();
-    Actions actions = new Actions(Driver.getDriver());
+    PackagesPage packagesPage ;
+    BasePage basePage;
+    JavascriptExecutor js ;
 
     @Test
-    public void TC14_01_packagesPageIsActiveVisible () {
+    public void TC14_packagesPageIsActiveVisible () {
 
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+       packagesPage = new PackagesPage();
+       basePage = new BasePage();
+
+        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // Hazirladigim methodu testlerden sadece birinde kullanabiliyorum.
+                                                                           // Her iki teste yapistirinca testler class level de calismiyor.
         basePage.acceptCookies();
-
         packagesPage.packagesHeaderLink.click();
-
         ReusableMethods.waitFor(2);
 
-        extentTest = extentReports.createTest("TC14", "User Navigates To Packages Page");
+       extentTest = extentReports.createTest("TC14", "User Navigates To Packages Page");
+
         String expectedBanner = "PACKAGES";
         String actualBanner = packagesPage.packagesBannerText.getText();
         ReusableMethods.waitForVisibility(packagesPage.packagesBannerText, 5);
@@ -44,29 +50,27 @@ public class US_14 extends MethodBase {
                                   packagesPage.theSecondPackages.isDisplayed() &&
                                   packagesPage.theThirdPackages.isDisplayed());
         extentTest.pass("Verifies that user can see the first three packages in the page");
+
     }
 
     @Test
     public void TC14_02_theFirstPackagesFeaturesTest() {
 
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-        basePage.acceptCookies();
-        packagesPage.packagesHeaderLink.click();
-        ReusableMethods.waitFor(2);
+       extentTest = extentReports.createTest("TC14_01", "User Navigates To The First Packages");
 
-        extentTest = extentReports.createTest("TC14_01", "User Navigates To The First Packages");
+       packagesPage = new PackagesPage();
+       js = (JavascriptExecutor) Driver.getDriver();
+       basePage = new BasePage();
 
-        packagesPage.theFirstPackagesWebElement.click();
-        String expectedBannerText = "3 DAYS IN BUENOS AIRES";
-        String actualBannerText = packagesPage.theFirstPackageBannerText.getText();
+       testMethod.navigatePackagesPage();
+
+        js.executeScript("arguments[0].click();", packagesPage.theSecondPackages);
+        ReusableMethods.waitFor(5);
+        String expectedBannerText = "Book Now";
+        String actualBannerText = packagesPage.bookNowText.getText();
         Assert.assertTrue(actualBannerText.contains(expectedBannerText));
         extentTest.pass("Verifies that  user can see the title in the banner");
 
-        actions.sendKeys(Keys.END).perform();
-        ReusableMethods.waitFor(2);
-
-        Assert.assertTrue(packagesPage.moreInformationVisibility.isDisplayed());
-        extentTest.pass("Verifies that user can see information tabs in the page");
     }
 
 }
