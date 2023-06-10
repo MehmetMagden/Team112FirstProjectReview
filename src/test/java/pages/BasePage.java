@@ -180,6 +180,8 @@ public class BasePage {
     @FindBy(xpath = "//i[@class='fas fa-user-plus']")
     public WebElement registrationButton;
 
+
+    // Page class'taki methodlar, sayfanin en altinda web elementlerden sonra yer almali
     public void acceptCookies() {
         if (acceptCookiesButton.isDisplayed()) {
             acceptCookiesButton.click();

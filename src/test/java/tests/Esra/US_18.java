@@ -1,6 +1,8 @@
 package tests.Esra;
 
 import com.github.javafaker.Faker;
+import java.util.HashMap;
+import java.util.Map;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,6 +15,8 @@ import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
 public class US_18 extends TestBaseRapor {
+  BasePage basePage = new BasePage();
+  RegistrationPage registrationPage = new RegistrationPage();
 
   @BeforeMethod
   public void setUp() {
@@ -25,28 +29,25 @@ public class US_18 extends TestBaseRapor {
   }
 
   @Test
-  public void pozitiveRegistarationTest() {
+  public void positiveRegistarationTest() {
     extentTest =
         extentReports.createTest(
             "TC1801",
             "Verify that register on the website with a valid name, email address and password.");
-    BasePage basePage = new BasePage();
-    RegistrationPage registrationPage = new RegistrationPage();
+    basePage = new BasePage();
+    registrationPage = new RegistrationPage();
     basePage.registrationButton.click();
-    basePage.acceptCookiesButton.click();
-    Faker faker = new Faker();
+    String actualPageTitle = Driver.getDriver().getTitle();
+    String expectedPageTitle = "Registration";
+    Assert.assertTrue(actualPageTitle.contains(expectedPageTitle));
+    extentTest.pass("User can access Registration page");
 
-    registrationPage.registrationNameBox.sendKeys(faker.name().firstName());
-
-    registrationPage.registrationEmailBox.sendKeys(faker.internet().emailAddress());
-
-    registrationPage.registrationPasswordBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationValidPassword"));
+    generateFieldsAndFillRegistrationForm(true, true, true);
 
     ReusableMethods.waitFor(2);
-
+    basePage.acceptCookies();
     registrationPage.makeRegistrationButton.click();
-    String registrationMessage = registrationPage.registrationWarningMessage.getText();
+    String registrationMessage = registrationPage.actualRegistrationMessage.getText();
     String expectedRegistrationMessage = "Registration is completed. You can now login.";
     Assert.assertEquals(registrationMessage, expectedRegistrationMessage);
     extentTest.pass("User can register with a valid name, email address and password. ");
@@ -54,27 +55,21 @@ public class US_18 extends TestBaseRapor {
 
   }
 
-  /*
-  Test with invalid password
-   */
   @Test
   public void NegativeRegistrationTest() {
     extentTest =
         extentReports.createTest(
             "TC1802",
             "Verify that not to register on the website with a valid name, valid email address and invalid password.");
-    BasePage basePage = new BasePage();
-    RegistrationPage registrationPage = new RegistrationPage();
+    basePage = new BasePage();
+    registrationPage = new RegistrationPage();
     basePage.registrationButton.click();
-    basePage.acceptCookiesButton.click();
-    Faker faker = new Faker();
+    String actualPageTitle = Driver.getDriver().getTitle();
+    String expectedPageTitle = "Registration";
+    Assert.assertTrue(actualPageTitle.contains(expectedPageTitle));
+    extentTest.pass("User can access Registration page");
 
-    registrationPage.registrationNameBox.sendKeys(faker.name().firstName());
-
-    registrationPage.registrationEmailBox.sendKeys(faker.internet().emailAddress());
-
-    registrationPage.registrationPasswordBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationInvalidPassword"));
+    generateFieldsAndFillRegistrationForm(true, true, false);
 
     ReusableMethods.waitFor(2);
     basePage.acceptCookies();
@@ -91,19 +86,15 @@ public class US_18 extends TestBaseRapor {
         extentReports.createTest(
             "TC1803",
             "Verify that not to register on the website with a valid name, invalid email address and valid password.");
-    BasePage basePage = new BasePage();
-    RegistrationPage registrationPage = new RegistrationPage();
+    basePage = new BasePage();
+    registrationPage = new RegistrationPage();
     basePage.registrationButton.click();
-    basePage.acceptCookiesButton.click();
-    Faker faker = new Faker();
+    String actualPageTitle = Driver.getDriver().getTitle();
+    String expectedPageTitle = "Registration";
+    Assert.assertTrue(actualPageTitle.contains(expectedPageTitle));
+    extentTest.pass("User can access Registration page");
 
-    registrationPage.registrationNameBox.sendKeys(faker.name().firstName());
-
-    registrationPage.registrationEmailBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationInvalidEmailAddress"));
-
-    registrationPage.registrationPasswordBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationValidPassword"));
+    generateFieldsAndFillRegistrationForm(true, false, true);
 
     ReusableMethods.waitFor(2);
     basePage.acceptCookies();
@@ -115,33 +106,30 @@ public class US_18 extends TestBaseRapor {
         "User cannot register with a valid name, invalid email address and valid password. ");
   }
 
-  @Test
-  public void NegativeRegistrationTest02() {
-    extentTest =
-        extentReports.createTest(
-            "TC1804",
-            "Verify that not to register on the website with a valid name, invalid email address and valid password.");
-    BasePage basePage = new BasePage();
-    RegistrationPage registrationPage = new RegistrationPage();
-    basePage.registrationButton.click();
-    basePage.acceptCookiesButton.click();
+  private void generateFieldsAndFillRegistrationForm(
+      boolean name, boolean email, boolean password) {
     Faker faker = new Faker();
+    RegistrationPage registrationPage = new RegistrationPage();
+    Map<String, String> fields = new HashMap<>();
+    if (name) {
+      fields.put("name", faker.name().firstName());
+    } else {
+      fields.put("name", "");
+    }
 
-    registrationPage.registrationNameBox.sendKeys(faker.name().firstName());
+    if (email) {
+      fields.put("email", faker.internet().emailAddress());
+    } else {
+      fields.put("email", faker.name().username());
+    }
 
-    registrationPage.registrationEmailBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationInvalidEmailAddress01"));
+    if (password) {
+      fields.put("password", faker.internet().password(8, 20, true, true, true));
+    } else {
+      fields.put("password", faker.internet().password(5, 7, false, false, false));
+    }
 
-    registrationPage.registrationPasswordBox.sendKeys(
-        ConfigReader.getProperty("userRegistrationValidPassword"));
-
-    ReusableMethods.waitFor(2);
-    basePage.acceptCookies();
-
-    registrationPage.makeRegistrationButton.click();
-
-    Assert.assertTrue(registrationPage.makeRegistrationButton.isDisplayed());
-    extentTest.fail(
-        "User can register with a valid name, invalid email address and valid password. ");
+    registrationPage.fillInRegistrationForm(
+        fields.get("name"), fields.get("email"), fields.get("password"));
   }
 }
