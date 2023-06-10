@@ -25,6 +25,7 @@ public class US_36 extends TestBaseRapor {
         extentTest.info("Admin can access admin page ");
         ReusableMethods.waitFor(3);
 
+
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(adminPage.subscriberButton).perform();
         adminPage.subscriberButton.click();
