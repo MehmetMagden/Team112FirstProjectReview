@@ -8,11 +8,14 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
-public class US_15 extends TestBaseRapor {
+public class US_15 extends MethodBase {
+
+    /*
+    As a user, I should be able to verify that all the accessible elements on the About Us page are visible.
+     */
 
     AboutUsPage aboutUsPage = new AboutUsPage();
     BasePage basePage = new BasePage();
-
 
     @Test
     public void aboutUsPageTest() {
@@ -20,8 +23,8 @@ public class US_15 extends TestBaseRapor {
         extentTest = extentReports.createTest("TC15", "User Navigates To About Us Page");
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+        basePage.acceptCookies();
         aboutUsPage.aboutUsHeaderLink.click();
-        basePage.acceptCookiesButton.click();
 
         String expectedWordMission = "OUR MISSION";
         String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
@@ -36,9 +39,7 @@ public class US_15 extends TestBaseRapor {
         String expectedWordAboutUs = "ABOUT US";
         String actualWordAboutUs = aboutUsPage.aboutUsBanner.getText();
         Assert.assertTrue(actualWordAboutUs.contains(expectedWordAboutUs));
-        extentTest.fail("Verify, user can see About Us text in the banner");//Test failed as NO "About Us" written in the banner
-
-        Driver.closeDriver();
+        extentTest.fail("Verifies that user CANNOT see About Us text in the banner");//Test failed as NO "About Us" written in the banner
 
     }
 }

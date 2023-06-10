@@ -1,21 +1,20 @@
 package tests.Mustafa;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.PackagesPage;
+import pages.*;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
+import java.util.List;
+import java.util.Set;
 
 public class US_24 {
 
@@ -41,19 +40,21 @@ TC_24_02	I can navigate to Packages page and select a package.
 			5) User enters the expiry date of the card in the corresponding field: 11/24
 			6) User enters the CCV number of the card in the corresponding field: 111
 			7) User approves payment by clicking the Pay button
-			8) User should see "Payment is successful" message.
+			8) User should see "Payment is successful!" message.
 */
     LoginPage loginPage = new LoginPage();
+    UserDashboardPage userDashboardPage = new UserDashboardPage();
     BasePage basePage = new BasePage();
     PackagesPage packagesPage = new PackagesPage();
     Actions actions = new Actions(Driver.getDriver());
     JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
-
+    AdminPage adminPage = new AdminPage();
 
     @BeforeMethod
     public void setUp() {
-        Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl")); // navigate to homepage
+        Driver.getDriver().get(ConfigReader.get("tripAndWayUrl")); // navigate to homepage
         basePage.acceptCookies();
+
     }
     @AfterMethod
     public void tearDown(){
@@ -62,11 +63,7 @@ TC_24_02	I can navigate to Packages page and select a package.
     @Test
     public void TC_24_01_customerLogin(){
 
-        loginPage.loginPageLoginButton2.click();
-        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
-        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        ReusableMethods.waitFor(2);
-        loginPage.loginPageLoginButton.click();
+        loginPage.loginAsUser();  // Log in to a user account
 
         String expectedText = "Dashboard";
         String actualText = loginPage.userDashboard.getText();
@@ -76,54 +73,46 @@ TC_24_02	I can navigate to Packages page and select a package.
     @Test
     public void TC_24_02_selectPackageAndPay(){
 
-        // Log in to user account
-        loginPage.loginPageLoginButton2.click();
-        loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLoginEmailCorrect"));
-        loginPage.loginPagePasswordBox.sendKeys(ConfigReader.getProperty("userLoginPasswordCorrect"));
-        ReusableMethods.waitFor(2);
-        loginPage.loginPageLoginButton.click();
+        loginPage.loginAsUser();  // Log in to a user account
 
         packagesPage.packagesHeaderLink2.click(); // navigate to Packages page.
 
-
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
         basePage.acceptCookies();
-        ReusableMethods.waitFor(5);
 
         jse.executeScript("window.scrollBy(0,550)");   // Sonunda bu calisti!
-        ReusableMethods.waitFor(3);
+        ReusableMethods.waitFor(1);
 
         packagesPage.buenosAiresPackageInPackagesPage.click();
 
         WebElement totalPersonsDropDown = Driver.getDriver().findElement(By.xpath("//select[@id='numberPerson']"));
         Select select = new Select(totalPersonsDropDown);
         select.selectByValue("2");
-        ReusableMethods.waitFor(3);
 
         WebElement bookYourSeatButton = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-info btn-lg']"));
         bookYourSeatButton.click();
-        ReusableMethods.waitFor(3);
 
         WebElement payButton = Driver.getDriver().findElement(By.xpath("//button[@type='submit']"));
         payButton.click();
-        ReusableMethods.waitFor(3);
 
+        Driver.getDriver().switchTo().frame("stripe_checkout_app");
+        ReusableMethods.waitForVisibility(userDashboardPage.creditCard,7);
+        jse.executeScript("arguments[1].value = arguments[0]; ", ConfigReader.getProperty("creditCardNumber"), userDashboardPage.creditCard);
+        userDashboardPage.creditCard.sendKeys(ConfigReader.getProperty("creditCardNumber"));
 
-        WebElement cardNumberBox = Driver.getDriver().findElement(By.xpath("/html[1]/body[1]/div[3]/form[1]/div[2]/div[1]/div[4]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]"));
-        actions.click(cardNumberBox)
-                .sendKeys("4242424242424242")
-                .sendKeys(Keys.TAB)
-                .sendKeys("1224")
-                .sendKeys(Keys.TAB)
-                .sendKeys("111")
+        actions.sendKeys(Keys.TAB + ConfigReader.getProperty("expiryDate"))
+                .sendKeys((Keys.TAB + ConfigReader.getProperty("CVC")))
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ENTER)
                 .perform();
 
+    //  Driver.getDriver().switchTo().defaultContent();
 
-        String actualMessage = Driver.getDriver().switchTo().alert().getText();
-        String expectedMessage = "Payment is successful";
-        Assert.assertTrue(actualMessage.contains(expectedMessage));
+        String actualMessage = adminPage.warningMessage.getText(); // Chrome's Save Card prompt ruins the test!!
+        String expectedMessage = "Payment is successful!";
+        Assert.assertEquals(actualMessage, expectedMessage);
+
+
 
     }
 }

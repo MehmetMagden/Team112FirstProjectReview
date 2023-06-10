@@ -78,6 +78,15 @@ public class HomePage {
    @FindBy(xpath = "(//div[@class='owl-next'])[1]")
     public WebElement sliderOnRightSideOfHeroArea;
 
+   @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+   public WebElement firstIndicatorInHeroSection;
+
+   @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+   public WebElement secondIndicatorInHeroSection;
+
+   @FindBy(xpath = "(//div[@class='owl-dot'])[2]")
+   public WebElement thirdIndicatorInHeroSection;
+
 
 //=============================================================================================
     //======================OUR SERVICES========================
@@ -85,7 +94,10 @@ public class HomePage {
     @FindBy(xpath = "//h2[text()='Our Services']")
     public WebElement ourServicesTitleTextOnHomePage;
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[1]")
+    @FindBy(xpath = "//p[text()='Our team always provides quality services to our valuable clients']")
+    public WebElement textUnderOurServicesTitleOnHomepage;
+
+    @FindBy(xpath = "(//div[@class='row'])[10]")//  --(//div[@class='main-headline'])[1]
     public WebElement ourServicesAreaOnHomepage;
 
     @FindBy(xpath = "//a[@href='https://qa.tripandway.com/service/international-tour']")
@@ -109,6 +121,12 @@ public class HomePage {
 
     //================================FEATURED PACKAGES======================================
 
+    @FindBy(xpath = "//h2[text()='FEATURED PACKAGES']")
+    public WebElement titleOfFeaturedPackagesOnHomePage;
+
+    @FindBy(xpath = "//p[text()='All our featured tour packages are given below']")
+    public WebElement textUnderFeaturedPackagesTitleOnHomePage;
+
     @FindBy(xpath = "(//div[@class='main-headline'])[2]")
     public WebElement featuredAreaOnHomePage;
 
@@ -130,6 +148,20 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='owl-dot active'])[2]")
     public WebElement secondIndicatorUnderFeaturedPackagesTitleOnHomePage;
 
+    @FindBy(xpath = "(//a[text()='3 days in Buenos Aires'])[1]")
+    public WebElement threeDaysInBuenosAiresText;
+
+    @FindBy(xpath = "(//a[text()='10 days in Buenos Aires'])[1]")
+    public WebElement tenDaysInBuenosAiresText;
+
+    @FindBy(xpath = "(//a[text()='3 days in Bangkok'])[1]")
+    public WebElement threeDaysInBangkokText;
+
+    @FindBy(xpath = "(//a[text()='7 days in Salina Island'])[1]")
+    public WebElement sevenDaysInSalinaIslandText;
+
+
+
  //==========================COUNTER AREA==============================
 
     @FindBy(xpath = "(//div[@class='counterup-area pt_70 pb_100'])[1]")
@@ -139,9 +171,15 @@ public class HomePage {
 
     //=========================DESTINATION ON HOMEPAGE========================
 
+    @FindBy(xpath = "//h2[text()='Destination']")
+    public WebElement destinationsTitleInDestinationsSectionOnHomepage;
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[3]")
-    public WebElement destinationAreaOnHomePage;
+    @FindBy(xpath = "//p[text()='All our awesome destination places of the world you can travel with us']")
+    public WebElement textUnderDestinationsTitleOnHomepage;
+
+
+    @FindBy(xpath = "(//div[@class='container wow fadeIn'])[4]")//
+    public WebElement destinationAreaOnHomePage;//(//div[@class='main-headline'])[3]
 
     @FindBy(xpath = "(//div[@class='col-md-4 col-xs-6 clear-three wow fadeIn'])[7]")
     public WebElement firstPictureAboutBangkokUnderTheDestinationOnHomePage;
@@ -161,13 +199,50 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='col-md-4 col-xs-6 clear-three wow fadeIn'])[12]")
     public WebElement sixthPictureAboutIstanbulUnderTheDestinationOnHomePage;
 
-    @FindBy(xpath = "//a[text()='See All Destinations']")
+    @FindBy(xpath = "//a[text()='Bangkok, Thailand']")
+    public WebElement bangkokThailandTextInDestinationsSection;
+
+    @FindBy(xpath = "//a[text()='Greenville, South Carolina']")
+    public WebElement greenvilleSouthCarolinaTextInDestinationsSection;
+
+    @FindBy(xpath = "//a[text()='Buenos Aires, Argentina']")
+    public WebElement buenosAiresArgentinaTextInDestinationsSection;
+
+    @FindBy(xpath = "//a[text()='Marrakesh, Morocco']")
+    public WebElement marrakeshMoroccoTextInDestinationsSection;
+
+    @FindBy(xpath = "//a[text()='Salina Island, Italy']")
+    public WebElement salinaIslandItalyTextInDestinationsSection;
+
+    @FindBy(xpath = "//a[text()='Istanbul, Turkey']")
+    public WebElement istanbulTurkeyTextInDestinationsSection;
+
+
+    @FindBy(xpath = "//div[@class='button text-center']")
     public WebElement seeAllDestinationsButtonOnHomepage;
     //==============================================================================================
     //TEAM MEMBERS ON HOMEPAGE
 
+    @FindBy(xpath = "//h2[text()='Team Members']")
+    public WebElement titleOfTeamMembersOnHomepage;
+
+    @FindBy(xpath = "(//div[@class='headstyle'])[1]")
+    public WebElement detailEachTeamMembers;
+
+    @FindBy (xpath = "//img[@alt='Facebook']")
+    public WebElement facebookImg;
+
+    @FindBy (xpath = "(//span[text()='Keşfet'])[1]")
+    public WebElement twitterKesfetArea;
+
+    @FindBy(xpath = "//h1[@data-test-id='hero__headline']")
+    public WebElement linkedinEmailBox;
+
+
+
+
     //Zara Williams
-    @FindBy(xpath = "(//div[@class='main-headline'])[4]")
+    @FindBy(xpath = "//div[@class='team-area bg-area pt_80 pb_80']")
     public WebElement teamMembersAreaOnHomepage;
 
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[6]")
@@ -214,7 +289,7 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[8]")
     public WebElement averyJohnson;
 
-    @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/team-member/avery-johnson'])[3]")
+    @FindBy(xpath = "//a[text()='Avery Johnson']")
     public WebElement averyJohnsonText;
 
     @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[8]")
@@ -223,13 +298,14 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[8]")
     public WebElement averyJohnsonTwitterIkon;
 
-    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[8]")
+    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[8]")
     public WebElement averyJohnsonLinkedInIkon;
 
     @FindBy(xpath = "https://qa.tripandway.com/team-member/avery-johnson")
     public WebElement averyJohnsonPageUrl;
 
     //KNOW MITCHELL
+    //(//div[@class='headstyle'])[1]
 
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[9]")
     public WebElement knoxMitchell;
@@ -237,13 +313,13 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/team-member/knox-mitchell'])[3]")
     public WebElement knoxMitchellText;
 
-    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[9]")
+    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[5]")
     public WebElement knoxMitchellFacebookIkon;
 
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[9]")
     public WebElement knoxMitchellTwitterIkon;
 
-    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[9]")
+    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[5]")
     public WebElement knoxMitchellLinkedInIkon;
 
     @FindBy (xpath = "https://qa.tripandway.com/team-member/knox-mitchell")
@@ -252,8 +328,8 @@ public class HomePage {
     //=============================TESTİMONIAL ON HOMEPAGE===================================
 
 
-    @FindBy(xpath = "//h2[text()='Testimonial']")
-    public WebElement testimonialTextHomePage;
+    @FindBy(xpath = "(//div[@class='container wow fadeIn'])[6]")
+    public WebElement testimonialAreaHomePage;
 
     @FindBy(xpath = "//p[text()='Our happy clients always recommend our travel agency']")
     public WebElement textUnderTheTestimonial;
@@ -284,9 +360,14 @@ public class HomePage {
 
     //================================LATEST BLOG==========================================
 
+    @FindBy(xpath = "//h2[text()='Latest Blog']")
+    public WebElement titleOfLatestBlogOnHomepage;
 
-    @FindBy(xpath = "(//div[@class='main-headline'])[5]")
-    public WebElement latestBlogAreaText;
+    @FindBy(xpath = "//p[text()='See all the latest blog about our activity from here']")
+    public WebElement textUndertitleOfLatestBlogOnHomepage;
+
+    @FindBy(xpath = "(//div[@class='blog-area pt_80 pb_80'])[1]")
+    public WebElement latestBlogArea;
 
     @FindBy(xpath = "(//i[@class='fas fa-angle-right'])[3]")
     public WebElement sliderRightSideUnderTheLatestBlogOnHomePage;
@@ -337,8 +418,15 @@ public class HomePage {
     public WebElement ourClientAreaOnHomePage;
 //========================================================================================================
     //===============================NEWSLETTER ON HOMEPAGE===========================================
+
     @FindBy(xpath = "(//div[@class='col'])[1]")
-    public WebElement newsLetterAreaTextOnHomepage;
+    public WebElement titleAndTextAreaOfNewsLetterOnHomepage;
+
+    @FindBy(xpath = "//p[@xpath='1']")
+    public WebElement textUnderTitleOfNewsLetterOnHomepage;
+
+    @FindBy(xpath = "//div[@class='newsletter-bg']")
+    public WebElement newsLetterAreaOnHomepage;
 
     @FindBy(xpath = "(//input[@placeholder='Email Address'])[1]")
     public WebElement emailBoxUnderTheNewsLetterOnHomepage;
@@ -346,10 +434,23 @@ public class HomePage {
     @FindBy(xpath = "(//input[@value='Submit'])[1]")
     public WebElement submitButtonUnderTheNewsLetterOnHomepage;
 
+//===============Homepage Hero Area Centre Point=================
+
+    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+    public WebElement centreSliderInHeroArea;
 
 
+//=====================Elements Of Destinations================
+    @FindBy(xpath = "//div[@class='row mt_10']")
+    public WebElement elementsOfDestionationsOnHomePage;
+    //================================================
 
+    @FindBy(xpath = "(//div[@class='slider-item'])[3]")
+    public WebElement heroAreaOnHomePage;
 
+    //=====================LatestBlog==================
+    @FindBy(xpath = "(//input[@placeholder='Search Here'])[1]")
+    public WebElement searchHereEachLatestBlog;
    
 
 
