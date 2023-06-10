@@ -5,6 +5,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.beust.ah.A;
 import com.github.javafaker.Faker;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,6 +36,8 @@ public class MethodBase {
     PackagesPage packagesPage = new PackagesPage();
     AboutUsPage aboutUsPage = new AboutUsPage();
     BasePage basePage = new BasePage();
+
+    JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
 
     Actions actions = new Actions(Driver.getDriver());
 
@@ -121,8 +125,22 @@ public class MethodBase {
         ReusableMethods.waitFor(2);
 
 
+    }
+
+    public void faqQuestionCheck (List<WebElement> list, WebElement checkQuestions){
+
+        for (int i = 0; i < list.size(); i++) {
+            ReusableMethods.waitFor(15);
+            jse.executeScript("arguments[0].click();" , list.get(i));
+            ReusableMethods.waitFor(15);
+            jse.executeScript("window.scrollBy(0,100)");
+            ReusableMethods.waitFor(15);
+            Assert.assertTrue(checkQuestions.isDisplayed());
+          }
+
 
     }
+
 
    }
 
