@@ -36,7 +36,7 @@ public class US_039 extends TestBaseRapor {
         adminPage.AdminChangingIMG.click();
         ReusableMethods.waitFor(2);
         //There is a bug on Update button
-        // Assert.assertTrue(adminPage.AdminPhotoUpdate.isEnabled());
+        Assert.assertTrue(adminPage.AdminPhotoUpdate.isEnabled());
 
 
     }
