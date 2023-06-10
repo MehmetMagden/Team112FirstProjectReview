@@ -1,4 +1,5 @@
 package tests.Elcin;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -16,14 +17,14 @@ public class US006 extends TestBaseRapor {
     @Test
     public void TC006_01recentPostsAtFooterSectionIsVisible() {
         BasePage basePage = new BasePage();
-        extentTest=extentReports.createTest("TC006_01","User should be able to see the Recent Posts at Footer Section");
+        extentTest = extentReports.createTest("TC006_01", "User should be able to see the Recent Posts at Footer Section");
 
         //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         Actions actions = new Actions(Driver.getDriver());
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
         basePage.acceptCookiesButton.click();
-       // js.executeScript("window.scrollBy(0,1000)");
+        // js.executeScript("window.scrollBy(0,1000)");
         actions.sendKeys(Keys.END).perform();
         ReusableMethods.waitFor(3);
         Assert.assertTrue(basePage.footerRecentPosts.isDisplayed());
@@ -41,10 +42,11 @@ public class US006 extends TestBaseRapor {
 
         Driver.quitDriver();
     }
+
     @Test
     public void TC006_02recentPostSectionasAtFooterAreActive() {
         BasePage basePage = new BasePage();
-        extentTest=extentReports.createTest("TC006_02","Links under the Footer section should be active");
+        extentTest = extentReports.createTest("TC006_02", "Links under the Footer section should be active");
 
         //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         Actions actions = new Actions(Driver.getDriver());
@@ -65,7 +67,6 @@ public class US006 extends TestBaseRapor {
         Driver.quitDriver();
     }
 }
-
 
 
 
