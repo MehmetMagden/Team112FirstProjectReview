@@ -12,17 +12,17 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
+import java.io.IOException;
 import java.util.Set;
 
 public class US_40 extends TestBaseRapor {
-
-
-
 
     AdminPage adminPage = new AdminPage();
 
     @Test
     public void adminPanel() {
+
+        AdminPage adminPage = new AdminPage();
 
         extentTest = extentReports.createTest("TC40_01", "User Navigates To Admin  Panel");
 
@@ -48,6 +48,8 @@ public class US_40 extends TestBaseRapor {
     @Test
     public void dropdownArrowSymbol() {
 
+        AdminPage adminPage = new AdminPage();
+
         extentTest = extentReports.createTest("TC40_02", "User Navigates To Admin  Panel");
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
@@ -71,7 +73,9 @@ public class US_40 extends TestBaseRapor {
     }
 
     @Test
-    public void visitWebSite() {
+    public void visitWebSite()  {
+
+        AdminPage adminPage = new AdminPage();
 
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayAdminURL"));
@@ -97,7 +101,7 @@ public class US_40 extends TestBaseRapor {
         String expectedUrl = "https://qa.tripandway.com/";
         String actualUrl = Driver.getDriver().getCurrentUrl();
 
-        extentTest.pass("Verify, user sees the home page");
+
 
         Assert.assertEquals(actualUrl,expectedUrl);
 

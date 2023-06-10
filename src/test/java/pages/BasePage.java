@@ -180,6 +180,8 @@ public class BasePage {
     @FindBy(xpath = "//i[@class='fas fa-user-plus']")
     public WebElement registrationButton;
 
+
+    // Page class'taki methodlar, sayfanin en altinda web elementlerden sonra yer almali
     public void acceptCookies() {
         if (acceptCookiesButton.isDisplayed()) {
             acceptCookiesButton.click();
@@ -208,8 +210,15 @@ public class BasePage {
     public static WebElement PrivacyPolicy;
 
 
+
     //@FindBy(xpath = "//p[text()='3153 Foley Street']")
 
     // ====-----======-------======-----======-------========
+
+    @FindBy (xpath = "//a[normalize-space()='Terms and Conditions']")
+    public  WebElement termsConditions;
+
+    @FindBy (xpath = "//h1[normalize-space()='Terms and Conditions']")
+    public WebElement termsCondiotionsBanner;
 
 }

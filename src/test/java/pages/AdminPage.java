@@ -13,6 +13,10 @@ public class AdminPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     @FindBy(xpath = "//input[@id='email']")
     public WebElement adminLoginEmailAdressTextBox;
 

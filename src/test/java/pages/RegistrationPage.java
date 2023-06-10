@@ -14,21 +14,28 @@ public class RegistrationPage {
     }
 
     @FindBy(xpath = "//input[@name='traveller_name']")
-    public WebElement registrationNameBox;
+    private WebElement registrationNameBox;
 
     @FindBy(xpath = "//input[@name='traveller_email']")
-    public WebElement registrationEmailBox;
+    private WebElement registrationEmailBox;
 
     @FindBy(xpath = "//input[@name='traveller_password']")
-    public  WebElement registrationPasswordBox;
+    private   WebElement registrationPasswordBox;
 
     @FindBy(xpath = "//button[@class='btn btn-primary']")
+    // bu butona ait text daha unique oldugu icin text ile locate etmek daha iyi olabilir mi
     public WebElement makeRegistrationButton;
 
     @FindBy(xpath = "//button[text()='Login']")
     public WebElement loginButton;
 
     @FindBy(className = "toast-message")
-    public WebElement registrationWarningMessage;
+    public WebElement actualRegistrationMessage;
+
+    public void fillInRegistrationForm(String name, String email, String password){
+        registrationNameBox.sendKeys(name);
+        registrationEmailBox.sendKeys(email);
+        registrationPasswordBox.sendKeys(password);
+    }
 
 }
