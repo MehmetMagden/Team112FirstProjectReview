@@ -88,8 +88,14 @@ public class LoginPage {
 
     }
 
+    @FindBy (xpath = "//a[normalize-space()='Update Password']")
+    public  WebElement updateLoginPassword;
 
+    @FindBy (xpath = "//input[@name='password']")
+    public  WebElement enterNewPassword;
 
+    @FindBy (xpath = "//button[@type='submit']")
+    public  WebElement updateNewPassword;
 
 }
 
