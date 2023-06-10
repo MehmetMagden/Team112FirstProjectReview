@@ -22,9 +22,7 @@ public class US_03 extends TestBaseRapor {
     private HomePage homePage = new HomePage();
     private BasePage basePage = new BasePage();
     private PackagesPage packagesPage = new PackagesPage();
-
     private ServicesPage servicesPage = new ServicesPage();
-
     private DestinationsPage destinationsPage = new DestinationsPage();
     private JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
@@ -44,7 +42,7 @@ public class US_03 extends TestBaseRapor {
         // homePage = new HomePage();
         // basePage = new BasePage();
         // basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0301","user see the functions about 'Hero Area' on homepage");
+        extentTest = extentReports.createTest("TC0301", "user see the functions about 'Hero Area' on homepage");
         homePage.exploreTheWorldArea.isDisplayed();
         ReusableMethods.waitFor(5);
         ReusableMethods.waitForVisibility(homePage.theWorldIsSoBeautifulAreaOnHomepage, 15);
@@ -88,10 +86,8 @@ public class US_03 extends TestBaseRapor {
     //User should be able to see the functions about "Our Services" section in the body section of the Homepage
     @Test//TC_03_02
     public void TC02userCanSeeTheFunctionsAboutOurServicesSection() {
-     // homePage = new HomePage();
-     // basePage = new BasePage();
-     // basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0302","User see the functions about 'Our Services' on homepage");
+
+        extentTest = extentReports.createTest("TC0302", "User see the functions about 'Our Services' on homepage");
         List<WebElement> listOfOurServicesWebElement = new ArrayList<>();
         listOfOurServicesWebElement.add(homePage.ourServicesTitleTextOnHomePage);
         listOfOurServicesWebElement.add(homePage.textUnderOurServicesTitleOnHomepage);
@@ -111,10 +107,8 @@ public class US_03 extends TestBaseRapor {
     //User should be able to see the functions about "Featured Packages" section in the body section of the Homepage
     @Test
     public void TC03UserSeeFunctionsAboutFeaturedPackagesSection() {//TC_03_03
-      // homePage = new HomePage();
-      // basePage = new BasePage();
-      // basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0303","user see the functions about 'Featured Packages' section");
+
+        extentTest = extentReports.createTest("TC0303", "user see the functions about 'Featured Packages' section");
         List<WebElement> listOfFeaturedPackagesWebElement = new ArrayList<>();
         listOfFeaturedPackagesWebElement.add(homePage.featuredAreaOnHomePage);
         listOfFeaturedPackagesWebElement.add(homePage.featurePackagesSecondPictureOnHomePage);
@@ -138,10 +132,7 @@ public class US_03 extends TestBaseRapor {
     //User should be able to see the functions about "Counter Area" section in the body section of the Homepage
     @Test
     public void TC04UserSeeFunctionsAboutCounterAreaSection() {//TC_03_04
-        extentTest=extentReports.createTest("TC0304","User see the functions about 'Counter' area");
-      //  homePage = new HomePage();
-      //  basePage = new BasePage();
-      //  basePage.acceptCookiesButton.click();
+        extentTest = extentReports.createTest("TC0304", "User see the functions about 'Counter' area");
         ReusableMethods.waitFor(5);
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.counterArea);
@@ -153,10 +144,8 @@ public class US_03 extends TestBaseRapor {
 
     @Test
     public void TC05UserSeeFunctionsOfDestinationsSection() {//TC_03_05
-     //  homePage = new HomePage();
-     //  basePage = new BasePage();
-     //  basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0305","User see the functions about 'Destinations' section");
+
+        extentTest = extentReports.createTest("TC0305", "User see the functions about 'Destinations' section");
         List<WebElement> listOfDestinations = new ArrayList<>();
         listOfDestinations.add(homePage.destinationsTitleInDestinationsSectionOnHomepage);
         listOfDestinations.add(homePage.textUnderDestinationsTitleOnHomepage);
@@ -174,10 +163,8 @@ public class US_03 extends TestBaseRapor {
 
     @Test//User should be able to see the functions about "Team Members" section in the body section of the Homepage
     public void TC06UserSeeFunctionsAboutTeamMembersSection() {//US03TC06
-     // homePage = new HomePage();
-     // basePage = new BasePage();
-     // basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0306","User see the functions about 'Team Member' section");
+
+        extentTest = extentReports.createTest("TC0306", "User see the functions about 'Team Member' section");
         ReusableMethods.waitFor(5);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.teamMembersAreaOnHomepage);
@@ -206,10 +193,8 @@ public class US_03 extends TestBaseRapor {
     //User should be able to see the functions about "Testimonial" section in the body section of the Homepage
     @Test
     public void TC07UserSeeFunctionsAboutTestimonialSection() {//US03TC07
-      //  homePage = new HomePage();
-      //  basePage = new BasePage();
-      //  basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0307","User see the functions about 'Testimonial' on homepage");
+
+        extentTest = extentReports.createTest("TC0307", "User see the functions about 'Testimonial' on homepage");
         ReusableMethods.waitFor(3);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.testimonialAreaHomePage);
@@ -244,10 +229,7 @@ public class US_03 extends TestBaseRapor {
     @Test
     public void TC08UserSeeFunctionsAboutLatestBlogSection() {//TC_03_08
 
-      // homePage = new HomePage();
-      // basePage = new BasePage();
-      // basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0308","User see the functions about 'Latest Blog' on homepage");
+        extentTest = extentReports.createTest("TC0308", "User see the functions about 'Latest Blog' on homepage");
         ReusableMethods.waitFor(5);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0,4800)");
@@ -268,17 +250,15 @@ public class US_03 extends TestBaseRapor {
         Assert.assertTrue(homePage.discoveringGreenvilleAreaUnderTheLatestBlogOnHomePage.isDisplayed());
         ReusableMethods.waitFor(15);
         Assert.assertTrue(homePage.salinaIslandAreaUnderTheLatesBlogOnHomepage.isDisplayed());
-       extentTest.fail("When you go to the 'Lates Blog' section manually, each element can be seen, but when you test with code, a different element cannot be seen in each test.");
+        extentTest.fail("When you go to the 'Lates Blog' section manually, each element can be seen, but when you test with code, a different element cannot be seen in each test.");
 
     }
 
 
     @Test//User should be able to see functions about "Our Client" section in the body section of the Homepage
     public void TC09UserSeeFunctionsAboutOurClientSection() {//TC_03_09
-     //   homePage = new HomePage();
-     //   basePage = new BasePage();
-     //   basePage.acceptCookiesButton.click();
-        extentTest=extentReports.createTest("TC0309","User see the functions about 'Our Client' on homepage");
+
+        extentTest = extentReports.createTest("TC0309", "User see the functions about 'Our Client' on homepage");
         ReusableMethods.waitFor(3);
         js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollTo(0, arguments[0].getBoundingClientRect().top)", homePage.ourClientAreaOnHomePage);
@@ -291,9 +271,7 @@ public class US_03 extends TestBaseRapor {
     @Test
 //User should be able to see verify that the functions about "Newsletter" section in the body section of the Homepage
     public void TC10UserSeeFunctionsAboutNewsletterSection() {//TC_03_10
-        extentTest=extentReports.createTest("TC0310","User see the functions about 'Newsletter' section");
-
-        // JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        extentTest = extentReports.createTest("TC0310", "User see the functions about 'Newsletter' section");
 
         setUpTest(homePage.newsLetterAreaOnHomepage);
 
@@ -312,11 +290,9 @@ public class US_03 extends TestBaseRapor {
 
     @Test//User should be able to click the functions about hero area in the body section of the Homepage
     public void TC11UserClickTheFunctionsAboutHeroArea() {////TC_03_11
-        extentTest=extentReports.createTest("TC0311","User click the functions about 'Hero Area' section");
-        //homePage = new HomePage();
-       // basePage = new BasePage();
+        extentTest = extentReports.createTest("TC0311", "User click the functions about 'Hero Area' section");
         packagesPage = new PackagesPage();
-      //  basePage.acceptCookiesButton.click();
+
         ReusableMethods.waitFor(5);
         isClickableElements(homePage.firstIndicatorInHeroSection, homePage.readMoreButtonUnderExploreTheWorldAreaText, packagesPage.tourDatesText);
         extentTest.pass("User click read more button under the 'Explore The World' element and reach its page");
@@ -334,7 +310,7 @@ public class US_03 extends TestBaseRapor {
     //User should be able to click the functions about "Our Services" section in the body section of the Homepage
     @Test
     public void TC12UserClickTheFunctionsAboutOurServices() {//TC_03_12
-        extentTest=extentReports.createTest("TC0312","User see the functions about 'Our Services' section");
+        extentTest = extentReports.createTest("TC0312", "User see the functions about 'Our Services' section");
         setUpTest(homePage.ourServicesAreaOnHomepage);
         servicesPage = new ServicesPage();
 
@@ -358,7 +334,7 @@ public class US_03 extends TestBaseRapor {
     //User should be able to click the functions about "Featured Packages" section in the body section of the Homepage
     @Test
     public void TC13UserClickTheFunctionsAboutFeaturedPackages() {//TC_03_13
-        extentTest=extentReports.createTest("TC0314","user click the functions about 'Featured Packages' section");
+        extentTest = extentReports.createTest("TC0314", "user click the functions about 'Featured Packages' section");
         packagesPage = new PackagesPage();
         setUpTest(homePage.featuredAreaOnHomePage);
         ReusableMethods.waitFor(3);
@@ -377,7 +353,7 @@ public class US_03 extends TestBaseRapor {
     //User should be able to click the functions about "Destinations" section in the body section of the Homepage
     @Test
     public void TC14UserClickTheFunctionsAboutDestinationsPackages() {//TC_03_14
-        extentTest=extentReports.createTest("TC0314","User click the functions about 'Destinations Packages' section");
+        extentTest = extentReports.createTest("TC0314", "User click the functions about 'Destinations Packages' section");
         setUpTest(homePage.destinationAreaOnHomePage);
         destinationsPage = new DestinationsPage();
         js = (JavascriptExecutor) Driver.getDriver();
@@ -391,17 +367,9 @@ public class US_03 extends TestBaseRapor {
         destinationsList.add(homePage.istanbulTurkeyTextInDestinationsSection);
 
 
-        listOfClickableWebElement(destinationsList,destinationsPage.titleEachDestinations);
+        listOfClickableWebElement(destinationsList, destinationsPage.titleEachDestinations);
         extentTest.pass("User click every each element of Destinations Packages section");
 
-
-     //   ReusableMethods.waitFor(5);
-
-
-     //  js.executeScript("arguments[0].click();", homePage.seeAllDestinationsButtonOnHomepage);
-     //  ReusableMethods.waitFor(5);
-     //  Assert.assertTrue(destinationsPage.destinationsImageWebElement.isEnabled());
-     //  Driver.getDriver().navigate().back();
 
     }
 
@@ -409,7 +377,7 @@ public class US_03 extends TestBaseRapor {
 
     @Test
     public void TC15UserClickTheFunctionsAboutTeamMembersSection() {//TC_03_15
-        extentTest=extentReports.createTest("TC0315","User click the functions about 'Team Members' section");
+        extentTest = extentReports.createTest("TC0315", "User click the functions about 'Team Members' section");
 
 
         setUpTest(homePage.teamMembersAreaOnHomepage);
@@ -477,12 +445,8 @@ public class US_03 extends TestBaseRapor {
 
     @Test//User should be able to click functions about "Latest Blog" section in the body section of the Homepage
     public void TC16UserClickTheFunctionsAboutLatestBlogSection() {//TC_03_16
-        extentTest=extentReports.createTest("TC0316","user click the functions about 'Latest Blog' section");
-      //  homePage = new HomePage();
+        extentTest = extentReports.createTest("TC0316", "user click the functions about 'Latest Blog' section");
         js = (JavascriptExecutor) Driver.getDriver();
-     //   Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
-     //   basePage.acceptCookies();
-//        js.executeScript("arguments[0].scrollIntoView();", homePage.latestBlogArea);
         js.executeScript("window.scrollBy(0,5200)");
         List<WebElement> elementsOfLatestBlogList = new ArrayList<>();
         elementsOfLatestBlogList.add(homePage.readMoreButtonUnderTheIstanbulAreaTextOnHomepage);
@@ -498,11 +462,9 @@ public class US_03 extends TestBaseRapor {
     }
 
 
-
-
     @Test//User should be able to click the functions about "Newsletter" section in the body section of the Homepage
     public void TC17UserClickTheFunctionsAboutNewsletterSection() {//TC_03_17
-        extentTest=extentReports.createTest("TC0317","user click the functions about 'NewsLetter' section");
+        extentTest = extentReports.createTest("TC0317", "user click the functions about 'NewsLetter' section");
         js = (JavascriptExecutor) Driver.getDriver();
         Faker faker = new Faker();
         AdminPage adminPage = new AdminPage();
