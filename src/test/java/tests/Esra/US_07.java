@@ -35,7 +35,7 @@ public class US_07 extends TestBaseRapor {
         extentReports.createTest(
             "TC0701",
             "Verify that the Facebook icon in the footer section of the website is visible and active.");
-    BasePage basePage = new BasePage();
+    basePage = new BasePage();
 
     Assert.assertTrue(basePage.footerFacobookIcon.isDisplayed());
     extentTest.pass(
@@ -44,29 +44,22 @@ public class US_07 extends TestBaseRapor {
     String firstPageWH = Driver.getDriver().getWindowHandle();
     basePage.footerFacobookIcon.click();
     ReusableMethods.waitFor(2);
-    Set<String> allWH = Driver.getDriver().getWindowHandles();
-    String secondWinddowHandleValue = "";
-    for (String eachWH : allWH) {
-      if (!eachWH.equals(firstPageWH)) {
-        secondWinddowHandleValue = eachWH;
-      }
-    }
-    Driver.getDriver().switchTo().window(secondWinddowHandleValue);
+
+    switchingWindow(firstPageWH);
+
     String expectedTitle = "facebook";
     String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
     Assert.assertTrue(actualTtitle.contains(expectedTitle));
     extentTest.pass("Verify that the Facebook icon in the footer section of the website is active");
-
-
   }
 
   @Test
   public void twitterIconTest() {
     extentTest =
         extentReports.createTest(
-            "TC1302",
+            "TC0702",
             "Verify that the Twitter icon in the footer section of the website is visible and active.");
-    BasePage basePage = new BasePage();
+    basePage = new BasePage();
 
     Assert.assertTrue(basePage.footerTwitterIcon.isDisplayed());
     extentTest.pass("Verify that the Twitter icon in the footer section of the website is visible");
@@ -74,30 +67,23 @@ public class US_07 extends TestBaseRapor {
     String firstPageWH = Driver.getDriver().getWindowHandle();
     basePage.footerTwitterIcon.click();
     ReusableMethods.waitFor(2);
-    Set<String> allWH = Driver.getDriver().getWindowHandles();
-    String secondWinddowHandleValue = "";
-    for (String eachWH : allWH) {
-      if (!eachWH.equals(firstPageWH)) {
-        secondWinddowHandleValue = eachWH;
-      }
-    }
-    Driver.getDriver().switchTo().window(secondWinddowHandleValue);
+
+    switchingWindow(firstPageWH);
+
     String expectedTitle = "twitter";
     String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
     Assert.assertTrue(actualTtitle.contains(expectedTitle));
     extentTest.fail(
-        "Verify that the Twitter icon in the footer section of the website is not functional");
-
-
+        "Verify that the Twitter icon in the footer section of the website is functional");
   }
 
   @Test
   public void linkedinIconTest() {
     extentTest =
         extentReports.createTest(
-            "TC1303",
+            "TC0703",
             "Verify that the Linkedin icon in the footer section of the website is visible and active.");
-    BasePage basePage = new BasePage();
+    basePage = new BasePage();
 
     Assert.assertTrue(basePage.footerLinkedinIcon.isDisplayed());
     extentTest.pass(
@@ -106,19 +92,13 @@ public class US_07 extends TestBaseRapor {
     String firstPageWH = Driver.getDriver().getWindowHandle();
     basePage.footerLinkedinIcon.click();
     ReusableMethods.waitFor(2);
-    Set<String> allWH = Driver.getDriver().getWindowHandles();
-    String secondWinddowHandleValue = "";
-    for (String eachWH : allWH) {
-      if (!eachWH.equals(firstPageWH)) {
-        secondWinddowHandleValue = eachWH;
-      }
-    }
-    Driver.getDriver().switchTo().window(secondWinddowHandleValue);
+
+    switchingWindow(firstPageWH);
+
     String expectedTitle = "linkedin";
     String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
     Assert.assertTrue(actualTtitle.contains(expectedTitle));
     extentTest.pass("Verify that the Linkedin icon in the footer section of the website is active");
-
   }
 
   @Test
@@ -126,9 +106,9 @@ public class US_07 extends TestBaseRapor {
 
     extentTest =
         extentReports.createTest(
-            "TC1304",
+            "TC0704",
             "Verify that the Pinterest icon in the footer section of the website is visible and active.");
-    BasePage basePage = new BasePage();
+    basePage = new BasePage();
 
     Assert.assertTrue(basePage.footerPinterestIcon.isDisplayed());
     extentTest.pass(
@@ -137,30 +117,23 @@ public class US_07 extends TestBaseRapor {
     String firstPageWH = Driver.getDriver().getWindowHandle();
     basePage.footerPinterestIcon.click();
     ReusableMethods.waitFor(2);
-    Set<String> allWH = Driver.getDriver().getWindowHandles();
-    String secondWinddowHandleValue = "";
-    for (String eachWH : allWH) {
-      if (!eachWH.equals(firstPageWH)) {
-        secondWinddowHandleValue = eachWH;
-      }
-    }
-    Driver.getDriver().switchTo().window(secondWinddowHandleValue);
+
+    switchingWindow(firstPageWH);
+
     String expectedTitle = "pinterest";
     String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
     Assert.assertTrue(actualTtitle.contains(expectedTitle));
     extentTest.fail(
-        "Verify that the Pinterest icon in the footer section of the website is not functional");
-
-
+        "Verify that the Pinterest icon in the footer section of the website is functional");
   }
 
   @Test
   public void instagramIconTest() {
     extentTest =
         extentReports.createTest(
-            "TC1305",
+            "TC0705",
             "Verify that the Instagram icon in the footer section of the website is visible and active.");
-    BasePage basePage = new BasePage();
+    basePage = new BasePage();
 
     Assert.assertTrue(basePage.footerInstagramIcon.isDisplayed());
     extentTest.pass(
@@ -169,6 +142,18 @@ public class US_07 extends TestBaseRapor {
     String firstPageWH = Driver.getDriver().getWindowHandle();
     basePage.footerInstagramIcon.click();
     ReusableMethods.waitFor(2);
+
+    switchingWindow(firstPageWH);
+
+    String expectedTitle = "instagram";
+    String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
+    Assert.assertTrue(actualTtitle.contains(expectedTitle));
+    extentTest.pass(
+        "Verify that the Instagram icon in the footer section of the website is active");
+  }
+
+  public void switchingWindow(String firstPageWH) {
+
     Set<String> allWH = Driver.getDriver().getWindowHandles();
     String secondWinddowHandleValue = "";
     for (String eachWH : allWH) {
@@ -177,12 +162,5 @@ public class US_07 extends TestBaseRapor {
       }
     }
     Driver.getDriver().switchTo().window(secondWinddowHandleValue);
-    String expectedTitle = "instagram";
-    String actualTtitle = Driver.getDriver().getTitle().toLowerCase();
-    Assert.assertTrue(actualTtitle.contains(expectedTitle));
-    extentTest.pass(
-        "Verify that the Instagram icon in the footer section of the website is active");
-
-
   }
 }
