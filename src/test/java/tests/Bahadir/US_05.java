@@ -48,12 +48,13 @@ public class US_05 {
         js.executeScript("window.scrollBy(0,10000)");
         ReusableMethods.waitFor(2);
 
-        Assert.assertTrue(footerSection.latestPackagesInFooter.isEnabled());
+
         Assert.assertTrue(footerSection.testDenemeButtonInFooter.isEnabled());
         Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInLatestPackagesInFooter.isEnabled());
-        Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isEnabled());
-        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isEnabled());
-        Assert.assertTrue(footerSection.secondFiveDayCaliforniaButtonInLatestPackages.isEnabled());
+        Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInLatestPackagesInFooter.isEnabled());
+        Assert.assertTrue(footerSection.threeDaysInBangkokButtonInLatestPackagesInFooter.isEnabled());
+        Assert.assertTrue(footerSection.sevenDaysInIstanbulButtonInLatestPackagesInFooter.isEnabled());
+
 
 
     }

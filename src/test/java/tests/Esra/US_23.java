@@ -42,6 +42,5 @@ public class US_23 extends TestBaseRapor {
     loginPage.logOutButton.click();
     Assert.assertTrue(loginPage.loginPageLoginButton.isDisplayed());
     extentTest.pass("User can log out after a successful log in.");
-
   }
 }
