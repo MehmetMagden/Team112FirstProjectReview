@@ -56,8 +56,9 @@ public class US_04 extends TestBaseRapor {
         Assert.assertTrue(footerSection.tenDaysInBuenosAiresButtonInFooter.isEnabled());
         Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isEnabled());
         Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isEnabled());
+        Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isEnabled());
 
-        // NOTE: isEnabled test passed because of not being visible of 5 Day California. This situation was mentioned in bug report
+
     }
 
 
