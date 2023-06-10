@@ -51,7 +51,6 @@ public class US_31 extends MethodBase {
                .sendKeys(faker.name().fullName() + Keys.TAB).perform();
 
         WebElement fileUpload = adminPage.addPackagesUploadImage;
-        //String filePath =  System.getProperty("user.home") + "/Desktop/Wise Quarter/project_sample_file.jpeg";
         String filePath = System.getProperty("user.home") +
                          "\\IdeaProjects\\com.tripandway\\src\\test\\java\\utilities\\Sample_Image.jpg";
         fileUpload.sendKeys(filePath);
