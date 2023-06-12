@@ -271,7 +271,7 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/team-member/jaxon-green'])[2]")
     public WebElement jaxonGreenText;
 
-    @FindBy(xpath = "(//i[@class='fab fa-facebook-f'])[7]")
+    @FindBy(xpath = "(//a[@href='http://www.facebook.com'])[7]")//--//(//i[@class='fab fa-facebook-f'])[7]
     public WebElement jaxonGreenFacebookIkon;
 
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[7]")
@@ -318,7 +318,7 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[9]")
     public WebElement knoxMitchellTwitterIkon;
 
-    @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[5]")
+    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[5]")
     public WebElement knoxMitchellLinkedInIkon;
 
     @FindBy(xpath = "https://qa.tripandway.com/team-member/knox-mitchell")

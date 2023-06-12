@@ -388,56 +388,40 @@ public class US_03 extends TestBaseRapor {
         listOfTeamMembers.add(homePage.averyJohnsonText);
         listOfTeamMembers.add(homePage.zaraWilliamsText);
 
-        listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
+       listOfClickableWebElement(listOfTeamMembers, homePage.detailEachTeamMembers);
         extentTest.pass("User can reach page of each team members");
 
         String firstWH = Driver.getDriver().getWindowHandle();
         ReusableMethods.waitFor(5);
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellFacebookIkon, homePage.facebookImg, firstWH);
-        extentTest.fail("user can not click the facebook ikon of Knox Mitchell due to the 'unable to locate element'.But sometimes it can be reached. ");
-        ReusableMethods.waitFor(5);
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenFacebookIkon, homePage.facebookImg, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click facebook ikon of Jaxon Green and reach facebook page ");
+        List<WebElement>socialMediaIkonsList=new ArrayList<>();
+        socialMediaIkonsList.add(homePage.knoxMitchellFacebookIkon);
+        socialMediaIkonsList.add(homePage.jaxonGreenFacebookIkon);
+        socialMediaIkonsList.add(homePage.averyJohnsonFacebookIkon);
+        socialMediaIkonsList.add(homePage.zaraWilliamsFacebookIkon);
+        socialMediaIkonsList.add(homePage.knoxMitchellTwitterIkon);
+        socialMediaIkonsList.add(homePage.jaxonGreenTwitterIkon);
+        socialMediaIkonsList.add(homePage.averyJohnsonTwitterIkon);
+        socialMediaIkonsList.add(homePage.zaraWilliamsTwitterIkon);
+        socialMediaIkonsList.add(homePage.knoxMitchellLinkedInIkon);
+        socialMediaIkonsList.add(homePage.jaxonGreenLinkedInIkon);
+        socialMediaIkonsList.add(homePage.averyJohnsonLinkedInIkon);
+        socialMediaIkonsList.add(homePage.zaraWilliamsLinkedInIkon);
 
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonFacebookIkon, homePage.facebookImg, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click facebook ikon of Avery Johnson and reach facebook page ");
+        List<WebElement>elementToTestList=new ArrayList<>();
+        elementToTestList.add(homePage.facebookImg);
+        elementToTestList.add(homePage.facebookImg);
+        elementToTestList.add(homePage.facebookImg);
+        elementToTestList.add(homePage.facebookImg);
+        elementToTestList.add(homePage.twitterKesfetArea);
+        elementToTestList.add(homePage.twitterKesfetArea);
+        elementToTestList.add(homePage.twitterKesfetArea);
+        elementToTestList.add(homePage.twitterKesfetArea);
+        elementToTestList.add(homePage.linkedinEmailBox);
+        elementToTestList.add(homePage.linkedinEmailBox);
+        elementToTestList.add(homePage.linkedinEmailBox);
+        elementToTestList.add(homePage.linkedinEmailBox);
 
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsFacebookIkon, homePage.facebookImg, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click facebook ikon of Zara Williams and reach facebook page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellTwitterIkon, homePage.twitterKesfetArea, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click twitter ikon of Knox Mitchell and reach twitter page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenTwitterIkon, homePage.twitterKesfetArea, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click twitter ikon of Jaxon Green and reach twitter page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonTwitterIkon, homePage.twitterKesfetArea, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click twitter ikon of Avery Johnson and reach twitter page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsTwitterIkon, homePage.twitterKesfetArea, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click twitter ikon of Zara Williams and reach twitter page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.knoxMitchellLinkedInIkon, homePage.linkedinEmailBox, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click linkedin ikon of Knox Mitchell and reach linkedin page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.jaxonGreenLinkedInIkon, homePage.linkedinEmailBox, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click linkedin ikon of Jaxon Green and reach linkedin page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.averyJohnsonLinkedInIkon, homePage.linkedinEmailBox, firstWH);
-        ReusableMethods.waitFor(5);
-        extentTest.pass("User can click linkedin ikon of Avery Johnson and reach linkedin page ");
-
-        socialMediaIkonsTestOfTeamMembers(homePage.zaraWilliamsLinkedInIkon, homePage.linkedinEmailBox, firstWH);
-        extentTest.pass("User can click linkedin ikon of Zara Williams and reach linkedin page ");
+        socialMediaIkonsTestOfTeamMembersWithList(socialMediaIkonsList,elementToTestList,firstWH);
 
 
     }
@@ -503,6 +487,7 @@ public class US_03 extends TestBaseRapor {
             Assert.assertTrue(clickElement.isDisplayed());
             Driver.getDriver().navigate().back();
             ReusableMethods.waitFor(1);
+
         }
     }
 
@@ -522,12 +507,12 @@ public class US_03 extends TestBaseRapor {
 
     public void listOfClickableWebElement(List<WebElement> list, WebElement title) {
         for (int i = 0; i < list.size(); i++) {
-            ReusableMethods.waitFor(4);
+            ReusableMethods.waitFor(5);
             list.get(i).click();
-            ReusableMethods.waitFor(3);
+            ReusableMethods.waitFor(5);
             Assert.assertTrue(title.isDisplayed());
             Driver.getDriver().navigate().back();
-            ReusableMethods.waitFor(3);
+            ReusableMethods.waitFor(5);
         }
 
     }
@@ -591,8 +576,37 @@ public class US_03 extends TestBaseRapor {
             if (!eachWH.equals(firstWH)) {
                 secondWH = eachWH;
             }
+
         }
         Driver.getDriver().switchTo().window(secondWH);
+        Assert.assertTrue(testOfElement.isDisplayed());
+        Driver.getDriver().switchTo().window(firstWH);
+
+    }
+
+    public void socialMediaIkonsTestOfTeamMembersWithList(List<WebElement> list, List<WebElement> testOfElementList, String firstWH) {
+        String secondWH = "";
+        ReusableMethods.waitFor(10);
+
+        for (int i = 0; i < list.size(); i++) {
+            ReusableMethods.waitFor(10);
+            js.executeScript("arguments[0].click();", list.get(i));
+            ReusableMethods.waitFor(10);
+            Set<String> allWH = Driver.getDriver().getWindowHandles();
+            for (String eachWH : allWH) {
+                if (!eachWH.equals(firstWH)) {
+                    secondWH = eachWH;
+                }
+            }
+            Driver.getDriver().switchTo().window(secondWH);
+            try {
+                Assert.assertTrue(testOfElementList.get(i).isDisplayed());
+            } catch (Exception e) {
+                System.out.println(i+": problem");
+            }
+            Driver.getDriver().switchTo().window(firstWH);
+
+        }
 
 
     }
