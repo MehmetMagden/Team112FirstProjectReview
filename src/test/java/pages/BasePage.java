@@ -86,9 +86,10 @@ public class BasePage {
     @FindBy(xpath = "//h1[contains(text(),'7 days in Salina Island')]")
     public WebElement secondSevenDaysInSalinaIslandButton;
 
-    @FindBy(xpath = "//div[@class='col-md-3 col-sm-6 wow fadeInLeft']//a[normalize-space()='5 Day California']")
-    public WebElement fiveDayCaliforniaButtonInFooter;
+    @FindBy(xpath = "//a[@href='https://qa.tripandway.com/package/california']")
+    public WebElement fiveDayCaliforniaButtonInFooter;//
 
+    //div[@class='col-md-3 col-sm-6 wow fadeInLeft']//a[normalize-space()='5 Day California']
     @FindBy(xpath = "//h1[contains(text(),'5 Day California')]")
     public WebElement secondFiveDayCaliforniaButton;
 

@@ -22,8 +22,8 @@ public class US_03 extends TestBaseRapor {
     private HomePage homePage = new HomePage();
     private BasePage basePage = new BasePage();
     private PackagesPage packagesPage = new PackagesPage();
-    private ServicesPage servicesPage = new ServicesPage();
-    private DestinationsPage destinationsPage = new DestinationsPage();
+    public ServicesPage servicesPage = new ServicesPage();
+    public DestinationsPage destinationsPage = new DestinationsPage();
     private JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
 
@@ -528,7 +528,6 @@ public class US_03 extends TestBaseRapor {
             Assert.assertTrue(title.isDisplayed());
             Driver.getDriver().navigate().back();
             ReusableMethods.waitFor(3);
-
         }
 
     }

@@ -16,6 +16,7 @@ import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 
 public class US017 extends TestBaseRapor {
+
     @BeforeMethod
     public void setUp() {
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
