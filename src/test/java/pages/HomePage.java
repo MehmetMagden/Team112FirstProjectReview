@@ -7,8 +7,8 @@ import utilities.Driver;
 
 public class HomePage {
 
-    public HomePage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public HomePage() {
+        PageFactory.initElements(Driver.getDriver(), this);
 
 
     }
@@ -39,7 +39,7 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='https://qa.tripandway.com/contact'])[2]")
     public WebElement contactButtonInHeader;
 
-    @FindBy (xpath = "(//img[@alt='Logo'])[1]")
+    @FindBy(xpath = "(//img[@alt='Logo'])[1]")
     public WebElement logoOfCompanyInHeader;
 
     @FindBy(xpath = "//a[@href='https://qa.tripandway.com/traveller/register']")
@@ -57,35 +57,38 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='container'])[6]")
     public WebElement theWorldIsSoBeautifulAreaOnHomepage;
 
-   @FindBy(xpath = "(//a[text()='Read More'])[4]")
+    @FindBy(xpath = "(//a[text()='Read More'])[4]")
     public WebElement readMoreButtonUnderTheWorldIsSoBeautifulText;
 
-   @FindBy(xpath = "(//div[@class='container'])[7]")
+    @FindBy(xpath = "(//div[@class='container'])[7]")
     public WebElement salinaIslandAreaOnHomepage;
 
-   @FindBy(xpath = "(//a[text()='Read More'])[5]")
+    @FindBy(xpath = "(//a[text()='Read More'])[5]")
     public WebElement readMoreButtonUnderSalinaIslandAreaText;
 
-   @FindBy(xpath = "(//div[@class='container'])[5]")
-    public  WebElement exploreTheWorldArea;
+    @FindBy(xpath = "(//div[@class='container'])[5]")
+    public WebElement exploreTheWorldArea;
 
-   @FindBy(xpath = "(//a[text()='Read More'])[3]")
+    @FindBy(xpath = "(//a[text()='Read More'])[3]")
     public WebElement readMoreButtonUnderExploreTheWorldAreaText;
 
-   @FindBy(xpath = "(//div[@class='owl-prev'])[1]")
+    @FindBy(xpath = "(//div[@class='owl-prev'])[1]")
     public WebElement sliderOnLeftSideOfHeroArea;
 
-   @FindBy(xpath = "(//div[@class='owl-next'])[1]")
+    @FindBy(xpath = "(//div[@class='owl-next'])[1]")
     public WebElement sliderOnRightSideOfHeroArea;
 
-   @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
-   public WebElement firstIndicatorInHeroSection;
+    @FindBy(xpath = "(//div[@class='owl-dot'])[1]")
+    public WebElement firstIndicatorInHeroSection;
 
-   @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
-   public WebElement secondIndicatorInHeroSection;
+    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+    public WebElement secondIndicatorInHeroSection;
 
-   @FindBy(xpath = "(//div[@class='owl-dot'])[2]")
-   public WebElement thirdIndicatorInHeroSection;
+    @FindBy(xpath = "(//div[@class='owl-dot'])[2]")
+    public WebElement thirdIndicatorInHeroSection;
+
+    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
+    public WebElement centreSliderInHeroArea;
 
 
 //=============================================================================================
@@ -161,12 +164,10 @@ public class HomePage {
     public WebElement sevenDaysInSalinaIslandText;
 
 
-
- //==========================COUNTER AREA==============================
+    //==========================COUNTER AREA==============================
 
     @FindBy(xpath = "(//div[@class='counterup-area pt_70 pb_100'])[1]")
     public WebElement counterArea;
-
 
 
     //=========================DESTINATION ON HOMEPAGE========================
@@ -229,16 +230,14 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='headstyle'])[1]")
     public WebElement detailEachTeamMembers;
 
-    @FindBy (xpath = "//img[@alt='Facebook']")
+    @FindBy(xpath = "//img[@alt='Facebook']")
     public WebElement facebookImg;
 
-    @FindBy (xpath = "(//span[text()='Keşfet'])[1]")
+    @FindBy(xpath = "(//span[text()='Keşfet'])[1]")
     public WebElement twitterKesfetArea;
 
     @FindBy(xpath = "//h1[@data-test-id='hero__headline']")
     public WebElement linkedinEmailBox;
-
-
 
 
     //Zara Williams
@@ -257,13 +256,13 @@ public class HomePage {
     @FindBy(xpath = "(//a[@href='http://www.twitter.com'])[6]")
     public WebElement zaraWilliamsTwitterIkon;
 
-    @FindBy (xpath = "(//a[@href='http://www.linkedin.com'])[6]")
+    @FindBy(xpath = "(//a[@href='http://www.linkedin.com'])[6]")
     public WebElement zaraWilliamsLinkedInIkon;
 
     @FindBy(xpath = "https://qa.tripandway.com/team-member/zara-williams")
     public WebElement zaraWilliamsPageUrl;
 
-  //Jaxon Green
+    //Jaxon Green
 
 
     @FindBy(xpath = "(//div[@class='team-item wow fadeIn'])[7]")
@@ -322,7 +321,7 @@ public class HomePage {
     @FindBy(xpath = "(//i[@class='fab fa-linkedin-in'])[5]")
     public WebElement knoxMitchellLinkedInIkon;
 
-    @FindBy (xpath = "https://qa.tripandway.com/team-member/knox-mitchell")
+    @FindBy(xpath = "https://qa.tripandway.com/team-member/knox-mitchell")
     public WebElement knoxMitchellPageUrl;
 
     //=============================TESTİMONIAL ON HOMEPAGE===================================
@@ -411,6 +410,9 @@ public class HomePage {
     @FindBy(xpath = "(//a[normalize-space()='Read More'])[20]")
     public WebElement readMoreButtonUnderTheIstanbulAreaTextOnHomepage;
 
+    @FindBy(xpath = "(//input[@placeholder='Search Here'])[1]")
+    public WebElement searchHereEachLatestBlog;
+
 
 //===================================OUR CLİENTS ON HOMEPAGE==============================================
 
@@ -434,27 +436,8 @@ public class HomePage {
     @FindBy(xpath = "(//input[@value='Submit'])[1]")
     public WebElement submitButtonUnderTheNewsLetterOnHomepage;
 
-//===============Homepage Hero Area Centre Point=================
-
-    @FindBy(xpath = "(//div[@class='owl-dot active'])[1]")
-    public WebElement centreSliderInHeroArea;
-
-
-//=====================Elements Of Destinations================
-    @FindBy(xpath = "//div[@class='row mt_10']")
-    public WebElement elementsOfDestionationsOnHomePage;
-    //================================================
-
-    @FindBy(xpath = "(//div[@class='slider-item'])[3]")
-    public WebElement heroAreaOnHomePage;
-
 
     //=====================LatestBlog==================
-    @FindBy(xpath = "(//input[@placeholder='Search Here'])[1]")
-    public WebElement searchHereEachLatestBlog;
-   
-
-
 
 
 }
