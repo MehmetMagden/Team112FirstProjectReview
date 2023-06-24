@@ -12,6 +12,12 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class US_09 extends MethodBase {
+
+//**** in testNG framework, extends word is used to create report
+// does your test create a report??
+
+//**** for everystep entered to Excel file we should create an explaining by using test.info
+
     /*
 
     As a user, I should be able to verify that I can join the website's email newsletter.
@@ -56,6 +62,9 @@ public class US_09 extends MethodBase {
         homePage.emailBoxUnderTheNewsLetterOnHomepage.sendKeys(ConfigReader.getProperty("userNewsLetterInvalidEmailAddress"));
         homePage.submitButtonUnderTheNewsLetterOnHomepage.click();
 
+//***** in coding, it is not advised to use hard-waits like "ReusableMethods.waitFor".
+// instead we should use explicitly waits
+//**** (but if is because of computer or connection problems it is acceptable)
         ReusableMethods.waitFor(2);
 
         testMethod.warningMessagesCheck("Email address is invalid",

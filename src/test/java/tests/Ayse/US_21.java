@@ -15,6 +15,12 @@ public class US_21 extends TestBaseRapor {
     @Test
     public void userCanViewPaymentHistory(){
 
+        // there could be an explaining line for test to understand what we are testing
+        // if we are just trying to go to home page, we do not need to test it in each test.
+        // instead of using URL to test, we should use a web element to confirm every thing is working correctly
+        // in some cases, url can be used but not in all steps
+
+
          homePage=new HomePage();
          loginPage=new LoginPage();
         extentTest=extentReports.createTest("US21TC01","user can view payment history");
@@ -45,8 +51,14 @@ public class US_21 extends TestBaseRapor {
         Assert.assertTrue(actualPaymentHistoryUrl.equals(expectedPaymentHistroyUrl));
         extentTest.pass("User can access payment history area");
 
+
+        // there is no assertion here
+        // if there is an assertion, we should use assertTest.pass
+        // if it is just a step for the test we should use extentTest.info
         loginPage.viewAllPaymentElementInPaymentElementOnLoginPage.isDisplayed();
         extentTest.pass("User can view all payment element ");
+
+        // we have not tested last step ( "User can view all payment element" )
 
         Driver.closeDriver();
 

@@ -69,11 +69,15 @@ public class US_40 extends TestBaseRapor {
         extentTest.info("dropDownArrowsButton is clickable");
 
         Assert.assertTrue(adminPage.dropdownArrowSymbolButtonInAdminPage.isEnabled());
+//**** enable does not mean it is clickable
 
     }
 
     @Test
     public void visitWebSite()  {
+
+//**** I am not sure but if it is a login test
+//**** I would add negative tests too
 
         AdminPage adminPage = new AdminPage();
 

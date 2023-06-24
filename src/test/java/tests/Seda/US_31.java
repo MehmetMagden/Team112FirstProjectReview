@@ -102,6 +102,9 @@ public class US_31 extends MethodBase {
        testMethod.logInAdminPageToNavigate();
 
        adminPage.adminPagePackagesTab.click();
+
+// there should be perform() code at the end when we are using actions class, does it work? :D
+// if it works, please don't mind this message
        actions.sendKeys(Keys.END);
        adminPage.addedPackagesEditing.click();
 

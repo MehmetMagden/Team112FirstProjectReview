@@ -24,11 +24,12 @@ public class US_15 extends MethodBase {
 
         testMethod.navigateAboutUsPage();
 
+//**** I think "expectedWordMission" and "actualWordMission" have not been used in this test case
         String expectedWordMission = "OUR MISSION";
         String actualWordMission = aboutUsPage.aboutUsPageOurMission.getText();
         Assert.assertTrue(aboutUsPage.aboutUsPageOurMission.isDisplayed());
         extentTest.pass("Verify, user can see Mission Statement in the page");
-
+//**** I think "expectedWordVision" and "actualWordVision" have not been used in this test case
         String expectedWordVision = "OUR VISION";
         String actualWordVision = aboutUsPage.AboutUsPageOurVision.getText();
         Assert.assertTrue(aboutUsPage.AboutUsPageOurVision.isDisplayed());

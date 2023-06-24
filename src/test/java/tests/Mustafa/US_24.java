@@ -77,9 +77,14 @@ TC_24_02	I can navigate to Packages page and select a package.
 
         packagesPage.packagesHeaderLink2.click(); // navigate to Packages page.
 
+
+//***** in coding, it is not advised to use hard-waits like "ReusableMethods.waitFor".
+// instead we should use explicitly waits
+//**** (but if is because of computer or connection problems it is acceptable)
         ReusableMethods.waitFor(1);
         basePage.acceptCookies();
 
+//**** to scroll to somewhere I prefer using a webelement instead of using numbers, When we use numbers it may not work on other computers
         jse.executeScript("window.scrollBy(0,550)");   // Sonunda bu calisti!
         ReusableMethods.waitFor(1);
 
@@ -96,6 +101,8 @@ TC_24_02	I can navigate to Packages page and select a package.
         payButton.click();
 
         Driver.getDriver().switchTo().frame("stripe_checkout_app");
+
+ //**** using explicitly wait here makes your code professional :D    thank you
         ReusableMethods.waitForVisibility(userDashboardPage.creditCard,7);
         jse.executeScript("arguments[1].value = arguments[0]; ", ConfigReader.getProperty("creditCardNumber"), userDashboardPage.creditCard);
         userDashboardPage.creditCard.sendKeys(ConfigReader.getProperty("creditCardNumber"));

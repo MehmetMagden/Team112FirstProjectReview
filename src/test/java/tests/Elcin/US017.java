@@ -28,6 +28,11 @@ public class US017 extends TestBaseRapor {
     public void tearDown() {
         Driver.quitDriver();
     }
+//**** it is not wrong but sometimes using quitDriver may cause unexpected problems.
+// If you face this kind of situations please try to use closeDriver()
+
+//**** for steps we entered to excel file you should also enter an explaining by using extentTest.info
+// I could not be able to see any steps' info?
 
     ContactPage contactPage = new ContactPage();
     BasePage basePage = new BasePage();
@@ -49,6 +54,7 @@ public class US017 extends TestBaseRapor {
         Assert.assertEquals(actualUrl, expectedUrl);
         extentTest.pass("User can successfuly access to contact page");
         ReusableMethods.waitFor(3);
+//**** testing url is a way to test it, but I prefer also testing a webelement to be sure we are in Contact page
 
     }
 
@@ -66,10 +72,14 @@ public class US017 extends TestBaseRapor {
                 .sendKeys("a1234321bc@gmail.com" + Keys.TAB)
                 .sendKeys("Message box worked" + Keys.TAB)
                 .sendKeys(Keys.ENTER).perform();
+
+//**** instead using numbers to scroll to somewhere, it is advised to use a webelement to scroll to. otherwise it may not work on other computers
         js.executeScript("window.scrollBy(0, -500)");
         Assert.assertTrue(contactPage.messageSuccesfullySent.isDisplayed());
         //extentTest.pass("User able to send a message by inputing requested data in requested format");
         System.out.println(contactPage.messageSuccesfullySent.getText());
+
+//***** after the assertions there should be exetntTest.pass code for the report, I could not understand why you made it a comment
 
     }
 

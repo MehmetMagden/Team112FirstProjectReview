@@ -15,6 +15,10 @@ public class US_041 {
    /*
    I should be able to log out from the admin account and return to the main screen.
     */
+
+
+//**** I could not be able to see any assertion so no mather what this test will pass
+
     @Test
     public void LogoutReturnToMainPaigeTest(){
 

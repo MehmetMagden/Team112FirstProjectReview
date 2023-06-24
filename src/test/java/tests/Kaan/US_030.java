@@ -15,12 +15,18 @@ public class US_030 {
     AdminPage adminPage = new AdminPage();
     Actions actions = new Actions(Driver.getDriver());
 
+//**** to create a report from this class we should extend it to TestBaseRapor class
+//**** it test methods should start with " extentTest = extentReports.createTest("TC0314", "description");
+//**** for each step we entered excel file there should be extentTest.info explaining
+//**** for each assertion we should enter info with extentTest.pass code
+// you did it at second user story, I did not see it when I was checking this class  :D
 
    /*
    After logging in as an admin,
    I should be able to verify that in the Destinations section,
    I can add a new destination and confirm that the added destination can be edited
     */
+
     @Test
     public void TC_30_01_adminLoginAddAndEditPackageTest() {
 
@@ -38,7 +44,9 @@ public class US_030 {
         adminPage.adminDestinationsTab.click();
         adminPage.addAdminDestinations.click();
 
+
         adminPage.addDestinationsName.sendKeys("Costa del Huddersfield"+ Keys.TAB);
+//**** there is no perform() code at the end
         actions.sendKeys("Slug"+ Keys.TAB)
                .sendKeys("Heading"+ Keys.TAB)
                .sendKeys("Short Description"+ Keys.TAB);
@@ -64,6 +72,7 @@ public class US_030 {
         String addDestinationsSubmitMessage = adminPage.warningMessage.getText();
         Assert.assertEquals(addDestinationsSubmitMessage, expectedWarningMessage);
 
+//**** to scroll somewhere in the page I prefer using a webelement instead of using numbers. If we use numbers it may not work on different computers
         js.executeScript("window.scrollBy(0,10000)");
         adminPage.editDestinationButton.click();
 

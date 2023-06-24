@@ -25,6 +25,12 @@ AdminPage adminPage = new AdminPage();
     @Test
     public void adminAccountProfileSettingsTest (){
 
+//**** instead of creating two extentTest object, I think we should create only one
+//when we create two of them, I think system will choose the last one
+
+//**** still for everystep we should enter an explaining by  extentTest.info  code ***************
+
+
         extentTest = extentReports.createTest("TC37", "User Navigates To Edit profile");
 
         extentTest = extentReports.createTest("TC37", "User Navigates To Edit Password");
@@ -49,7 +55,8 @@ AdminPage adminPage = new AdminPage();
         Assert.assertEquals(actualWordChangePassword,expectedWordEditProfile);
         extentTest.fail("When user clicks the drop down there is no access to the Edit profile header");
 
-
+//**** if there is a bug, we do not need to write the code. Just creating bug report is enough. Still, writing helps us to gain experience :D
+// furthermore, writing an explaining here about the situation helps readers like me :D
 
         ReusableMethods.waitFor(3);
         Driver.closeDriver();

@@ -49,7 +49,18 @@ public class TestMethods {
         Driver.quitDriver();
     }
 
+//**** creating a testMethod class is good way to handle repeated cases
+// but if these methods can be used by everybody there should be in ReusableMethods class
+// if they are only for your user stories you can create them in your page class
+
+//**** normaly after each assertion there should be an assertTest.pass explaining.
+// It is not a must but if we prepare it this way when we face a problem we can understand it from the report
+// otherwise it will only show last assertTest.pass explaining
+
+
     public void userNavigatesAndVerifiesToDestinationPage () {
+
+
 
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         basePage = new BasePage();
@@ -139,6 +150,7 @@ public class TestMethods {
 
     public void userNavigatesAndVerifiesToCategoriesPageInBlogSection() {
 
+//**** I is good to test it by using URLs but if I were you, I would also test a webelement (isDisplayed)
         adminPage = new AdminPage();
         adminPage.adminPanelBlogSectionButton.click();
         adminPage.adminPanelBlogSectionCategoriesButton.click();

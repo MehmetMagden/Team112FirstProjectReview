@@ -39,6 +39,8 @@ public class US_020 extends TestBaseRapor {
         loginPage.Submit.submit();
         ReusableMethods.waitFor(4);
 
+//**** There is no assertion here so we are not testing anything
+
     }
 
 

@@ -36,7 +36,11 @@ public class US_03 extends TestBaseRapor {
         basePage.acceptCookiesButton.click();
     }
 
-    //User should be able to see the functions about hero area in the body section of the Home page
+    // we should not use ReusableMethods.waitFor for each step
+    // ( if there is a technical or connection problem  we can, but normally it is not acceptable )
+    // it seems we have tested that they are visible, but we have not tested their functions.
+    // we should also test their functions
+
     @Test
     public void TC01UserCanSeeTheFunctionsAboutHeroArea() {//TC_03_01
         // homePage = new HomePage();
@@ -239,6 +243,12 @@ public class US_03 extends TestBaseRapor {
     @Test
     public void TC08UserSeeFunctionsAboutLatestBlogSection() {//TC_03_08
 
+       //if you use direct numbers to scroll somewhere, it may not work on other computers. So instead giving number, using a
+       // webelement would be a better solution.
+        // but I think it did not work here :D
+        // I could not be able to understand why we have to wait for 10 sec for each step?
+        // I think someone should explain me what we have done here :D
+
         extentTest = extentReports.createTest("TC0308", "User see the functions about 'Latest Blog' on homepage");
         ReusableMethods.waitFor(5);
         js = (JavascriptExecutor) Driver.getDriver();
@@ -294,6 +304,7 @@ public class US_03 extends TestBaseRapor {
         ReusableMethods.waitFor(5);
         Assert.assertTrue(homePage.submitButtonUnderTheNewsLetterOnHomepage.isDisplayed());
         extentTest.pass("user see submit button in 'Newsletters' section");
+
 
 
     }

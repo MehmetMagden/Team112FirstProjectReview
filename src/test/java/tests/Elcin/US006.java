@@ -14,6 +14,10 @@ import utilities.TestBaseRapor;
 import java.security.Key;
 
 public class US006 extends TestBaseRapor {
+
+    //**** there should be info steps for the test steps
+//**** using hard wait is not  advised in coding instead we should use explicitly waits
+//**** (but if is because of computer or connection problems it is acceptable)
     @Test
     public void TC006_01recentPostsAtFooterSectionIsVisible() {
         BasePage basePage = new BasePage();
@@ -22,7 +26,10 @@ public class US006 extends TestBaseRapor {
         //JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         Actions actions = new Actions(Driver.getDriver());
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
+
+//**** using hard wait is not  advised in coding instead we should use explicitly waits
         ReusableMethods.waitFor(2);
+
         basePage.acceptCookiesButton.click();
         // js.executeScript("window.scrollBy(0,1000)");
         actions.sendKeys(Keys.END).perform();
@@ -40,6 +47,9 @@ public class US006 extends TestBaseRapor {
         Assert.assertTrue(basePage.recentPostsFifthLink.isDisplayed());
         extentTest.pass("Fifth Link under Recent Post section is visible");
 
+//**** it is not wrong but sometimes using quitDriver may cause unexpected problems.
+// If you face this kind of situations please try to use closeDriver()
+
         Driver.quitDriver();
     }
 
@@ -55,6 +65,8 @@ public class US006 extends TestBaseRapor {
         ReusableMethods.waitFor(2);
         basePage.acceptCookiesButton.click();
         //js.executeScript("window.scrollBy(0,10000)");
+
+//**** yes they are enable but are there clickable and when we click them where do they take to??? I think we should also test that.
         Assert.assertTrue(basePage.recentPostsFirstLink.isEnabled());
         extentTest.pass("First Link under Recent Post heading is active");
         Assert.assertTrue(basePage.recentPostsSecondLink.isEnabled());

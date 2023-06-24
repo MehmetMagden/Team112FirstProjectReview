@@ -28,6 +28,9 @@ public class US019 extends TestBaseRapor {
 
     LoginPage loginPage = new LoginPage();
 
+//**** if it is a login test, I would also create negative test scenarios
+//**** there should be info steps for the test steps
+
     @Test
     public void TC019_01logInToWebPageWithRegisteredNameAndPassword() {
         extentTest = extentReports.createTest("TC019_01", "User should be able to loginto account with registered name and password");

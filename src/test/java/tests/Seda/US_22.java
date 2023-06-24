@@ -32,6 +32,8 @@ public class US_22 extends MethodBase {
 
         loginPage.loginPageLoginButton2.click();
         loginPage.loginPageEmailAddressTextBox.sendKeys(ConfigReader.getProperty("userLogInPasswordUpdateEmail"));
+//**** normally  password should had been taken from configuration.properties file. but as they say: if it works, don't touch it :D
+// or if it has to be changed everytime we can create  a random password from faker class
         loginPage.loginPagePasswordBox.sendKeys("Seda1234568.");
         ReusableMethods.waitFor(2);
         loginPage.loginPageLoginButton.click();

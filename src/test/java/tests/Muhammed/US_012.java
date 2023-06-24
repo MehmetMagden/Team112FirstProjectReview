@@ -27,7 +27,8 @@ public class US_012 extends TestBaseRapor {
 
         }
 
-
+//**** there could be an explaining before each test to show what we are testing
+// it is really hard for the readers like me to understand  :D
         @Test
         public void US012_TC01ServicePageAndItems() {
 

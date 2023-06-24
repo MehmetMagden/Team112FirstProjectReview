@@ -25,6 +25,8 @@ public class US027 extends TestBaseRapor {
         Driver.quitDriver();
     }
 
+//**** there should be info steps for the test steps
+
     @Test
     public void TC027_01adminDashboardFeatures() {
         extentTest = extentReports.createTest("TC027_01", "User should be able to  view the following pages sequentially  : General Settings, Page Settings, Payment Settings, Dynamic Pages, Language, Web Site Section, and Email Template");
@@ -43,6 +45,9 @@ public class US027 extends TestBaseRapor {
         ReusableMethods.waitFor(5);
         adminPage.adminDashboardGeneralSettingsButton.click();
         Assert.assertTrue(adminPage.adminDashboardGeneralSettingsButton.isEnabled());
+//**** instead of isEnabled, we could have used isDisplayed. If it fails when we use isDisplayed, we may use a different locater.
+//but I don't know the problem here so I am not sure :D
+
         extentTest.pass("Dashboard General Settings-VIEWED");
 
         actions.moveToElement(adminPage.adminDashboardPageSettingsButton).perform();

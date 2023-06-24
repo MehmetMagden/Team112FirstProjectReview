@@ -24,6 +24,8 @@ public class US_18 extends TestBaseRapor {
   }
 
   @AfterMethod
+
+//**** using quitDriver method sometimes may cause unexpected problems, If you face this kind of problem, try to use Driver.closeDriver
   public void tearDown() {
     Driver.quitDriver();
   }
@@ -42,6 +44,7 @@ public class US_18 extends TestBaseRapor {
     Assert.assertTrue(actualPageTitle.contains(expectedPageTitle));
     extentTest.pass("User can access Registration page");
 
+ //**** what a wonderful method :D
     generateFieldsAndFillRegistrationForm(true, true, true);
 
     ReusableMethods.waitFor(2);

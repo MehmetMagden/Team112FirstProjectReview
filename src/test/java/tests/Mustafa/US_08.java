@@ -19,6 +19,12 @@ import utilities.ReusableMethods;
 
 public class US_08 {
 
+//**** to create a report from this class we should extend it to TestBaseRapor class
+//**** it test methods should start with " extentTest = extentReports.createTest("TC0314", "description");
+//**** for each step we entered excel file there should be extentTest.info explaining
+//**** for each assertion we should enter info with extentTest.pass code
+// I believe this code won't create any report
+
 /*
 TC_08_01	As a user I should access the main page.
             1) User opens a browser

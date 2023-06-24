@@ -21,6 +21,7 @@ public class US_038 extends TestBaseRapor {
     @Test
     public void adminAccountChangePasswordTest(){
 
+//***** after loggin as an admin I think instead of "user" we should use "admin" word in description
         extentTest = extentReports.createTest("TC38", "User Navigates To Change password");
 
 
@@ -30,6 +31,10 @@ public class US_038 extends TestBaseRapor {
 
         Driver.getDriver().get(ConfigReader.getProperty("adminLogInUrl"));
         adminPage.adminLoginEmailAdressTextBox.sendKeys(ConfigReader.getProperty("adminLoginEmailValid"));
+
+//***** in coding, it is not advised to use hard-waits like "ReusableMethods.waitFor".
+// instead we should use explicitly waits
+
         ReusableMethods.waitFor(2);
         adminPage.adminLogInPasswordTextBox.sendKeys(ConfigReader.getProperty("adminLoginPasswordValid"));
         ReusableMethods.waitFor(3);

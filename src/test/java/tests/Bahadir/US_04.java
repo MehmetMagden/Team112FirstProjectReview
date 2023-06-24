@@ -14,6 +14,7 @@ public class US_04 extends TestBaseRapor {
 
     BasePage footerSection = new BasePage();
 
+//**** there could be an explaining before tests
 
     @Test
     public void visibilityOfFeaturedPackagesSectionInTheFooter () {
@@ -26,7 +27,9 @@ public class US_04 extends TestBaseRapor {
         Actions actions = new Actions(Driver.getDriver());
         Driver.getDriver().get(ConfigReader.getProperty("tripAndWayUrl"));
         ReusableMethods.waitFor(2);
+//**** instead of using numbers to scroll somewhere it is adviced to use a webelement, so I will also work on other computers
         js.executeScript("window.scrollBy(0,10000)");
+//**** Using hard wait is not very popular in coding because no matter what it will wait for the entered time
         ReusableMethods.waitFor(2);
 
 
@@ -37,6 +40,8 @@ public class US_04 extends TestBaseRapor {
         Assert.assertTrue(footerSection.threeDaysInBangkokButtonInFooter.isDisplayed());
         Assert.assertTrue(footerSection.sevenDaysInSalinaIslandButtonInFooter.isDisplayed());
         Assert.assertTrue(footerSection.fiveDayCaliforniaButtonInFooter.isDisplayed());
+
+//**** there should be an explaining here for the report
 
     }
 

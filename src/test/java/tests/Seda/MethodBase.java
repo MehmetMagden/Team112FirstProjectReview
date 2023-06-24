@@ -32,6 +32,10 @@ import java.util.regex.Pattern;
 
 public class MethodBase {
 
+//**** creating a testMethod class is good way to handle repeated cases
+// but if these methods can be used by everybody there should be in ReusableMethods class
+// if they are only for your user stories you can create them in your page class
+
     AdminPage adminPage = new AdminPage();
     PackagesPage packagesPage = new PackagesPage();
     AboutUsPage aboutUsPage = new AboutUsPage();

@@ -29,6 +29,9 @@ public class US_07 extends TestBaseRapor {
     Driver.quitDriver();
   }
 
+
+  //**** there should be info explaining for each test step
+
   @Test
   public void facebookIconTest() {
     extentTest =
@@ -45,6 +48,7 @@ public class US_07 extends TestBaseRapor {
     basePage.footerFacobookIcon.click();
     ReusableMethods.waitFor(2);
 
+ //**** using a method is a great way to handle it
     switchingWindow(firstPageWH);
 
     String expectedTitle = "facebook";
@@ -75,6 +79,10 @@ public class US_07 extends TestBaseRapor {
     Assert.assertTrue(actualTtitle.contains(expectedTitle));
     extentTest.fail(
         "Verify that the Twitter icon in the footer section of the website is functional");
+ //**** if you face a bug when you are manually doing it, you do not need to create automated test for it
+ // I think it fails here, so you used ExtentTest.fail
+ // But still I expected to see an explaining here :D
+
   }
 
   @Test

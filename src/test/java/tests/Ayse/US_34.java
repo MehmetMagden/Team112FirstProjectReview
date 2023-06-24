@@ -46,6 +46,8 @@ that I can access the Orders section and view the invoice of any specific order.
 
         adminPage.firstInvoiceInViewOrders.isDisplayed();
         extentTest.pass("user can displayed the invoice of any order");
+        // there is no assertion here so instead of pass we can use info
+
 
         //10)User should close the page
         Driver.closeDriver();

@@ -15,6 +15,8 @@ public class US_01 extends TestBaseRapor {
 
     HomePage homePage=new HomePage();
     BasePage basePage=new BasePage();
+//**** there should be info steps for the test steps
+//**** There is no assertion at the end ( for lines 29-30)
 
     @Test
     public void userSeeHomepage(){
@@ -30,6 +32,7 @@ public class US_01 extends TestBaseRapor {
         homePage.homeButtonInHeader.click();
         extentTest.info("Home button in header sectin on homepage is clickable");
         Driver.closeDriver();
+
 
 
     }
